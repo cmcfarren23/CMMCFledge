@@ -4,6 +4,7 @@ body{
     height: 100%;
     background: linear-gradient(125deg,#c156df 40%, #dfbfcc ) fixed no-repeat;
     size: 0px;
+    
 }
 a{
     text-decoration: none;
@@ -31,6 +32,11 @@ a{
     padding-left: 10%;
     padding-right: 10%;
     text-align: justify;
+    position: relative;
+    bottom: 0;
+    border-top-color: #55006d;
+    border-top-width: 5px;
+    border-top-style:solid;
 }
 .homeHeaderLogo{
     flex: 1;
@@ -103,7 +109,7 @@ a{
 }
 
 .bodyColumnContainer{
-    display: flex;
+    flex:1 ;
 }
 .bodyColumnWide{
     flex: 9;
@@ -112,11 +118,9 @@ a{
     font-size: 38px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: bold;
+    min-height: 72vh;
 
     border-top-color: #55006d;
     border-top-width: 5px;
     border-top-style:solid;
-    border-bottom-color: #55006d;
-    border-bottom-width: 5px;
-    border-bottom-style:solid;
 }
