@@ -178,6 +178,7 @@ label {
     font-size: 42px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #55006d;
+    padding-bottom: 10px;
 }
 .singleSubmit button{
     background-color: #55006d;
