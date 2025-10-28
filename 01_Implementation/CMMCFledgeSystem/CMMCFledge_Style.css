@@ -11,13 +11,15 @@ a{
     color: white;
 }
 input[type="radio"] {
-  transform: scale(2);
-  accent-color: #79009b;
-  margin-right: 10px;
+    transform: scale(2);
+    accent-color: #79009b;
+    margin-right: 10px;
+    margin-top: 15px;
 }
 label {
     display:flex;
-  align-items: center;
+    align-items: flex-start;
+    padding-bottom: 15px;
 }
 
 .homeHeader{
@@ -151,9 +153,9 @@ label {
 }
 .questionRadioContainer{
     flex: 1;
-    padding-left: 10%;
-    padding-right: 10%;
-    text-align: left;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: justify;
     place-items: left;
     font-size: 38px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -165,7 +167,9 @@ label {
     align-items: center;
     font-size: 42px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
     color: black;
+    padding-bottom: 30px;
 }
 .singleSubmit{
     flex: 1;

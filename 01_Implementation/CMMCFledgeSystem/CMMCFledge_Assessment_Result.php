@@ -1,9 +1,12 @@
 <?php 
     session_start(); 
-    if(isset($_POST['CMMCCertType'])){
-        $_SESSION['CMMCCertType'] = $_POST['CMMCCertType'];
-        if($_SESSION['CMMCCertType'] == 'N/A')
+    // echo $_SESSION['CMMCCertType']; // test
+    if(isset($_POST['IAASUsage'])){
+        $_SESSION['IAASUsage'] = $_POST['IAASUsage'];
+        if($_SESSION['IAASUsage'] == 'N/A')
             header("Location: CMMCFledge_Assessment_CUI_Cat.php");
+        else if($_SESSION['IAASUsage'] == 'test')
+            header("Location: CMMCFledge_Assessment_Result.php");
         else
             header("Location: CMMCFledge_Assessment_IAAS_Usage.php");
         exit;
@@ -34,31 +37,16 @@
             </div>
             <div class = "homeHeaderLogo"></div>
         </div>
-
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">What Level of CMMC Certification is your Organization Pursuing?</div>
-                <div class = "assessmentSubTitle">(May be listed in current of future contracts(s))</div>
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
-                <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="CMMCCertType" value="l1">CMMC l1<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="l2Self">CMMC l2 (Self-Assessment)<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="l1C3PAO">CMMC l2 (C3PAO-Assessment)<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="N/A">Not Sure</label>
-                        <br>
-                        <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
+                <div class = "pageTitle">Assessment Results!</div>
+                <div class = "pageSubTitle">Congratulations on Completing the Assessment!</div>
             </div>
         </div>
             
         <div class = "homeFooter"> <b>NOTICE:</b> This is a student designed system. All information found within the CMMC Fledge System or related systems are for informational purposes only. 
             This is a student project and shall not be used as a substitute for professional advice. Use this system at your own risk.
         </div>
-
 
     </body>
 </html>
