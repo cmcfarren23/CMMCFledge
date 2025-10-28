@@ -10,6 +10,15 @@ a{
     text-decoration: none;
     color: white;
 }
+input[type="radio"] {
+  transform: scale(2);
+  accent-color: #79009b;
+  margin-right: 10px;
+}
+label {
+    display:flex;
+  align-items: center;
+}
 
 .homeHeader{
     display: flex;
@@ -119,8 +128,57 @@ a{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: bold;
     min-height: 72vh;
-
     border-top-color: #55006d;
     border-top-width: 5px;
     border-top-style:solid;
+}
+.assessmentTitle{
+    flex: 1;
+    text-align: center;
+    place-items: center;
+    font-size: 48px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: black;
+}
+.assessmentSubTitle{
+    flex: 1;
+    text-align: center;
+    place-items: center;
+    font-size: 42px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #55006d;
+}
+.questionRadioContainer{
+    flex: 1;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: left;
+    place-items: left;
+    font-size: 38px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #55006d;
+}
+.questionInstruction{
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    font-size: 42px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+}
+.singleSubmit{
+    flex: 1;
+    text-align: center;
+    place-items: center;
+    font-size: 42px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #55006d;
+}
+.singleSubmit button{
+    background-color: #55006d;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
 }
