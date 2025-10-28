@@ -1,4 +1,5 @@
 <?php 
+    //include "DBConnect.php";
     session_start(); 
     // echo $_SESSION['CMMCCertType']; // test
     if(isset($_POST['IAASUsage'])){
@@ -10,6 +11,11 @@
         else
             header("Location: CMMCFledge_Assessment_IAAS_Usage.php");
         exit;
+    }
+
+
+    function CMMCCertType(){
+        echo $_SESSION['CMMCCertType'];
     }
 ?>
 
@@ -41,6 +47,7 @@
             <div class="bodyColumnWide">
                 <div class = "pageTitle">Assessment Results!</div>
                 <div class = "pageSubTitle">Congratulations on Completing the Assessment!</div>
+                <div class = "pageSubTitle">For your upcoming <?php echo CMMCCertType();?> assessment you may need to look into:</div>
             </div>
         </div>
             

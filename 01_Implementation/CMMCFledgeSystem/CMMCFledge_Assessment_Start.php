@@ -42,9 +42,9 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="CMMCCertType" value="l1">CMMC l1<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="l2Self">CMMC l2 (Self-Assessment)<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="l1C3PAO">CMMC l2 (C3PAO-Assessment)<br></label>
+                        <label> <input type="radio" name="CMMCCertType" value="CMMC l1">CMMC l1<br></label>
+                        <label> <input type="radio" name="CMMCCertType" value="CMMC l2 (Self-Assessment)">CMMC l2 (Self-Assessment)<br></label>
+                        <label> <input type="radio" name="CMMCCertType" value="CMMC l2 (C3PAO-Assessment)">CMMC l2 (C3PAO-Assessment)<br></label>
                         <label> <input type="radio" name="CMMCCertType" value="N/A">Not Sure</label>
                         <br>
                         <div class = "singleSubmit">
