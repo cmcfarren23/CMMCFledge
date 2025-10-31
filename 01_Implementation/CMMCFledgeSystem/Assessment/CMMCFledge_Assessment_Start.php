@@ -3,9 +3,9 @@
     if(isset($_POST['CMMCCertType'])){
         $_SESSION['CMMCCertType'] = $_POST['CMMCCertType'];
         if($_SESSION['CMMCCertType'] == 'N/A')
-            header("Location: CMMCFledge_Assessment_CUI_Cat.php");
+            header("Location: CUI/CMMCFledge_Assessment_CUI_Cat.php");
         else
-            header("Location: CMMCFledge_Assessment_IAAS_Usage.php");
+            header("Location: IAAS/CMMCFledge_Assessment_IAAS_Usage.php");
         exit;
     }
 ?>
@@ -13,24 +13,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="CMMCFledge_style.css">
+        <link rel="stylesheet" href="../Include/CMMCFledge_Style.css">
     </head>
 
     <body>
         <div class = "homeHeader"> 
             <div class = "homeHeaderLogo">
-                <a href="CMMCFledge_Home_Page.html">
-                    <img src="Images\CMMCFledge_Logo.png" alt="CMMC Fledge" style="width:128px;height:128px;">
+                <a href="..\CMMCFledge_Home_Page.html">
+                    <img src="..\Images\CMMCFledge_Logo.png" alt="CMMC Fledge" style="width:128px;height:128px;">
                 </a>
             </div>
             <div class = "homeHeaderDiv">
-                <a href ="CMMCFledge_Assessment_Start.php">Assessment</a>
+                <a href ="..\CMMCFledge_Assessment_Start.php">Assessment</a>
             </div>
             <div class = "homeHeaderDiv">
-                <a href ="CMMCFledge_Fledge_Dictionary.html">Fledge Dictionary</a>
+                <a href ="..\CMMCFledge_Fledge_Dictionary.html">Fledge Dictionary</a>
             </div>
             <div class = "homeHeaderDiv">
-                <a href ="CMMCFledge_About_Us.html">About Us</a>
+                <a href ="..\CMMCFledge_About_Us.html">About Us</a>
             </div>
             <div class = "homeHeaderLogo"></div>
         </div>
