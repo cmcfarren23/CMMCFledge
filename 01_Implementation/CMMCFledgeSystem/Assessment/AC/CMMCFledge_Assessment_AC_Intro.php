@@ -1,11 +1,5 @@
 <?php 
     session_start(); 
-    // echo $_SESSION['CMMCCertType']; // test
-    if(isset($_POST['IAASSelect'])){
-        $_SESSION['IAASSelect'] = $_POST['IAASSelect'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
-        exit;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -35,17 +29,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Which Major IAAS Provider do you use?</div>
+                <div class = "assessmentTitle">This section will cover general questions about Access Control (AC)</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="IAASSelect" value="AWS">AWS<br></label>
-                        <label> <input type="radio" name="IAASSelect" value="Azure">Microsoft Azure<br></label>
-                        <label> <input type="radio" name="IAASSelect" value="Google">Google Cloud<br></label>
-                        <br>
+                    <form action="CMMCFledge_Assessment_AC_Access_List.php" method="post" >
                         <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
+                            <a href ="CMMCFledge_Assessment_AC_Access_List.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

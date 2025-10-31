@@ -1,9 +1,8 @@
 <?php 
     session_start(); 
-    // echo $_SESSION['CMMCCertType']; // test
-    if(isset($_POST['IAASSelect'])){
-        $_SESSION['IAASSelect'] = $_POST['IAASSelect'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
+    if(isset($_POST['Lockout'])){
+        $_SESSION['Lockout'] = $_POST['Lockout'];
+        header("Location: ../AC/CMMCFledge_Assessment_AC_System_Warning.php");
         exit;
     }
 ?>
@@ -35,14 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Which Major IAAS Provider do you use?</div>
+                <div class = "assessmentTitle">Does your system limit the number of attempts for logon?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="IAASSelect" value="AWS">AWS<br></label>
-                        <label> <input type="radio" name="IAASSelect" value="Azure">Microsoft Azure<br></label>
-                        <label> <input type="radio" name="IAASSelect" value="Google">Google Cloud<br></label>
+                        <label> <input type="radio" name="Lockout" value="Yes">Yes, the system does limit logon attempts</label>
+                        <label> <input type="radio" name="Lockout" value="No">No, the system does NOT limit logon attempts</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

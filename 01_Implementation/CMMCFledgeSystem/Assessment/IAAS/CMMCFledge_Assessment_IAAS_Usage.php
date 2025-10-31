@@ -8,7 +8,7 @@
         else if($_SESSION['IAASUsage'] == 'test')
             header("Location: ../CMMCFledge_Assessment_Result.php");
         else
-            header("Location: CMMCFledge_Assessment_IAAS_Selection.php");
+            header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
         exit;
     }
 ?>
@@ -45,10 +45,10 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="IAASUsage" value="solely">My systems authorization boundary exist solely within an AWS, Azure, or Google Cloud environment<br></label>
-                        <label> <input type="radio" name="IAASUsage" value="includes">My systems authorization boundary includes an AWS, Azure, or Google Cloud environment<br></label>
-                        <label> <input type="radio" name="IAASUsage" value="N/A">My Organization does not use AWS, Azure, or Google Cloud environments<br></label>
-                        <label> <input type="radio" name="IAASUsage" value="test">skip to end (test)<br></label>
+                        <label> <input type="radio" name="IAASUsage" value="solely">My systems authorization boundary exist solely within an AWS, Azure, or Google Cloud environment</label>
+                        <label> <input type="radio" name="IAASUsage" value="includes">My systems authorization boundary includes an AWS, Azure, or Google Cloud environment</label>
+                        <label> <input type="radio" name="IAASUsage" value="N/A">My Organization does not use AWS, Azure, or Google Cloud environments</label>
+                        <label> <input type="radio" name="IAASUsage" value="test">skip to end (test)</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
