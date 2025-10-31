@@ -1,10 +1,5 @@
 <?php 
     session_start(); 
-    if(isset($_POST['SystemWarning'])){
-        $_SESSION['SystemWarning'] = $_POST['SystemWarning'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_Remote_Session.php");
-        exit;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -34,16 +29,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system include a logon banner or notifcation upon intial logon?</div>
+                <div class = "assessmentTitle">This section will cover general questions about Awareness & Training (AT)</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="SystemWarning" value="Yes">Yes, the system include a logon banner or notifcation upon intial logon</label>
-                        <label> <input type="radio" name="SystemWarning" value="No">No, the system include a logon banner or notifcation upon intial logon</label>
-                        <br>
+                    <form action="CMMCFledge_Assessment_AC_Access_List.php" method="post" >
                         <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
+                            <a href ="CMMCFledge_Assessment_AC_Access_List.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

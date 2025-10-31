@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['SystemWarning'])){
-        $_SESSION['SystemWarning'] = $_POST['SystemWarning'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_Remote_Session.php");
+    if(isset($_POST['PublicComponents'])){
+        $_SESSION['PublicComponents'] = $_POST['PublicComponents'];
+        header("Location: ../AT/CMMCFledge_Assessment_AT_Intro.php");
         exit;
     }
 ?>
@@ -34,13 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system include a logon banner or notifcation upon intial logon?</div>
+                <div class = "assessmentTitle">Are there public facing components within your system's authorization boundary?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="SystemWarning" value="Yes">Yes, the system include a logon banner or notifcation upon intial logon</label>
-                        <label> <input type="radio" name="SystemWarning" value="No">No, the system include a logon banner or notifcation upon intial logon</label>
+                        <label> <input type="radio" name="PublicComponents" value="Yes">Yes, there are public facing componets</label>
+                        <label> <input type="radio" name="PublicComponents" value="No">No, there are not public facing componets</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

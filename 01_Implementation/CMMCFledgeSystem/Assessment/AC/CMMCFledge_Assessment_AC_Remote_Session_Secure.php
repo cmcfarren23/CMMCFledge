@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['SystemWarning'])){
-        $_SESSION['SystemWarning'] = $_POST['SystemWarning'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_Remote_Session.php");
+    if(isset($_POST['RemoteSecure'])){
+        $_SESSION['RemoteSecure'] = $_POST['RemoteSecure'];
+        header("Location: ../AC/CMMCFledge_Assessment_AC_Public_Components.php");
         exit;
     }
 ?>
@@ -34,13 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system include a logon banner or notifcation upon intial logon?</div>
+                <div class = "assessmentTitle">Are remote sessions monitored and utilize cryptographically secure mechanism within your system?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="SystemWarning" value="Yes">Yes, the system include a logon banner or notifcation upon intial logon</label>
-                        <label> <input type="radio" name="SystemWarning" value="No">No, the system include a logon banner or notifcation upon intial logon</label>
+                        <label> <input type="radio" name="RemoteSecure" value="Yes">Yes, remote sessions are monitored and cryptographically secure</label>
+                        <label> <input type="radio" name="RemoteSecure" value="No">No, remote sessions are NOT monitored and cryptographically secure</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
