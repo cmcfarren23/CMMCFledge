@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['LoggingTools'])){
+        $_SESSION['LoggingTools'] = $_POST['LoggingTools'];
+        header("Location: ../CM/CMMCFledge_Assessment_CM_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Regarding all logging mechanisms within your environment, does your organization limit access to these mechanisms to only approved individuals?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="LoggingTools" value="Yes">Yes, access is limited</label>
+                        <label> <input type="radio" name="LoggingTools" value="No">No, access is NOT limited</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

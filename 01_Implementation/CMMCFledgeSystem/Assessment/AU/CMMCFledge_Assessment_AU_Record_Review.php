@@ -1,5 +1,13 @@
 <?php 
     session_start(); 
+    if(isset($_POST['RecordReview'])){
+        $_SESSION['RecordReview'] = $_POST['RecordReview'];
+        if($_SESSION['RecordReview'] == 'No')
+            header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Review_Changes.php");
+        else
+            header("Location: ../AU/CMMCFledge_Assessment_AU_Logging_Tools.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +37,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">On a defined basis does your team within the system review event records?</div>
+                <div class = "assessmentSubTitle">The time period in which these occur just need to be defined (Monthly recommended)</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="RecordReview" value="Yes">Yes, event records are review on an defined basis</label>
+                        <label> <input type="radio" name="RecordReview" value="No">No, event records are NOT review on an defined basis</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

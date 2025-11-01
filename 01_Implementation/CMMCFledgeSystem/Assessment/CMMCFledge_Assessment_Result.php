@@ -1,12 +1,13 @@
 <?php 
     //include "DBConnect.php";
     session_start(); 
-    // echo $_SESSION['CMMCCertType']; // test
+    // foreach ($_SESSION as $key => $value) {
+    // echo "$key : $value<br>";
+    // }
 
-
-    function CMMCCertType(){
-        echo $_SESSION['CMMCCertType'];
-    }
+    // function CMMCCertType(){
+    //     echo $_SESSION['CMMCCertType'];
+    // }
 ?>
 
 <!DOCTYPE html>

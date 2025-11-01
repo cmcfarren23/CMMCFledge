@@ -1,5 +1,13 @@
 <?php 
     session_start(); 
+    if(isset($_POST['RecordLogging'])){
+        $_SESSION['RecordLogging'] = $_POST['RecordLogging'];
+        if($_SESSION['RecordLogging'] == 'No')
+            header("Location: ../CM/CMMCFledge_Assessment_CM_Intro.php");
+        else
+            header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Info.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +37,18 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your organization define events to be logged and log those events that occur within the system?</div>
+                <div class = "assessmentSubTitle">(Event types that are logged MUST be specified  by your organization)</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="RecordLogging" value="Yes">Yes, system events are logged as defined by the organization</label>
+                        <label> <input type="radio" name="RecordLogging" value="YesExecptDef">No, system events are NOT defined</label>
+                        <label> <input type="radio" name="RecordLogging" value="No">No, system events are NOT logged</label>
+                        <label> <input type="radio" name="RecordLogging" value="No">No, system events are NOT logged or defined</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

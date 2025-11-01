@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['RecordReviewChanges'])){
+        $_SESSION['RecordReviewChanges'] = $_POST['RecordReviewChanges'];
+        header("Location: ../AU/CMMCFledge_Assessment_AU_Logging_Tools.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Upon review of event logs, do you take these into account and consider changes to events being logged, content of audit records, or further system decisions?</div>
+                <div class = "assessmentSubTitle">If these are being done make to sure to keep record of them!</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="RecordReviewChanges" value="Yes">Yes, reviews take into account proccess changes</label>
+                        <label> <input type="radio" name="RecordReviewChanges" value="No">No, reviews do NOT take into account proccess changes</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['RecordInfoID'])){
+        $_SESSION['RecordInfoID'] = $_POST['RecordInfoID'];
+        header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Review.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does the information inside an audit record contain information that could identify the user performing said action?</div>
+                <div class = "assessmentSubTitle">For each action does your organization tie an account to that action?</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="RecordInfoID" value="Yes">Yes, a user can be identrifed</label>
+                        <label> <input type="radio" name="RecordInfoID" value="No">No, a user can NOT be identified</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

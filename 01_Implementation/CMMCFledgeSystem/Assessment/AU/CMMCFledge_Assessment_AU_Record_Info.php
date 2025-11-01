@@ -1,5 +1,13 @@
 <?php 
     session_start(); 
+    if(isset($_POST['RecordInfoDef'])){
+        $_SESSION['RecordInfoDef'] = $_POST['RecordInfoDef'];
+        if($_SESSION['RecordInfoDef'] == 'No')
+            header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Review.php");
+        else
+            header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Info_Identity.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +37,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your organization define what information goes into each audit record?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="RecordInfoDef" value="Yes">Yes, information in each audit record is defined</label>
+                        <label> <input type="radio" name="RecordInfoDef" value="No">No, information in each audit record is NOT defined</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
