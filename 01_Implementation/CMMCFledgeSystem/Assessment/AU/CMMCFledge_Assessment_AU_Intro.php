@@ -1,13 +1,5 @@
 <?php 
     session_start(); 
-    if(isset($_POST['TrainingGeneral'])){
-        $_SESSION['TrainingGeneral'] = $_POST['TrainingGeneral'];
-        if($_SESSION['TrainingGeneral'] == 'Yes')
-            header("Location: ../AT/CMMCFledge_Assessment_AT_Training_Role.php");
-        else
-            header("Location: ../AU/CMMCFledge_Assessment_AU_Intro.php");
-        exit;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -37,16 +29,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Do all individuals that have access to your system receive generalized training?</div>
+                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="TrainingGeneral" value="Yes">Yes, all individuals recieve generalized training</label>
-                        <label> <input type="radio" name="TrainingGeneral" value="No">No, all individuals DO NOT recieve generalized training</label>
-                        <br>
+                    <form method="post" >
                         <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
+                            <a href ="CMMCFledge_Assessment_AC_Access_List.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

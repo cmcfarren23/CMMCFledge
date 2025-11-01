@@ -1,11 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['TrainingGeneral'])){
-        $_SESSION['TrainingGeneral'] = $_POST['TrainingGeneral'];
-        if($_SESSION['TrainingGeneral'] == 'Yes')
-            header("Location: ../AT/CMMCFledge_Assessment_AT_Training_Role.php");
-        else
-            header("Location: ../AU/CMMCFledge_Assessment_AU_Intro.php");
+    if(isset($_POST['TrainingRole'])){
+        $_SESSION['TrainingRole'] = $_POST['TrainingRole'];
+        header("Location: ../AT/CMMCFledge_Assessment_AT_Training_Insider.php");
         exit;
     }
 ?>
@@ -37,13 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Do all individuals that have access to your system receive generalized training?</div>
+                <div class = "assessmentTitle">Do all individuals that have access to your system receive training based on their responsibilities for their specific role?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="TrainingGeneral" value="Yes">Yes, all individuals recieve generalized training</label>
-                        <label> <input type="radio" name="TrainingGeneral" value="No">No, all individuals DO NOT recieve generalized training</label>
+                        <label> <input type="radio" name="TrainingRole" value="Yes">Yes, all individuals recieve role-based training</label>
+                        <label> <input type="radio" name="TrainingRole" value="No">No, all individuals DO NOT recieve role-based training</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
