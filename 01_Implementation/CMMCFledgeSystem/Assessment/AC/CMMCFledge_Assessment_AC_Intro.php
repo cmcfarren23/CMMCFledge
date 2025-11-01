@@ -33,7 +33,7 @@
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
-                    <form action="CMMCFledge_Assessment_AC_Access_List.php" method="post" >
+                    <form method="post" >
                         <div class = "singleSubmit">
                             <a href ="CMMCFledge_Assessment_AC_Access_List.php"><button type="button">Continue</button></a>
                         </div>

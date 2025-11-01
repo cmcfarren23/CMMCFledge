@@ -1,5 +1,13 @@
 <?php 
     session_start(); 
+    if(isset($_POST['TrainingGeneral'])){
+        $_SESSION['TrainingGeneral'] = $_POST['TrainingGeneral'];
+        if($_SESSION['TrainingGeneral'] == 'Yes')
+            header("Location: ../AC/CMMCFledge_Assessment_AT_Training_Role.php");
+        else
+            header("Location: ../AU/CMMCFledge_Assessment_AU_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +37,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Awareness & Training (AT)</div>
+                <div class = "assessmentTitle">Do all individuals that have access to your system receive generalized training?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="TrainingGeneral" value="Yes">Yes, all individuals recieve generalized training</label>
+                        <label> <input type="radio" name="TrainingGeneral" value="No">No, all individuals DO NOT recieve generalized training</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AT_Training_General.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
