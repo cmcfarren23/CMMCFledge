@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Inventory'])){
-        $_SESSION['Inventory'] = $_POST['Inventory'];
-        header("Location: ../CM/CMMCFledge_Assessment_CM_Ticketing.php");
+    if(isset($_POST['Ticketing'])){
+        $_SESSION['Ticketing'] = $_POST['Ticketing'];
+        header("Location: ../CM/CMMCFledge_Assessment_CM_Whitelist.php");
         exit;
     }
 ?>
@@ -34,14 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization maintain a system inventory?</div>
+                <div class = "assessmentTitle">Does your organization utilize a ticketing system for change management processes within the system?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Inventory" value="Yes">Yes, a system inventory list is managed and updated</label>
-                        <label> <input type="radio" name="Inventory" value="No">No, a system inventory list exists but it may be outdated</label>
-                        <label> <input type="radio" name="Inventory" value="No">No, a system inventory list does NOT exist</label>
+                        <label> <input type="radio" name="Ticketing" value="Yes">Yes, a ticketing system is used</label>
+                        <label> <input type="radio" name="Ticketing" value="No">No, a ticketing system is NOT used</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
