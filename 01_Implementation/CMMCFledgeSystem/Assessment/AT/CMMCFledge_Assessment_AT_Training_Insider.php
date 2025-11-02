@@ -34,7 +34,7 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does the training your organization performs include insider threat & awareness?</div>
+                <div class = "assessmentTitle">Does the training your organization perform include insider threat & awareness?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">

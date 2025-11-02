@@ -1,11 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['RecordReview'])){
-        $_SESSION['RecordReview'] = $_POST['RecordReview'];
-        if($_SESSION['RecordReview'] == 'No')
-            header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Review_Changes.php");
-        else
-            header("Location: ../AU/CMMCFledge_Assessment_AU_Logging_Tools.php");
+    if(isset($_POST['ConfigBaselineReview'])){
+        $_SESSION['ConfigBaselineReview'] = $_POST['ConfigBaselineReview'];
+        header("Location: ../CM/CMMCFledge_Assessment_CM_Inventory.php");
         exit;
     }
 ?>
@@ -37,13 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">On a defined basis does your team within the system review event records?</div>
-                <div class = "assessmentSubTitle">The time period in which these occur just need to be defined (Monthly recommended)</div>
+                <div class = "assessmentTitle">Does you organization review your system's baseline?</div>
+                <div class = "assessmentSubTitle"></div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="RecordReview" value="Yes">Yes, event records are reviewed on an defined basis</label>
-                        <label> <input type="radio" name="RecordReview" value="No">No, event records are NOT reviewed on an defined basis</label>
+                        <label> <input type="radio" name="ConfigBaselineReview" value="Yes">Yes, the system baseline is reviewed</label>
+                        <label> <input type="radio" name="ConfigBaselineReview" value="No">No, the system baseline is NOT reviewed</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

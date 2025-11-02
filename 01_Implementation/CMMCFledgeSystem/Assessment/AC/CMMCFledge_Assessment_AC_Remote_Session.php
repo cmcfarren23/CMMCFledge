@@ -2,7 +2,7 @@
     session_start(); 
     if(isset($_POST['Remote'])){
         $_SESSION['Remote'] = $_POST['Remote'];
-        if($_SESSION['Remote'] == 'Yes')
+        if($_SESSION['Remote'] == 'No')
             header("Location: ../AC/CMMCFledge_Assessment_AC_Public_Components.php");
         else
             header("Location: ../AC/CMMCFledge_Assessment_AC_Remote_Session_Secure.php");
@@ -37,7 +37,7 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system utilize remote sessions</div>
+                <div class = "assessmentTitle">Does your system utilize remote sessions?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">

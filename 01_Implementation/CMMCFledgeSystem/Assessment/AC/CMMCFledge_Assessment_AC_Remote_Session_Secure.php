@@ -34,7 +34,7 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Are remote sessions monitored and utilize cryptographically secure mechanism within your system?</div>
+                <div class = "assessmentTitle">Are remote sessions monitored and do they utilize cryptographically secure mechanisms within your system?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">

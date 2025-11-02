@@ -29,13 +29,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Auditing & Accountability (AU)</div>
+                <div class = "assessmentTitle">This section will cover general questions about Configuration Management (CM)</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
                     <form method="post" >
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_AU_Record_Logging.php"><button type="button">Continue</button></a>
+                            <a href ="CMMCFledge_Assessment_CM_Baseline.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

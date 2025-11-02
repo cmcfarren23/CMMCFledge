@@ -38,7 +38,7 @@
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
                 <div class = "assessmentTitle">What Level of CMMC Certification is your Organization Pursuing?</div>
-                <div class = "assessmentSubTitle">(May be listed in current of future contracts(s))</div>
+                <div class = "assessmentSubTitle">(May be listed in current or future contracts(s))</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">

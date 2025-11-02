@@ -39,7 +39,7 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="RecordInfoID" value="Yes">Yes, a user can be identrifed</label>
+                        <label> <input type="radio" name="RecordInfoID" value="Yes">Yes, a user can be identified</label>
                         <label> <input type="radio" name="RecordInfoID" value="No">No, a user can NOT be identified</label>
                         <br>
                         <div class = "singleSubmit">

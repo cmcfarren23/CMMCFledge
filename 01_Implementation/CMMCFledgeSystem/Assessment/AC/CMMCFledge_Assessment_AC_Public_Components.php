@@ -39,8 +39,8 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="PublicComponents" value="Yes">Yes, there are public facing componets</label>
-                        <label> <input type="radio" name="PublicComponents" value="No">No, there are not public facing componets</label>
+                        <label> <input type="radio" name="PublicComponents" value="Yes">Yes, there are public facing components</label>
+                        <label> <input type="radio" name="PublicComponents" value="No">No, there are NOT public facing components</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

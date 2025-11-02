@@ -1,11 +1,11 @@
 <?php 
     session_start(); 
-    if(isset($_POST['RecordReview'])){
-        $_SESSION['RecordReview'] = $_POST['RecordReview'];
-        if($_SESSION['RecordReview'] == 'No')
-            header("Location: ../AU/CMMCFledge_Assessment_AU_Record_Review_Changes.php");
+    if(isset($_POST['ConfigBaseline'])){
+        $_SESSION['ConfigBaseline'] = $_POST['ConfigBaseline'];
+        if($_SESSION['ConfigBaseline'] == 'Yes')
+            header("Location: ../CM/CMMCFledge_Assessment_CM_Baseline_Review.php");
         else
-            header("Location: ../AU/CMMCFledge_Assessment_AU_Logging_Tools.php");
+            header("Location: ../CM/CMMCFledge_Assessment_CM_Inventory.php");
         exit;
     }
 ?>
@@ -37,13 +37,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">On a defined basis does your team within the system review event records?</div>
-                <div class = "assessmentSubTitle">The time period in which these occur just need to be defined (Monthly recommended)</div>
+                <div class = "assessmentTitle">Do you manage a configuaration baseline for the system?</div>
+                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="RecordReview" value="Yes">Yes, event records are reviewed on an defined basis</label>
-                        <label> <input type="radio" name="RecordReview" value="No">No, event records are NOT reviewed on an defined basis</label>
+                        <label> <input type="radio" name="ConfigBaseline" value="Yes">Yes, a configuration baseline is kept and documented</label>
+                        <label> <input type="radio" name="ConfigBaseline" value="No">No, a configuration baseline is NOT kept and documented</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
