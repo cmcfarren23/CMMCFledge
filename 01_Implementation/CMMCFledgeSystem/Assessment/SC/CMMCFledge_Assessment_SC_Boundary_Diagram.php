@@ -1,8 +1,12 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Sanitize'])){
-        $_SESSION['Sanitize'] = $_POST['Sanitize'];
-        header("Location: ../SC/CMMCFledge_Assessment_SC_Intro.php");
+    if(isset($_POST['BoundaryDiagram'])){
+        $_SESSION['BoundaryDiagram'] = $_POST['BoundaryDiagram'];
+        if($_SESSION['PublicComponents'] == "Yes"){
+            header("Location: ../SC/CMMCFledge_Assessment_SC_Public_Sep.php");
+        }else{
+            header("Location: ../SI/CMMCFledge_Assessment_SI_Intro.php");
+        }
         exit;
     }
 ?>
@@ -34,13 +38,14 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization sanitize all storage devices within the system before reuse or disposal?</div>
+                <div class = "assessmentTitle">Does your organization maitain an active system boundary diagram for the system?</div>
                 <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Sanitize" value="Yes">Yes, storage is sanitized</label>
-                        <label> <input type="radio" name="Sanitize" value="No">No, storage is NOT sanitized</label>
+                        <label> <input type="radio" name="BoundaryDiagram" value="Yes">Yes, a system boundary diagram is maintained</label>
+                        <label> <input type="radio" name="BoundaryDiagram" value="No">No, a system boundary diagram exists but is not being maintained</label>
+                        <label> <input type="radio" name="BoundaryDiagram" value="No">No, a system boundary diagram does NOT exist</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

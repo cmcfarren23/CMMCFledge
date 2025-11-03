@@ -2,7 +2,7 @@
     session_start(); 
     if(isset($_POST['MultiFactor'])){
         $_SESSION['MultiFactor'] = $_POST['MultiFactor'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Guest Accounts.php");
+        header("Location: ../IA/CMMCFledge_Assessment_IA_Guest_Accounts.php");
         exit;
     }
 ?>

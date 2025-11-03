@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Sanitize'])){
-        $_SESSION['Sanitize'] = $_POST['Sanitize'];
-        header("Location: ../SC/CMMCFledge_Assessment_SC_Intro.php");
+    if(isset($_POST['PubSep'])){
+        $_SESSION['PubSep'] = $_POST['PubSep'];
+        header("Location: ../SI/CMMCFledge_Assessment_SI_Intro.php");
         exit;
     }
 ?>
@@ -34,13 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization sanitize all storage devices within the system before reuse or disposal?</div>
-                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
+                <div class = "assessmentTitle">Are your system's publicly facing components logically separated from the rest of the components?</div>
+                <div class = "assessmentSubTitle">This is primarily covered through VLANs</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Sanitize" value="Yes">Yes, storage is sanitized</label>
-                        <label> <input type="radio" name="Sanitize" value="No">No, storage is NOT sanitized</label>
+                        <label> <input type="radio" name="PubSep" value="Yes">Yes, they are logically separated</label>
+                        <label> <input type="radio" name="PubSep" value="No">No, they are NOT logically separated</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
