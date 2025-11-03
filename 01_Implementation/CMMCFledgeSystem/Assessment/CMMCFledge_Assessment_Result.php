@@ -5,9 +5,14 @@
     // echo "$key : $value<br>";
     // }
 
-    // function CMMCCertType(){
-    //     echo $_SESSION['CMMCCertType'];
-    // }
+    function CMMCCertType(){
+        echo $_SESSION['CMMCCertType'];
+    }
+    function CMMCL1(){
+        if($_SESSION['CMMCCertType'] == 'CMMCL1'){
+            
+        }
+    }
 ?>
 
 <!DOCTYPE html>

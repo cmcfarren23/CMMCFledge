@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['MultiFactor'])){
-        $_SESSION['MultiFactor'] = $_POST['MultiFactor'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Guest Accounts.php");
+    if(isset($_POST['Guest'])){
+        $_SESSION['Guest'] = $_POST['Guest'];
+        header("Location: ../MP/CMMCFledge_Assessment_MP_Intro.php");
         exit;
     }
 ?>
@@ -34,13 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize multifactor services such as Microsoft Authenticator, Google Authenticator, Duo, or Okta?</div>
-                <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div>
+                <div class = "assessmentTitle">Does the system utilze guest accounts?</div>
+                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="MultiFactor" value="Yes">Yes, the system uses a multifactor service</label>
-                        <label> <input type="radio" name="MultiFactor" value="No">No, the system does NOT use a multifactor service</label>
+                        <label> <input type="radio" name="Guest" value="Yes">Yes, the system uses guest accounts</label>
+                        <label> <input type="radio" name="Guest" value="No">No, the system does NOT use guest accounts</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
