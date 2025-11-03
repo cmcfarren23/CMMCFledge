@@ -1,9 +1,13 @@
 <?php 
-    session_start(); 
-    if(isset($_POST['Whitelist'])){
-        $_SESSION['Whitelist'] = $_POST['Whitelist'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Intro.php");
-        exit;
+    session_start();
+    function CMMCCertType(){
+        foreach ($_SESSION['CUIType'] as $key => $value) { 
+            if($value == 0){
+                echo "It seems you may need to evaulate at CMMC L3 (You may continue just keep in mind that CMMCFledge does not fully cover CMMC l3)";
+                return "";
+            }
+        }
+        echo "It seems you may need to evaulate at CMMC L2 (C3PAO Assessment)";
     }
 ?>
 
@@ -34,17 +38,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize a whitelist or blacklist to define the execution of authorized software?</div>
+                <div class = "assessmentTitle"><?php echo CMMCCertType();?></div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="Whitelist" value="Whitelist">A Whitelist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="Blacklist">A Blacklist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="N/A">No list is established to define approved software</label>
-                        <br>
+                    <form method="post" >
                         <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
+                            <a href ="../IAAS/CMMCFledge_Assessment_IAAS_Usage.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

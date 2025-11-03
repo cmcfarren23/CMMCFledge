@@ -1,10 +1,5 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Whitelist'])){
-        $_SESSION['Whitelist'] = $_POST['Whitelist'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Intro.php");
-        exit;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -34,17 +29,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize a whitelist or blacklist to define the execution of authorized software?</div>
+                <div class = "assessmentTitle">This section will cover general questions about Identification and Authentication (IA)</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
                 <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="Whitelist" value="Whitelist">A Whitelist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="Blacklist">A Blacklist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="N/A">No list is established to define approved software</label>
-                        <br>
+                    <form method="post" >
                         <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
+                            <a href ="CMMCFledge_Assessment_IA_Major_IDP.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

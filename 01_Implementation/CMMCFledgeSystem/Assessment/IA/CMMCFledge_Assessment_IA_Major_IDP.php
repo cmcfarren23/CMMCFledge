@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Whitelist'])){
-        $_SESSION['Whitelist'] = $_POST['Whitelist'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Intro.php");
+    if(isset($_POST['IDP'])){
+        $_SESSION['IDP'] = $_POST['IDP'];
+        header("Location: ../IA/CMMCFledge_Assessment_IA_Multi_Factor.php");
         exit;
     }
 ?>
@@ -34,14 +34,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize a whitelist or blacklist to define the execution of authorized software?</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
+                <div class = "assessmentTitle">Does your organization utilize a major Identity Provider such as EntraID, Okta, or Auth0?</div>
+                <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Whitelist" value="Whitelist">A Whitelist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="Blacklist">A Blacklist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="N/A">No list is established to define approved software</label>
+                        <label> <input type="radio" name="IDP" value="Yes">Yes, the system uses a major IDP</label>
+                        <label> <input type="radio" name="IDP" value="No">No, the system does NOT use a major IDP</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

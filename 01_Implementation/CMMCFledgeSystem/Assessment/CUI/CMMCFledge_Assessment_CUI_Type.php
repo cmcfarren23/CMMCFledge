@@ -1,9 +1,35 @@
 <?php 
+
     session_start(); 
-    if(isset($_POST['Whitelist'])){
-        $_SESSION['Whitelist'] = $_POST['Whitelist'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Intro.php");
+
+    if(isset($_POST['CUIType'])){
+        $_SESSION['CUIType'] = $_POST['CUIType'];
+        header("Location: ../CUI/CMMCFledge_Assessment_CUI_Result.php");
         exit;
+    }
+
+    function CUIType(){
+        include '../../Include/DBConnect.php';
+        foreach ($_SESSION['CUICat'] as $key => $value) {
+            $Query_CUI_Cat = "SELECT Cat_Name FROM cui_cat WHERE idCUI_Cat = $value";
+            $result = $conn->query($Query_CUI_Cat);
+            if ($result->num_rows > 0) {
+                    while($getCUICat = $result->fetch_assoc()){
+                         echo "Because you selected $getCUICat[Cat_Name]";
+                    }
+                }
+    
+            $Query_CUI_Cat = "SELECT * FROM cui_types WHERE CUI_Cat_idCUI_Cat = $value";
+            $result = $conn->query($Query_CUI_Cat );
+                if ($result->num_rows > 0) {
+                    while($getCUICat = $result->fetch_assoc()) {
+                            $CUIType = $getCUICat['Type_Name'];
+                            $CUITypeBasic = $getCUICat['Is_Basic'];
+                            echo "<label> <input type='checkbox' name='CUIType[]' value=$CUITypeBasic>$CUIType</label>";
+                        }
+                }
+            echo "<br>";
+        }
     }
 ?>
 
@@ -34,14 +60,12 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize a whitelist or blacklist to define the execution of authorized software?</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
+                <div class = "assessmentTitle">Choose your CUI Types</div>
+                <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Whitelist" value="Whitelist">A Whitelist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="Blacklist">A Blacklist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="N/A">No list is established to define approved software</label>
+                        <?php echo CUIType();?>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
