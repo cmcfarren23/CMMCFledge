@@ -49,7 +49,7 @@
             <div class="bodyColumnWide">
                 <div class = "assessmentTitle">Choose your CUI categories</div>
                 <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div>
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Select From The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="POST">
                         <?php echo CUICat();?>

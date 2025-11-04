@@ -62,7 +62,7 @@
             <div class="bodyColumnWide">
                 <div class = "assessmentTitle">Choose your CUI Types</div>
                 <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div>
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
+                <div class = "questionInstruction"><br><br>Select One From The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
                         <?php echo CUIType();?>

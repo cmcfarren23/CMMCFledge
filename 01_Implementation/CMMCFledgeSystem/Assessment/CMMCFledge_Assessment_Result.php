@@ -194,7 +194,7 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through popular drive wipers such as Darik's Boot and Nuke (DBaN)</div>";  
-            echo "<a href='https://dban.org/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>DBAaN</a></br>";  
+            echo "<a href='https://dban.org/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>DBaN</a></br>";  
         }else  
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because either because you snaitze all your media before reuse, or your system soley exists within".$_SESSION['IAASSelect']."!</div>";   
     }
