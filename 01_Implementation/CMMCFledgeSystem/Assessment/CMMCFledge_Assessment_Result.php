@@ -78,15 +78,26 @@
     }
     function B1I(){
         include '../Include/DBConnect.php';
-        $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.I'";
-        $result = $conn->query($Query_Controls_Assessments );
-        if ($result->num_rows > 0) {
-            while($getCMMCAssessment = $result->fetch_assoc()) {
-                $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
+        if($_SESSION['IDP'] != 'No'){
+            echo "<div class='assessmentResultTextBlock'>It seems you may not have identifed users within the system. This control is looking for:</div>";  
+            $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.I'";
+            $result = $conn->query($Query_Controls_Assessments );
+            if ($result->num_rows > 0) {
+                while($getCMMCAssessment = $result->fetch_assoc()) {
+                    $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                    echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
+                }
             }
-        }
+            echo "<div class='assessmentResultTextBlock'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
+            echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>EntraID</a></br>";
+            echo "<a href='https://www.okta.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Okta</a></br>";
+            echo "<a href='https://auth0.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Auth0</a></br>";
+            echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) </br>or Kerberos (Linux; may require additonal technical knowdledge)</div>";  
+            echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Kerverous Set-up</a></br>";
+        }else
+            echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have a major IDP provider!</div>";   
     }
+    
     function B1II(){
         include '../Include/DBConnect.php';
         $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.II'";
@@ -100,14 +111,20 @@
     }
     function B1III(){
         include '../Include/DBConnect.php';
-        $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.III'";
-        $result = $conn->query($Query_Controls_Assessments );
-        if ($result->num_rows > 0) {
-            while($getCMMCAssessment = $result->fetch_assoc()) {
-                $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
-            }
-        }
+        if($_SESSION['BoundaryDiagram'] != 'Yes'){
+            echo "<div class='assessmentResultTextBlock'>It seems you dont have a boundary diagram. This control is looking for:</div>";    
+            $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.III'";
+            $result = $conn->query($Query_Controls_Assessments );
+            if ($result->num_rows > 0) {
+                while($getCMMCAssessment = $result->fetch_assoc()) {
+                    $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                    echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
+                }
+            } 
+            echo "<div class='assessmentResultTextBlock'>FedRAMP, though not CMMC, has great guidance on what to add within a boundary diagram! (FedRAMP is far more strict than CMMC)</div>";  
+            echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
+        }else
+            echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have put in the work and created a boundary diagram!</div>";  
     }
     function B1IV(){
         include '../Include/DBConnect.php';
@@ -236,14 +253,20 @@
     }
     function B1XI(){
         include '../Include/DBConnect.php';
-        $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XI'";
-        $result = $conn->query($Query_Controls_Assessments );
-        if ($result->num_rows > 0) {
-            while($getCMMCAssessment = $result->fetch_assoc()) {
-                $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
-            }
-        }  
+        if($_SESSION['PubSep'] != 'No'){
+            echo "<div class='assessmentResultTextBlock'>It seems you don't have a public component separation. This control is looking for:</div>";    
+            $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XI'";
+            $result = $conn->query($Query_Controls_Assessments );
+            if ($result->num_rows > 0) {
+                while($getCMMCAssessment = $result->fetch_assoc()) {
+                    $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                    echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
+                }
+            } 
+            echo "<div class='assessmentResultTextBlock'>Make sure you have a Boundary Diagram (View BOUNDARY PROTECTION [FCI DATA])</div>";
+            echo "<div class='assessmentResultTextBlock'>This control is relatively simple, you got this! logically separate your public components utilize built in IAAS VLAN features</div>";    
+        }else
+            echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have put in the work and logically separated your public components!</div>";     
     }
     function B1XII(){
         include '../Include/DBConnect.php';
