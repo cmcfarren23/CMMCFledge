@@ -39,8 +39,8 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Flaw" value="Yes">Yes, malicious code protection mechanisms are updated</label>
-                        <label> <input type="radio" name="Flaw" value="No">No, malicious code protection mechanisms are NOT updated</label>
+                        <label> <input type="radio" name="Flaw" value="Yes">Yes, system flaws are identified, reported, and corrected within organizational defined time frames</label>
+                        <label> <input type="radio" name="Flaw" value="No">No, system flaws are NOT identified, reported, and corrected within organizational defined time frames</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
