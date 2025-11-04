@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['MalCodeUpdate'])){
+        $_SESSION['MalCodeUpdate'] = $_POST['MalCodeUpdate'];
+        header("Location: ../SI/CMMCFledge_Assessment_SI_Flaw.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about System and Information Integrity (SI)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your organization update your system's malicious code protections at the release of new updates?</div>
+                <div class = "assessmentSubTitle">Malware signature updates, platform updates, etc.</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="MalCodeUpdate" value="Yes">Yes, malicious code protection mechanisms are updated</label>
+                        <label> <input type="radio" name="MalCodeUpdate" value="No">No, malicious code protection mechanisms are NOT updated</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_SI_Mal_Code_Protection.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['MalCodeScanAuto'])){
+        $_SESSION['MalCodeScanAuto'] = $_POST['MalCodeScanAuto'];
+        header("Location: ../SI/CMMCFledge_Assessment_SI_Mal_Code_Update.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about System and Information Integrity (SI)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your system scan for malcious code as files are downloaded, opened, or executed are performed</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="MalCodeScanAuto" value="Yes">Yes, malicious code scans are automatically performed</label>
+                        <label> <input type="radio" name="MalCodeScanAuto" value="No">No, malicious code scans are NOT automatically performed</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_SI_Mal_Code_Protection.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['Flaw'])){
+        $_SESSION['Flaw'] = $_POST['Flaw'];
+        header("Location: ../CMMCFledge_Assessment_Result.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about System and Information Integrity (SI)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Are system flaws identified, reported, and corrected within organizational defined time frames?</div>
+                <div class = "assessmentSubTitle">Times frames typically defined by criticality of the flaw</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="Flaw" value="Yes">Yes, malicious code protection mechanisms are updated</label>
+                        <label> <input type="radio" name="Flaw" value="No">No, malicious code protection mechanisms are NOT updated</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_SI_Mal_Code_Protection.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

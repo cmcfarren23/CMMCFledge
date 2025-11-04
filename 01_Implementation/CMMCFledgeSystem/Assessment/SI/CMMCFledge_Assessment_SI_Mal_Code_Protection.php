@@ -1,5 +1,13 @@
 <?php 
     session_start(); 
+    if(isset($_POST['MalCodeProt'])){
+        $_SESSION['MalCodeProt'] = $_POST['MalCodeProt'];
+        if($_SESSION['MalCodeProt'] == "No"){
+            header("Location: ../CMMCFledge_Assessment_Result.php");
+        }else
+            header("Location: ../SI/CMMCFledge_Assessment_SI_Mal_Code_Scan.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +37,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about System and Information Integrity (SI)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your organization employ malicious code protection mechanisms?</div>
+                <div class = "assessmentSubTitle">Malware scanning and remediation platforms/solutions</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="MalCodeProt" value="Yes">Yes, malicious code scanning mechanisms are in place</label>
+                        <label> <input type="radio" name="MalCodeProt" value="No">No, malicious code scanning mechanisms are NOT in place</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_SI_Mal_Code_Protection.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
