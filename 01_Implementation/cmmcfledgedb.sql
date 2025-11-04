@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 21, 2025 at 06:00 PM
+-- Generation Time: Nov 04, 2025 at 06:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -27,13 +27,33 @@ SET time_zone = "+00:00";
 -- Table structure for table `cmmc_controls`
 --
 
-CREATE TABLE IF NOT EXISTS`cmmc_controls` (
-  `idCMMC_Controls` int(11) NOT NULL,
+CREATE TABLE `cmmc_controls` (
+  `Control_ID` varchar(10) NOT NULL,
   `Control_Family` varchar(5) DEFAULT NULL,
-  `Control_ID` varchar(10) DEFAULT NULL,
   `Control_Name` varchar(250) DEFAULT NULL,
   `Control_Explanation` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cmmc_controls`
+--
+
+INSERT INTO `cmmc_controls` (`Control_ID`, `Control_Family`, `Control_Name`, `Control_Explanation`) VALUES
+('B.1.I', 'AC', 'AUTHORIZED ACCESS CONTROL [FCI DATA]', 'Limit information system access to authorized users, processes acting on behalf of\r\nauthorized users, or devices (including other information systems).'),
+('B.1.II', 'AC', 'TRANSACTION & FUNCTION CONTROL [FCI DATA]', 'Limit information system access to the types of transactions and functions that authorized users are permitted to execute.'),
+('B.1.III', 'AC', 'EXTERNAL CONNECTIONS [FCI DATA]', 'Verify and control/limit connections to and use of external information systems.'),
+('B.1.IV', 'AC', 'CONTROL PUBLIC INFORMATION [FCI DATA]', 'Control information posted or processed on publicly accessible information systems.'),
+('B.1.IX', 'PE', 'MANAGE VISITORS & PHYSICAL ACCESS [FCI DATA]', 'Escort visitors and monitor visitor activity; maintain audit logs of physical access; and control and manage physical access devices.'),
+('B.1.V', 'IA', 'IDENTIFICATION [FCI DATA]', 'Identify information system users, processes acting on behalf of users, or devices.'),
+('B.1.VI', 'IA', 'AUTHENTICATION [FCI DATA]', 'Authenticate (or verify) the identities of those users, processes, or devices, as a prerequisite to allowing access to organizational information systems.'),
+('B.1.VII', 'MP', 'MEDIA DISPOSAL [FCI DATA]', 'Sanitize or destroy information system media containing Federal Contract Information before disposal or release for reuse.'),
+('B.1.VIII', 'PE', 'LIMIT PHYSICAL ACCESS [FCI DATA]', 'Limit physical access to organizational information systems, equipment, and the respective operating environments to authorized individuals.'),
+('B.1.X', 'SC', 'BOUNDARY PROTECTION [FCI DATA]', 'Monitor, control, and protect organizational communications (i.e., information transmitted or received by organizational information systems) at the external boundaries and key internal boundaries of the information systems.'),
+('B.1.XI', 'SC', 'PUBLIC-ACCESS SYSTEM SEPARATION [FCI DATA]', 'Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.'),
+('B.1.XII', 'SI', 'FLAW REMEDIATION [FCI DATA]', 'Identify, report, and correct information and information system flaws in a timely manner.'),
+('B.1.XIII', 'SI', 'MALICIOUS CODE PROTECTION [FCI DATA]', 'Provide protection from malicious code at appropriate locations within organizational information systems.'),
+('B.1.XIV', 'SI', 'UPDATE MALICIOUS CODE PROTECTION [FCI DATA]', 'Update malicious code protection mechanisms when new releases are available.'),
+('B.1.XV', 'SI', 'SYSTEM & FILE SCANNING [FCI DATA]', 'Perform periodic scans of the information system and real-time scans of files from external sources as files are downloaded, opened, or executed.');
 
 -- --------------------------------------------------------
 
@@ -41,11 +61,76 @@ CREATE TABLE IF NOT EXISTS`cmmc_controls` (
 -- Table structure for table `control_assessments`
 --
 
-CREATE TABLE IF NOT EXISTS`control_assessments` (
-  `idControl_Assessments` int(11) NOT NULL,
-  `CMMC_Controls_idForeign` int(11) NOT NULL,
+CREATE TABLE `control_assessments` (
+  `idControl_Assessments` varchar(15) NOT NULL,
+  `CMMC_Controls_Control_ID` varchar(10) NOT NULL,
   `Assessment_Text` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `control_assessments`
+--
+
+INSERT INTO `control_assessments` (`idControl_Assessments`, `CMMC_Controls_Control_ID`, `Assessment_Text`) VALUES
+('B.1.I.a', 'B.1.I', 'authorized users are identified;'),
+('B.1.I.b', 'B.1.I', 'processes acting on behalf of authorized users are identified;'),
+('B.1.I.c', 'B.1.I', 'devices (and other systems) authorized to connect to the system are identified;'),
+('B.1.I.d', 'B.1.I', 'system access is limited to authorized users;'),
+('B.1.I.e', 'B.1.I', 'system access is limited to processes acting on behalf of authorized users; and'),
+('B.1.I.f', 'B.1.I', 'system access is limited to authorized devices (including other systems).'),
+('B.1.II.a', 'B.1.II', 'the types of transactions and functions that authorized users are permitted to\r\nexecute are defined; and'),
+('B.1.II.b', 'B.1.II', 'system access is limited to the defined types of transactions and functions for\r\nauthorized users.'),
+('B.1.III.a', 'B.1.III', 'connections to external systems are identified;'),
+('B.1.III.b', 'B.1.III', 'the use of external systems is identified;'),
+('B.1.III.c', 'B.1.III', 'connections to external systems are verified;'),
+('B.1.III.d', 'B.1.III', 'the use of external systems is verified;'),
+('B.1.III.e', 'B.1.III', 'connections to external systems are controlled/limited; and'),
+('B.1.III.f', 'B.1.III', 'the use of external systems is controlled/limited.'),
+('B.1.IV.a', 'B.1.IV', 'individuals authorized to post or process information on publicly accessible systems are identified;'),
+('B.1.IV.b', 'B.1.IV', 'procedures to ensure [FCI] is not posted or processed on publicly accessible\r\nsystems are identified;'),
+('B.1.IV.c', 'B.1.IV', 'a review process is in place prior to posting of any content to publicly accessible systems;'),
+('B.1.IV.d', 'B.1.IV', 'content on publicly accessible systems is reviewed to ensure that it does not include [FCI]; and'),
+('B.1.IV.e', 'B.1.IV', 'mechanisms are in place to remove and address improper posting of [FCI].'),
+('B.1.IX.a', 'B.1.IX', 'visitors are escorted;'),
+('B.1.IX.b', 'B.1.IX', 'visitor activity is monitored;'),
+('B.1.IX.c', 'B.1.IX', 'audit logs of physical access are maintained;'),
+('B.1.IX.d', 'B.1.IX', 'physical access devices are identified;'),
+('B.1.IX.e', 'B.1.IX', 'physical access devices are controlled; and'),
+('B.1.IX.f', 'B.1.IX', 'physical access devices are managed.'),
+('B.1.V.a', 'B.1.V', 'system users are identified;'),
+('B.1.V.b', 'B.1.V', 'processes acting on behalf of users are identified; and'),
+('B.1.V.c', 'B.1.V', 'devices accessing the system are identified.'),
+('B.1.VI.a', 'B.1.VI', 'the identity of each user is authenticated or verified as a prerequisite to system\r\naccess;'),
+('B.1.VI.b', 'B.1.VI', 'the identity of each process acting on behalf of a user is authenticated or verified as a prerequisite to system access; and'),
+('B.1.VI.c', 'B.1.VI', 'the identity of each device accessing or connecting to the system is authenticated or verified as a prerequisite to system access.'),
+('B.1.VII.a', 'B.1.VII', 'system media containing [FCI] is sanitized or destroyed before disposal; and'),
+('B.1.VII.b', 'B.1.VII', 'system media containing [FCI] is sanitized before it is released for reuse.'),
+('B.1.VIII', 'B.1.VIII', 'authorized individuals allowed physical access are identified;'),
+('B.1.VIII.b', 'B.1.VIII', 'physical access to organizational systems is limited to authorized individuals;'),
+('B.1.VIII.c', 'B.1.VIII', 'physical access to equipment is limited to authorized individuals; and'),
+('B.1.VIII.d', 'B.1.VIII', 'physical access to operating environments is limited to authorized individuals.'),
+('B.1.X.a', 'B.1.X', 'the external system boundary is defined;'),
+('B.1.X.b', 'B.1.X', 'key internal system boundaries are defined;'),
+('B.1.X.c', 'B.1.X', 'communications are monitored at the external system boundary;'),
+('B.1.X.d', 'B.1.X', 'communications are monitored at key internal boundaries;'),
+('B.1.X.e', 'B.1.X', 'communications are controlled at the external system boundary;'),
+('B.1.X.f', 'B.1.X', 'communications are controlled at key internal boundaries;'),
+('B.1.X.g', 'B.1.X', 'communications are protected at the external system boundary; and'),
+('B.1.X.h', 'B.1.X', 'communications are protected at key internal boundaries.'),
+('B.1.XI.a', 'B.1.XI', 'publicly accessible system components are identified; and'),
+('B.1.XI.b', 'B.1.XI', 'subnetworks for publicly accessible system components are physically or logically separated from internal networks.'),
+('B.1.XII.a', 'B.1.XII', 'the time within which to identify system flaws is specified;'),
+('B.1.XII.b', 'B.1.XII', 'system flaws are identified within the specified time frame;'),
+('B.1.XII.c', 'B.1.XII', 'the time within which to report system flaws is specified;'),
+('B.1.XII.d', 'B.1.XII', 'system flaws are reported within the specified time frame;'),
+('B.1.XII.e', 'B.1.XII', 'the time within which to correct system flaws is specified; and'),
+('B.1.XII.f', 'B.1.XII', 'system flaws are corrected within the specified time frame.'),
+('B.1.XIII.a', 'B.1.XIII', 'designated locations for malicious code protection are identified; and'),
+('B.1.XIII.b', 'B.1.XIII', 'protection from malicious code at designated locations is provided.'),
+('B.1.XIV.a', 'B.1.XIV', 'malicious code protection mechanisms are updated when new releases are available.'),
+('B.1.XV.a', 'B.1.XV', 'the frequency for malicious code scans is defined;'),
+('B.1.XV.b', 'B.1.XV', 'malicious code scans are performed with the defined frequency; and'),
+('B.1.XV.c', 'B.1.XV', 'real-time malicious code scans of files from external sources as files are downloaded, opened, or executed are performed.');
 
 -- --------------------------------------------------------
 
@@ -53,7 +138,7 @@ CREATE TABLE IF NOT EXISTS`control_assessments` (
 -- Table structure for table `cui_cat`
 --
 
-CREATE TABLE IF NOT EXISTS`cui_cat` (
+CREATE TABLE `cui_cat` (
   `idCUI_Cat` int(11) NOT NULL,
   `Cat_Name` varchar(45) DEFAULT NULL,
   `Defense_Index_Group` tinyint(4) DEFAULT NULL
@@ -91,7 +176,7 @@ INSERT INTO `cui_cat` (`idCUI_Cat`, `Cat_Name`, `Defense_Index_Group`) VALUES
 -- Table structure for table `cui_types`
 --
 
-CREATE TABLE IF NOT EXISTS`cui_types` (
+CREATE TABLE `cui_types` (
   `idCUI_Types` int(11) NOT NULL,
   `CUI_Cat_idCUI_Cat` int(11) NOT NULL,
   `Type_Name` varchar(200) DEFAULT NULL,
@@ -238,27 +323,14 @@ INSERT INTO `cui_types` (`idCUI_Types`, `CUI_Cat_idCUI_Cat`, `Type_Name`, `Is_Ba
 -- Indexes for table `cmmc_controls`
 --
 ALTER TABLE `cmmc_controls`
-  ADD PRIMARY KEY (`idCMMC_Controls`);
+  ADD PRIMARY KEY (`Control_ID`);
 
 --
 -- Indexes for table `control_assessments`
 --
 ALTER TABLE `control_assessments`
-  ADD PRIMARY KEY (`idControl_Assessments`,`CMMC_Controls_idForeign`),
-  ADD KEY `fk_Control_Assessments_CMMC_Controls_idx` (`CMMC_Controls_idForeign`);
-
---
--- Indexes for table `cui_cat`
---
-ALTER TABLE `cui_cat`
-  ADD PRIMARY KEY (`idCUI_Cat`);
-
---
--- Indexes for table `cui_types`
---
-ALTER TABLE `cui_types`
-  ADD PRIMARY KEY (`idCUI_Types`,`CUI_Cat_idCUI_Cat`),
-  ADD KEY `fk_CUI_Types_CUI_Cat1_idx` (`CUI_Cat_idCUI_Cat`);
+  ADD PRIMARY KEY (`idControl_Assessments`,`CMMC_Controls_Control_ID`),
+  ADD KEY `fk_Control_Assessments_CMMC_Controls1_idx` (`CMMC_Controls_Control_ID`);
 
 --
 -- Constraints for dumped tables
@@ -268,13 +340,7 @@ ALTER TABLE `cui_types`
 -- Constraints for table `control_assessments`
 --
 ALTER TABLE `control_assessments`
-  ADD CONSTRAINT `fk_Control_Assessments_CMMC_Controls` FOREIGN KEY (`CMMC_Controls_idForeign`) REFERENCES `cmmc_controls` (`idCMMC_Controls`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `cui_types`
---
-ALTER TABLE `cui_types`
-  ADD CONSTRAINT `fk_CUI_Types_CUI_Cat1` FOREIGN KEY (`CUI_Cat_idCUI_Cat`) REFERENCES `cui_cat` (`idCUI_Cat`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Control_Assessments_CMMC_Controls1` FOREIGN KEY (`CMMC_Controls_Control_ID`) REFERENCES `cmmc_controls` (`Control_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

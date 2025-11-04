@@ -1,17 +1,22 @@
 <?php 
     include '../Include/DBConnect.php';
     session_start(); 
-    foreach ($_SESSION as $key => $value) {
-    echo "$key : $value<br>";
+    foreach ($_SESSION as $key => $value) { //test
+        echo "$key : $value<br>";
     }
 
-    function CMMCCertType(){
-        echo $_SESSION['CMMCCertType'];
-    }
-    function CMMCL1(){
-        if($_SESSION['CMMCCertType'] == 'CMMCL1'){
+    if($_SESSION['CMMCCertType'] == 'CMMCL1')
+        echo CMMCL1Report();
+    else
+        echo CMMCL2Report();
 
-        }
+
+    function CMMCL1Report(){
+
+    }
+
+    function CMMCL2Report(){
+
     }
 ?>
 
