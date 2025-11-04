@@ -4,11 +4,11 @@
     if(isset($_POST['IAASUsage'])){
         $_SESSION['IAASUsage'] = $_POST['IAASUsage'];
         if($_SESSION['IAASUsage'] == 'N/A')
-            header("Location: ");
+            header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
         else if($_SESSION['IAASUsage'] == 'test')
             header("Location: ../CMMCFledge_Assessment_Result.php");
         else
-            header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
+            header("Location: ../IAAS/CMMCFledge_Assessment_IAAS_Selection.php");
         exit;
     }
 ?>
@@ -48,7 +48,6 @@
                         <label> <input type="radio" name="IAASUsage" value="solely">My systems authorization boundary exist solely within an AWS, Azure, or Google Cloud environment</label>
                         <label> <input type="radio" name="IAASUsage" value="includes">My systems authorization boundary includes an AWS, Azure, or Google Cloud environment</label>
                         <label> <input type="radio" name="IAASUsage" value="N/A">My Organization does not use AWS, Azure, or Google Cloud environments</label>
-                        <label> <input type="radio" name="IAASUsage" value="test">skip to end (test)</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
