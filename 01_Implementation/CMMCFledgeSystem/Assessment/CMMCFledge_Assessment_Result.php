@@ -1,9 +1,9 @@
 <?php 
     include '../Include/DBConnect.php';
     session_start(); 
-    // foreach ($_SESSION as $key => $value) { //test
-    //     echo "$key : $value<br>";
-    // }
+    foreach ($_SESSION as $key => $value) { //test
+        echo "$key : $value<br>";
+    }
 
     function PickOutput(){
         if($_SESSION['CMMCCertType'] == 'CMMC l1')
