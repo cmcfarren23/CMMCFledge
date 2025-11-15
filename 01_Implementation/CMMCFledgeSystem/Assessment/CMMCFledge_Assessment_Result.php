@@ -21,7 +21,7 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultTextBlock'>$ControlName</div>";
+                echo "<div class='resultFamilyName'>$ControlName</div>";
                 switch ($ControlID){
                     case "B.1.I":
                         echo B1I();
