@@ -72,9 +72,9 @@
             }
         }
         echo "</br><div class='pageSubTitle'>Additional resources for your journey!</div></br>";
-        echo "<a href='https://dodcio.defense.gov/CMMC/about/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>DoD CMMC About Page</a></br>";
-        echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/ScopingGuideL1v2.pdf' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>L1 Scoping Guidance (Unsure whats in your Authorization Boundary?)</a></br>";
-        echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>CMMC L1 Assessment Objectives</a></br></br>";
+        echo "<a href='https://dodcio.defense.gov/CMMC/about/' target='_blank' >DoD CMMC About Page</a></br>";
+        echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/ScopingGuideL1v2.pdf' target='_blank'>L1 Scoping Guidance (Unsure whats in your Authorization Boundary?)</a></br>";
+        echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL1v2.pdf' target='_blank'>CMMC L1 Assessment Objectives</a></br></br>";
     }
     function B1I(){
         include '../Include/DBConnect.php';
@@ -89,11 +89,11 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
-            echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>EntraID</a></br>";
-            echo "<a href='https://www.okta.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Okta</a></br>";
-            echo "<a href='https://auth0.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Auth0</a></br>";
+            echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
+            echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
+            echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
             echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) </br>or Kerberos (Linux; may require additonal technical knowdledge)</div>";  
-            echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Kerberos Set-up</a></br>";
+            echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
         }else
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have a major IDP provider!</div>";   
     }
@@ -125,7 +125,7 @@
                 }
             } 
             echo "<div class='assessmentResultTextBlock'>FedRAMP, though not CMMC, has great guidance on what to add within a boundary diagram! (FedRAMP is far more strict than CMMC)</div>";  
-            echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
+            echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
         }else
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have put in the work and created a boundary diagram!</div>";  
     }
@@ -173,11 +173,11 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
-            echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>EntraID</a></br>";
-            echo "<a href='https://www.okta.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Okta</a></br>";
-            echo "<a href='https://auth0.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Auth0</a></br>";
+            echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank' >EntraID</a></br>";
+            echo "<a href='https://www.okta.com/' target='_blank' >Okta</a></br>";
+            echo "<a href='https://auth0.com/' target='_blank' >Auth0</a></br>";
             echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) </br>or Kerberos (Linux; may require additonal technical knowdledge)</div>";  
-            echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Kerberos Set-up</a></br>";
+            echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank' >Kerberos Set-up</a></br>";
         }else
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have a major IDP provider!</div>";   
     }
@@ -194,7 +194,7 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through popular drive wipers such as Darik's Boot and Nuke (DBaN)</div>";  
-            echo "<a href='https://dban.org/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>DBaN</a></br>";  
+            echo "<a href='https://dban.org/' target='_blank' >DBaN</a></br>";  
         }else  
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because either because you snaitze all your media before reuse, or your system soley exists within".$_SESSION['IAASSelect']."!</div>";   
     }
@@ -213,20 +213,20 @@
             echo "<div class='assessmentResultTextBlock'>Based on your utilization of ".$_SESSION['IAASSelect'].", this control is covered!</div>";
             if($_SESSION['IAASSelect'] == 'AWS'){
                 echo "<div class='assessmentResultTextBlock'>Check out an AWS guide for best practices on how to set up your current environment to verify that you can inherit this control!</div>";
-                echo "<a href='https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-cmmc_2.0_level_1.html' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Config best Practices! (l1)</a></br>";
-                echo "<a href='https://docs.aws.amazon.com/pdfs/config/latest/developerguide/config-dg.pdf#operational-best-practices-for-cmmc_2.0_level_2' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Config best Practices! (l2)</a>";
+                echo "<a href='https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-cmmc_2.0_level_1.html' target='_blank' >AWS Config best Practices! (l1)</a></br>";
+                echo "<a href='https://docs.aws.amazon.com/pdfs/config/latest/developerguide/config-dg.pdf#operational-best-practices-for-cmmc_2.0_level_2' target='_blank' >AWS Config best Practices! (l2)</a>";
                 echo "<div class='assessmentResultTextBlock'>Check out an the AWS language on their shared responsibility</div>";
-                echo "<a href='https://aws.amazon.com/compliance/shared-responsibility-model/ ' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Shared Responsibility Model!</a>";
+                echo "<a href='https://aws.amazon.com/compliance/shared-responsibility-model/ ' target='_blank' >AWS Shared Responsibility Model!</a>";
             }
             if($_SESSION['IAASSelect'] == 'Azure'){
                 echo "<div class='assessmentResultTextBlock'>Check out Azures support for CMMC</div>";
-                echo "<a href='https://learn.microsoft.com/en-us/entra/standards/configure-cmmc-level-1-controls' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Azure Config best Practices! (l1)</a></br>";
+                echo "<a href='https://learn.microsoft.com/en-us/entra/standards/configure-cmmc-level-1-controls' target='_blank' >Azure Config best Practices! (l1)</a></br>";
                 echo "<div class='assessmentResultTextBlock'>Check out an the Azure placemat to see how your resources stack up for CMMC</div>";
-                echo "<a href='https://www.microsoft.com/en-us/download/details.aspx?id=102536' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Placemat! (l2)</a>";
+                echo "<a href='https://www.microsoft.com/en-us/download/details.aspx?id=102536' target='_blank' >AWS Placemat! (l2)</a>";
             }
             if($_SESSION['IAASSelect'] == 'Google'){
                 echo "<div class='assessmentResultTextBlock'>Check out the Google language on their shared responsibility</div>";
-                echo "<a href='https://cloud.google.com/security/compliance/cmmc  ' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Google Shared Responsibility Model!</a>";
+                echo "<a href='https://cloud.google.com/security/compliance/cmmc  ' target='_blank' >Google Shared Responsibility Model!</a>";
             }
         }
     }
@@ -245,20 +245,20 @@
             echo "<div class='assessmentResultTextBlock'>Based on your utilization of ".$_SESSION['IAASSelect'].", this control is covered!</div>";
             if($_SESSION['IAASSelect'] == 'AWS'){
                 echo "<div class='assessmentResultTextBlock'>Check out an AWS guide for best practices on how to set up your current environment to verify that you can inherit this control!</div>";
-                echo "<a href='https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-cmmc_2.0_level_1.html' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Config best Practices! (l1)</a></br>";
-                echo "<a href='https://docs.aws.amazon.com/pdfs/config/latest/developerguide/config-dg.pdf#operational-best-practices-for-cmmc_2.0_level_2' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Config best Practices! (l2)</a>";
+                echo "<a href='https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-cmmc_2.0_level_1.html' target='_blank' >AWS Config best Practices! (l1)</a></br>";
+                echo "<a href='https://docs.aws.amazon.com/pdfs/config/latest/developerguide/config-dg.pdf#operational-best-practices-for-cmmc_2.0_level_2' target='_blank' >AWS Config best Practices! (l2)</a>";
                 echo "<div class='assessmentResultTextBlock'>Check out an the AWS language on their shared responsibility</div>";
-                echo "<a href='https://aws.amazon.com/compliance/shared-responsibility-model/ ' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Shared Responsibility Model! (l2)</a>";
+                echo "<a href='https://aws.amazon.com/compliance/shared-responsibility-model/ ' target='_blank' >AWS Shared Responsibility Model! (l2)</a>";
             }
             if($_SESSION['IAASSelect'] == 'Azure'){
                 echo "<div class='assessmentResultTextBlock'>Check out Azures support for CMMC</div>";
-                echo "<a href='https://learn.microsoft.com/en-us/entra/standards/configure-cmmc-level-1-controls' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Azure Config best Practices! (l1)</a></br>";
+                echo "<a href='https://learn.microsoft.com/en-us/entra/standards/configure-cmmc-level-1-controls' target='_blank' >Azure Config best Practices! (l1)</a></br>";
                 echo "<div class='assessmentResultTextBlock'>Check out an the Azure placemat to see how your resources stack up for CMMC</div>";
-                echo "<a href='https://www.microsoft.com/en-us/download/details.aspx?id=102536' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>AWS Placemat! (l2)</a>";
+                echo "<a href='https://www.microsoft.com/en-us/download/details.aspx?id=102536' target='_blank' >AWS Placemat! (l2)</a>";
             }
             if($_SESSION['IAASSelect'] == 'Google'){
                 echo "<div class='assessmentResultTextBlock'>Check out the Google language on their shared responsibility</div>";
-                echo "<a href='https://cloud.google.com/security/compliance/cmmc' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Google Shared Responsibility Model! (l2)</a>";
+                echo "<a href='https://cloud.google.com/security/compliance/cmmc' target='_blank' >Google Shared Responsibility Model! (l2)</a>";
             }
         }  
     }
@@ -275,7 +275,7 @@
                 }
             } 
             echo "<div class='assessmentResultTextBlock'>FedRAMP, though not CMMC, has great guidance on what to add within a boundary diagram! (FedRAMP is far more strict than CMMC)</div>";  
-            echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
+            echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
         }else
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have put in the work and created a boundary diagram!</div>";    
     }
@@ -309,9 +309,9 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through a flaw monitoring tools</div>";  
-            echo "<a href='https://www.datadoghq.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>DataDog</a></br>";
-            echo "<a href='https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Microsoft Sentinel</a></br>";
-            echo "<a href='https://www.splunk.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Splunk</a></br>";
+            echo "<a href='https://www.datadoghq.com/' target='_blank' >DataDog</a></br>";
+            echo "<a href='https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel' target='_blank' >Microsoft Sentinel</a></br>";
+            echo "<a href='https://www.splunk.com/' target='_blank' >Splunk</a></br>";
             echo "<div class='assessmentResultTextBlock'>This can be paired with XDR tools or your response teams to meet this control. Start by defining time frames! (This is best done by criticality of the flaw)</div>";  
         }else
            echo "<div class='assessmentResultTextBlock'>You likely have this control covered due to your defined remedation polcies and practices!</div>";   
@@ -329,9 +329,9 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
-            echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Qualys</a></br>";
-            echo "<a href='https://www.paloaltonetworks.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>PaloAlto</a></br>";
-            echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>CrowdStrike</a></br>";
+            echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
+            echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
+            echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
         }else
         echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate malicious code scanning mechanisms</div>";    
     }
@@ -348,9 +348,9 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
-            echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Qualys</a></br>";
-            echo "<a href='https://www.paloaltonetworks.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>PaloAlto</a></br>";
-            echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>CrowdStrike</a></br>";
+            echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
+            echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
+            echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
         }else
         echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate malicious code scanning mechanisms along with identify point within your boundary diagrams</div>";          
     }
@@ -367,9 +367,9 @@
                 }
             }
             echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
-            echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>Qualys</a></br>";
-            echo "<a href='https://www.paloaltonetworks.com/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>PaloAlto</a></br>";
-            echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' style='font-size:20px;text-decoration:underline;color:#55006d'>CrowdStrike</a></br>";
+            echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
+            echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
+            echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
         }else
         echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate malicious code scanning mechanisms</div>";   
     }
@@ -395,10 +395,10 @@
                 <a href ="CMMCFledge_Assessment_Start.php">Assessment</a>
             </div>
             <div class = "homeHeaderDiv">
-                <a href ="CMMCFledge_Fledge_Dictionary.html">Fledge Dictionary</a>
+                <a href ="..\CMMCFledge_Fledge_Dictionary.html">Fledge Dictionary</a>
             </div>
             <div class = "homeHeaderDiv">
-                <a href ="CMMCFledge_About_Us.html">About Us</a>
+                <a href ="..\CMMCFledge_About_Us.html">About Us</a>
             </div>
             <div class = "homeHeaderLogo"></div>
         </div>
