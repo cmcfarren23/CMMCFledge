@@ -92,7 +92,7 @@
             echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
             echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
             echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
-            echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) </br>or Kerberos (Linux; may require additonal technical knowdledge)</div>";  
+            echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
             echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
         }else
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have a major IDP provider!</div>";   
@@ -308,7 +308,7 @@
                     echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
                 }
             }
-            echo "<div class='assessmentResultTextBlock'>This control is easily met through a flaw monitoring tools</div>";  
+            echo "<div class='assessmentResultTextBlock'>This control is easily met through flaw monitoring tools</div>";  
             echo "<a href='https://www.datadoghq.com/' target='_blank' >DataDog</a></br>";
             echo "<a href='https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel' target='_blank' >Microsoft Sentinel</a></br>";
             echo "<a href='https://www.splunk.com/' target='_blank' >Splunk</a></br>";
@@ -318,7 +318,7 @@
     }
     function B1XIII(){
         include '../Include/DBConnect.php';
-        if($_SESSION['MalCodeProt'] = 'No' && $_SESSION['MalCodeUpdate'] == 'No' ){
+        if($_SESSION['MalCodeProt'] != 'Yes' && $_SESSION['MalCodeUpdate'] != 'Yes' ){
             echo "<div class='assessmentResultTextBlock'>Based on your answers regarding Malicious Code Scanning you may not meet this control. This control is looking for:</div>";    
             $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XIV'";
             $result = $conn->query($Query_Controls_Assessments );
@@ -337,7 +337,7 @@
     }
     function B1XIV(){
         include '../Include/DBConnect.php';
-        if($_SESSION['MalCodeProt'] = 'No' && $_SESSION['BoundaryDiagram'] != 'Yes'){
+        if($_SESSION['MalCodeProt'] != 'Yes' && $_SESSION['BoundaryDiagram'] != 'Yes'){
             echo "<div class='assessmentResultTextBlock'>Based on your answers regarding Malicious Code Scanning and boundary Diagrams you may not meet this control. This control is looking for:</div>";    
             $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XIV'";
             $result = $conn->query($Query_Controls_Assessments );
@@ -356,7 +356,7 @@
     }
     function B1XV(){
         include '../Include/DBConnect.php';
-        if($_SESSION['MalCodeProt'] = 'No' && ($_SESSION['MalCodeScan'] == 'No' || $_SESSION['MalCodeScanAuto'] == 'No')){
+        if(($_SESSION['MalCodeProt'] != 'Yes' && ($_SESSION['MalCodeScan'] != 'Yes') || $_SESSION['MalCodeScanAuto'] != 'Yes')){
             echo "<div class='assessmentResultTextBlock'>Based on your answers regarding Malicious Code Scanning you may not meet this control. This control is looking for:</div>";    
             $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XV'";
             $result = $conn->query($Query_Controls_Assessments );

@@ -14,7 +14,7 @@ body{
     color: var(--md-sys-color-on-secondary);
 }
 a{
-    color: var(--md-sys-color-on-primary-container);
+    color: var(--md-sys-color-primary-fixed-dim);
 }
 input[type="radio"] {
     transform: scale(2);
@@ -112,6 +112,7 @@ label {
     justify-self: start;
     margin-left: 20%;
     margin-right: 5%;
+    margin-bottom: 15px;
     padding-bottom: 10px;
     padding-top: 50px;
     text-align: center;
@@ -247,7 +248,6 @@ label {
     overflow: hidden;
     cursor: pointer;
     box-shadow: var(--md-sys-color-shadow) 0px 7.5px 15px;
-    transition: all 160ms ease-in;
 }
 /* .search{
     display: inline-block;
