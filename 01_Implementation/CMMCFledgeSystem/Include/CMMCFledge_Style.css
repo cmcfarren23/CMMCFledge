@@ -315,5 +315,11 @@ label {
     font-size: 26px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: var(--md-sys-color-on-primary-container);
+}
+.aboutTextSign{
+    text-align: right;
+    font-size: 26px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--md-sys-color-on-primary-container);
     padding-bottom: 20px;
 }
