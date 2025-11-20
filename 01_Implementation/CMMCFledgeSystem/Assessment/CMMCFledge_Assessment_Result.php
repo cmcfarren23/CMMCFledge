@@ -374,7 +374,370 @@
         echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate malicious code scanning mechanisms</div>";   
     }
     function CMMCL2Report(){
+        echo L2AC();
+        echo L2AT();
+        echo L2AU();
+        echo L2CM();
+        echo L2IA();
+        echo L2IR();
+        echo L2MA();
+        echo L2MP();
+        echo L2PS();
+        echo L2PE();
+        echo L2RA();
+        echo L2CA();
+        echo L2SC();
+        echo L2SI();
+    }
 
+    function L2AC(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Access Control (AC)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AC' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2AT(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Awareness and Training (AT)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AT' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2AU(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Audit and Accountability (AU)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AU' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2CM(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Configuratiuon Management (CM)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'CM' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2IA(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Identification and Authentication (IA)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'IA' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2IR(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Incident Response (IR)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'IR' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2MA(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Maintenance (MA)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'MA' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2MP(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Media Protection (MP)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AT' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2PS(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Personnel Security (PS)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'PS' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2PE(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Physical Protection (PE)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'PE' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2RA(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Risk Assessment (RA)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'RA' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2CA(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>Security Assessment (CA)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'CA' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2SC(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>System and Communications Protection (SC)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'SC' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
+    }
+
+    function L2SI(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<div class='resultFamilyNameL2'>System and Information Integrity (SI)</div>";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'SI' ORDER BY Control_ID";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>$ControlName</div>";
+
+                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+                $resultInner = $conn->query($Query_Controls_Assessments);
+                if ($resultInner->num_rows > 0) {
+                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                    }
+                }
+            }
+        }
+        echo "</div>";
     }
 ?>
 
@@ -408,6 +771,7 @@
                 <div class = "pageSubTitle">Congratulations on Completing the Assessment!</div>
                 <div class = "pageSubTitle">For your upcoming <?php echo $_SESSION['CMMCCertType'];?> assessment you may need to look into:</div>
                 <?php echo PickOutput();?>
+                </br>
             </div>
         </div>
             
