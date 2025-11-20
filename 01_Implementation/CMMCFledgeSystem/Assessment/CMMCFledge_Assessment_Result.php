@@ -402,14 +402,16 @@
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>$ControlName</div>";
 
+                echo "<div class='assessmentResultTextBlockL2'>You may not be passing this control, this control's assessment objectives are:</div></br>";
                 $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
                 $resultInner = $conn->query($Query_Controls_Assessments);
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
+                echo "</br><div class='assessmentResultTextBlockL2'>Potential Next Steps:</div>";
             }
         }
         echo "</div>";
@@ -432,7 +434,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -457,7 +459,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -482,7 +484,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -507,7 +509,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -532,7 +534,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -557,7 +559,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -582,7 +584,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -607,7 +609,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -632,7 +634,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -657,7 +659,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -682,7 +684,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -707,7 +709,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
@@ -732,7 +734,7 @@
                 if ($resultInner->num_rows > 0) {
                     while($getCMMCAssessment = $resultInner->fetch_assoc()) {
                         $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>$assessmentText</div>";
+                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
             }
