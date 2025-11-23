@@ -1044,6 +1044,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../Include/CMMCFledge_Style.css">
+        <link rel="icon" type="image/x-icon" href="..\Images\CMMCFledge_Bird.png">
     </head>
 
     <body>
