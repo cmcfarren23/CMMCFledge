@@ -1,13 +1,23 @@
 <?php 
     session_start();
     function CMMCCertType(){
-        foreach ($_SESSION['CUIType'] as $key => $value) { 
-            if($value == 0){
-                echo "It seems you may need to evaulate at CMMC L3 (You may continue just keep in mind that CMMCFledge does not fully cover CMMC l3)";
-                return "";
+        foreach ($_SESSION['CUICat'] as $key => $value) {
+            if(in_array('None',$_SESSION['CUICat'])){
+                echo "It seems you may not contain any CUI within your system. You can go with a CMMC l1 certification";
+                $_SESSION['CMMCCertType'] = 'CMMC l1';
+            }else{
+            foreach ($_SESSION['CUIType'] as $key => $value) { 
+                if($value == 0){
+                    echo "It seems you may need to evaulate at CMMC L3 </br>(CMMCFledge does not fully cover CMMC l3)</br>";
+                    break;
+                }
+            }
+            $_SESSION['CMMCCertType'] = 'CMMC l2 (C3PAO-Assessment)';
+            echo "</br></br></br>Would you like to continue with an CMMC L2 (C3PAO Assessment)?</br></br>";
+            break;
             }
         }
-        echo "It seems you may need to evaulate at CMMC L2 (C3PAO Assessment)";
+
     }
 ?>
 
@@ -40,7 +50,7 @@
             <div class="bodyColumnWide">
                 <div class = "assessmentTitle"><?php echo CMMCCertType();?></div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <!-- <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div> -->
                 <div class = "questionRadioContainer">
                     <form method="post" >
                         <div class = "singleSubmit">

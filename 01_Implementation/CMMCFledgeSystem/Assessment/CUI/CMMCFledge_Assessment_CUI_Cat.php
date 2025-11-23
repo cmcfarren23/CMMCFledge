@@ -2,7 +2,13 @@
     session_start(); 
     if(isset($_POST['CUICat'])){
         $_SESSION['CUICat'] = $_POST['CUICat'];
-        header("Location: ../CUI/CMMCFledge_Assessment_CUI_Type.php");
+        foreach ($_SESSION['CUICat'] as $key => $value) {
+            if(in_array('None',$_SESSION['CUICat'])){
+                header("Location: ../CUI/CMMCFledge_Assessment_CUI_Result.php");
+            }else{
+                header("Location: ../CUI/CMMCFledge_Assessment_CUI_Type.php");
+            }
+        }
         exit;
     }
 
@@ -17,6 +23,7 @@
                         echo "<label> <input type='checkbox' name='CUICat[]' value=$CUICatID>$CUICat</label>";
                     }
             }
+        echo "<label> <input type='checkbox' name='CUICat[]' value='None'>None of the Above</label>";
     }
 ?>
 
