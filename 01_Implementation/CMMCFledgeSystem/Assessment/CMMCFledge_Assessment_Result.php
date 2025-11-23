@@ -1,9 +1,9 @@
 <?php 
     include '../Include/DBConnect.php';
     session_start(); 
-    // foreach ($_SESSION as $key => $value) { //test
-    //     echo "$key : $value<br>";
-    // }
+    foreach ($_SESSION as $key => $value) { //test
+        echo "$key : $value<br>";
+    }
 
     function PickOutput(){
         if($_SESSION['CMMCCertType'] == 'CMMC l1')
@@ -388,21 +388,30 @@
         echo L2CA();
         echo L2SC();
         echo L2SI();
+        
     }
+    function copyPasteTempDontCall(){
+                if(($ControlID == '') && ($_SESSION[''] != 'Yes')){
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through </div>";  
+                    echo "<a href='' target='_blank'>TechName</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>or</div>";  
+                    echo "<a href='' target='_blank'>TechName</a></br>";
+                }
+                if($_SESSION['IAASUsage'] == 'Yes'){
+                        if($_SESSION['IAASSelect'] == 'AWS'){
+                            
+                        }
+                        if($_SESSION['IAASSelect'] == 'Azure'){
 
-    function L2AC(){
+                        }
+                        if($_SESSION['IAASSelect'] == 'Google'){
+
+                        }
+                    }
+    }
+    function assessmentObj($ControlID){
         include '../Include/DBConnect.php';
-        echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Access Control (AC)</div>";
-        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AC' ORDER BY Control_ID";
-        $result = $conn->query($Query_CMMC_Controls );
-        if ($result->num_rows > 0) {
-            while($getCMMCControl = $result->fetch_assoc()) {
-                $ControlName = $getCMMCControl['Control_Name'];
-                $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                echo "<div class='assessmentResultTextBlockL2'>You may not be passing this control, this control's assessment objectives are:</div></br>";
+                        echo "<div class='assessmentResultTextBlockL2'>You may not be passing this control, this control's assessment objectives are:</div></br>";
                 $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
                 $resultInner = $conn->query($Query_Controls_Assessments);
                 if ($resultInner->num_rows > 0) {
@@ -411,16 +420,169 @@
                         echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
                     }
                 }
-                echo "</br><div class='assessmentResultTextBlockL2'>Potential Next Steps:</div>";
+                echo "</br><div class='assessmentResultTextBlockL2'>Potential Next Steps:</div></br>";
+    }
+    function L2AC(){
+        include '../Include/DBConnect.php';
+        echo "<div class='resultFamilyBox'>";
+        echo "<details open><summary><div class='resultFamilyNameL2'>Access Control (AC)▾</div></summary>";
+        
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AC' ORDER BY right(Control_ID, 2)";
+        $result = $conn->query($Query_CMMC_Controls );
+        if ($result->num_rows > 0) {
+            while($getCMMCControl = $result->fetch_assoc()) {
+                $ControlName = $getCMMCControl['Control_Name'];
+                $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.1.1') && ($_SESSION['IDP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
+                    echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
+                    echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
+                    echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
+                    echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
+                }
+                else if(($ControlID == 'L2-3.1.2') && ($_SESSION['IDP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
+                    echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
+                    echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
+                    echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
+                    echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
+                }
+                else if(($ControlID == 'L2-3.1.3') && ($_SESSION['IDP'] != 'Yes')){ //FIXME
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>FIXME
+                    </div>"; 
+                }
+                else if(($ControlID == 'L2-3.1.4') && ($_SESSION['RolesSoD'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Create and define Roles & Responsibilities. Verify that these responsibilities enforce Separation of Duties best practice. 
+                    Upon defining these roles, enforce it within your system and restrict access to resources accordingly.</div>";  
+                }
+                else if(($ControlID == 'L2-3.1.5') && ($_SESSION['RolesSoD'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privilged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
+                    Upon defining these roles, enforce that matrix within your system and restrict access to resources accordingly.</div>";  
+                }
+                else if(($ControlID == 'L2-3.1.6') && ($_SESSION['RolesSoD'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privilged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
+                    Upon defining these roles, enforce that matrix within your system and restrict access to resources accordingly.</div>";  
+                }
+                else if(($ControlID == 'L2-3.1.7') && ($_SESSION['RolesSoD'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privilged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
+                    Upon defining these roles, enforce that matrix within your system and restrict access to resources accordingly. Verify that these actions are logged</div>";  
+                }
+                else if(($ControlID == 'L2-3.1.8') && ($_SESSION['Lockout'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define and implement max logon attempts for your system. 
+                    Recommended: A max of three (3) consecutive logon attempts within a fifteen (15) minute Timeframe</div>";  
+                }
+                else if(($ControlID == 'L2-3.1.9') && ($_SESSION['SystemWarning'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define and implement a System Use notification or Banner. This notice should follow guidelines as outlined in AC.L2-3.1.9 Further Discussion</br></br>
+                        The legal notification should meet all applicable requirements. At a minimum, the notice
+                        should inform the user that:</div>
+                        <div class='controlAssessmentTextBlockL2'>
+                        • information system usage may be monitored or recorded, and is subject to audit;</br>
+                        • unauthorized use of the information systems is prohibited;</br>
+                        • unauthorized use is subject to criminal and civil penalties;</br>
+                        • use of the information system affirms consent to monitoring and recording;</br>
+                        • the information system contains CUI with specific requirements imposed by the
+                        Department of Defense; and</br>
+                        • use of the information system may be subject to other specified requirements associated
+                        with certain types of CUI such as Export Controlled information. 
+                    </div>";  
+                }
+                else if(($ControlID == 'L2-3.1.10') && ($_SESSION['Lockout'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define and implement Session locks after a defined period of inactivity. Additionally, when locking the session use a screen save to 
+                    block information (This is standard within windows devices). Recommended: Session lockout should be initiated after fifteen (15) minutes
+                    Or upon user request.
+                    </div>";  
+                }
+                else if(($ControlID == 'L2-3.1.11') && ($_SESSION['Lockout'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define and implement Session termination after a defined action. 
+                    These actions typically involve time of day restrictions or inactivity thresholds. Set up a policy surrounding this item an implement it.
+                    </div>";  
+                }
+                else if(($ControlID == 'L2-3.1.12') && ($_SESSION['RemoteSecure'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['Remote'] == 'No'){
+                        echo "<div class='assessmentResultTextBlockL2'>Due to your selection of 'No' at the Remote Session question, this control is not applicable to your system</div>";      
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Define authorized remote sessions (RDP, VPNs, etc.). 
+                        Enforce restrictions upon who can access them (Authorized users) ensure that authentication is required and that these sessions are monitored.
+                        </div>";  
+                        if($_SESSION['IAASUsage'] == 'solely' || $_SESSION['IAASUsage'] == 'includes'){
+                            echo "<div class='assessmentResultTextBlockL2'>Based on your IAAS selection here is a guide on Remote Monitoring</div>"; 
+                            if($_SESSION['IAASSelect'] == 'AWS'){
+                                echo "<a href='https://aws.amazon.com/what-is/remote-monitoring-and-management/' target='_blank'>AWS Remote Monitoring</a></br>";
+                            }
+                            if($_SESSION['IAASSelect'] == 'Azure'){
+                                echo "<a href='https://learn.microsoft.com/en-us/azure/azure-monitor/' target='_blank'>Azure Monitor</a></br>";
+                            }
+                            if($_SESSION['IAASSelect'] == 'Google'){
+                                echo "<a href='https://docs.cloud.google.com/monitoring/docs/monitoring-overview' target='_blank'>Google Monitoring</a></br>";
+                            }
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.13') && ($_SESSION['RemoteSecure'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['Remote'] == 'No'){
+                        echo "<div class='assessmentResultTextBlockL2'>Due to your selection of 'No' at the Remote Session question, this control is not applicable to your system</div>";      
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Define cryptographic modules in use with remote sessions (RDP, VPNs, etc.).</div></br>";  
+                        if($_SESSION['IAASUsage'] == 'solely' || $_SESSION['IAASUsage'] == 'includes'){
+                            echo "<div class='assessmentResultTextBlockL2'>Utilization of major IAAS services usually allow the use of their cryptographic modules 
+                            verify that they met FIPS 140 standards. View your IAAS offerings:</div>"; 
+                            if($_SESSION['IAASSelect'] == 'AWS'){
+                                echo "<a href='https://aws.amazon.com/cloudhsm/' target='_blank'>AWS HSM</a></br>";
+                            }
+                            if($_SESSION['IAASSelect'] == 'Azure'){
+                                echo "<a href='https://learn.microsoft.com/en-us/azure/cloud-hsm/overview' target='_blank'>Azure HSM</a></br>";
+                            }
+                            if($_SESSION['IAASSelect'] == 'Google'){
+                                echo "<a href='https://docs.cloud.google.com/kms/docs/hsm' target='_blank'>Google HSM</a></br>";
+                            }
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.14') && ($_SESSION['Remote'] != 'Yes' && $_SESSION['BoundaryDiagram'] != 'Yes')  ){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Identify gateways that transmit data, verify that all network is routed through those managed control points
+                    </div>";  
+                }
+                else if(($ControlID == 'L2-3.1.15') && ($_SESSION['Remote'] != 'null')  ){ //FIXME
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>FIXME
+                    </div>";  
+                }
+                else if(($ControlID == 'L2-3.1.16') && ($_SESSION['Remote'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'solely'){
+                        echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider this control is not applicable
+                    </div>";  
+                    }
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
             }
+            $_SESSION['IAASUsage'] = 'solely';
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2AT(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Awareness and Training (AT)</div>";
+        echo "<details open><summary><div class='resultFamilyNameL2'>Awareness and Training (AT)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AT' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -439,7 +601,7 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2AU(){

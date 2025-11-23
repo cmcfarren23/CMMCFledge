@@ -37,13 +37,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system utilize remote sessions?</div>
+                <div class = "assessmentTitle">Does your system define and utilize remote sessions?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Remote" value="Yes">Yes, the system utilizes remote sessions</label>
-                        <label> <input type="radio" name="Remote" value="No">No, the system does NOT utilize remote sessions</label>
+                        <label> <input type="radio" name="Remote" value="Yes">Yes, the system define and utilize remote sessions</label>
+                        <label> <input type="radio" name="Remote" value="No">No, the system does NOT define and utilize remote sessions</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
