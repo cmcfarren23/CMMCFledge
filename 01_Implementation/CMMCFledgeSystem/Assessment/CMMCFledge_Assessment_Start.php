@@ -35,14 +35,8 @@
      $_SESSION['Flaw'] = "N/A";
      $_SESSION['MalCodeUpdate'] = "N/A";
 
-    if(isset($_POST['CMMCCertType'])){
-        $_SESSION['CMMCCertType'] = $_POST['CMMCCertType'];
-        if($_SESSION['CMMCCertType'] == 'N/A')
-            header("Location: CUI/CMMCFledge_Assessment_CUI_Cat.php");
-        else
-            header("Location: IAAS/CMMCFledge_Assessment_IAAS_Usage.php");
-        exit;
-    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -72,18 +66,15 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">What Level of CMMC Certification is your Organization Pursuing?</div>
-                <div class = "assessmentSubTitle">(May be listed in current or future contracts(s))</div>
-                <div class = "questionInstruction"><br><br>Select One of The Following</div>
-                <div class = "questionRadioContainer">
-                    <form method="post">
-                        <label> <input type="radio" name="CMMCCertType" value="CMMC l1">CMMC l1<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="CMMC l2 (Self-Assessment)">CMMC l2 (Self-Assessment)<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="CMMC l2 (C3PAO-Assessment)">CMMC l2 (C3PAO-Assessment)<br></label>
-                        <label> <input type="radio" name="CMMCCertType" value="N/A">Not Sure</label>
-                        <br>
+                <div class = "assessmentTitle">Are you ready to begin the assessment?</div>
+                <div class = "assessmentStartText"><br>This assessment may take up to 20 minutes to complete</div>
+                <div class = "assessmentStartText"><br>The progress bar may provide an rought estimate for how long until completion</div><br>
+                <div class = "singleSubmit"><?php include '../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='25'></progress>";?></div>
+                <div class = "assessmentStartText"><br>If you see any unfamiliar terminology, please refer to the Fledge Dictionary</div><br>
+                <div class = "assessmentStartText"><br><br>Please answer all questions to the best of your ability to get accurate results!<br><br></div>
+                    <form method="post" >
                         <div class = "singleSubmit">
-                            <button type="submit">Submit</button>
+                            <a href ="CMMCFledge_Assessment_Cert_Selection.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
                 </div>

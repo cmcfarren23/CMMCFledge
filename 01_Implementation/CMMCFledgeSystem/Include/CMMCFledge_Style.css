@@ -411,11 +411,33 @@ label {
     color: var(--md-sys-color-on-primary-container);
     padding-bottom: 20px;
 }
-
+.assessmentStartText{
+    flex: 1;
+    text-align: center;
+    place-items: center;
+    font-size: 36px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--md-sys-color-on-primary-container);
+}
 
 
 
 details > summary {
   list-style: none;
   cursor: pointer;
+}
+
+
+progress {
+  border-radius: 7px; 
+  height: 12px;
+  box-shadow: var(--md-sys-color-shadow) 0px 2px 3px;
+}
+progress::-webkit-progress-bar {
+  background-color: var(--md-sys-color-on-primary-container);
+  border-radius: 7px;
+}
+progress::-webkit-progress-value {
+  background-color: var(--md-sys-color-on-primary);
+  border-radius: 3px;
 }
