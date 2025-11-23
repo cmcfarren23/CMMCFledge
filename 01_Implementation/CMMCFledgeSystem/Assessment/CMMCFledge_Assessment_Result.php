@@ -21,6 +21,7 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
+                echo "<div class='resultFamilyBox'>";
                 echo "<div class='resultFamilyName'>$ControlName</div>";
                 switch ($ControlID){
                     case "B.1.I":
@@ -69,6 +70,7 @@
                         echo B1XV();
                         break;
                 }
+                echo "</div>";
             }
         }
         echo "</br><div class='pageSubTitle'>Additional resources for your journey!</div></br>";
@@ -388,7 +390,10 @@
         echo L2CA();
         echo L2SC();
         echo L2SI();
-        
+        echo "</br><div class='pageSubTitle'>Additional resources for your journey!</div></br>";
+        echo "<a href='https://dodcio.defense.gov/CMMC/about/' target='_blank' >DoD CMMC About Page</a></br>";
+        echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/ScopingGuideL2v2.pdf' target='_blank'>L2 Scoping Guidance (Unsure whats in your Authorization Boundary?)</a></br>";
+        echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf' target='_blank'>CMMC L2 Assessment Objectives</a></br></br>";
     }
     function copyPasteTempDontCall(){
                 if(($ControlID == '') && ($_SESSION[''] != 'Yes')){

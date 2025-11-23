@@ -1,6 +1,6 @@
 <?php 
     session_start();
-     $_SESSION['CMMCCertType'] = "N/A";
+     $_SESSION['CMMCCertType'] = "CMMC l2 (C3PAO-Assessment)";
      $_SESSION['IAASUsage'] = "N/A";
      $_SESSION['IAASSelect'] = "N/A";
      $_SESSION['RolesMatrix'] = "N/A";

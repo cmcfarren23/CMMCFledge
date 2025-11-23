@@ -124,17 +124,10 @@ label {
     box-shadow: var(--md-sys-color-shadow) 0px 1px 5px;
 }
 .resultFamilyName{
-    display: inline-flex;
-    justify-self: start;
-    margin-left: 20%;
-    margin-right: 5%;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    padding-top: 50px;
+    flex: 1;
+    padding: 20px;
     text-align: center;
-    place-items: left;
-    text-align: justify;
-    font-size: 26px;
+    font-size: 32px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: var(--md-sys-color-on-primary-container);
     border-bottom-color: var(--md-sys-color-outline);
@@ -144,17 +137,18 @@ label {
 .resultControlName{
     flex: 1;
     justify-self: start;
-    margin-left: 40%;
-    margin-right: 5%;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    margin-left: 5%;
     padding-top: 50px;
+    margin-bottom: 10px;
     text-align: center;
     place-items: left;
     text-align: justify;
     font-size: 22px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: var(--md-sys-color-on-primary-container);
+    border-bottom-color: var(--md-sys-color-outline);
+    border-bottom-width: 2px;
+    border-bottom-style:solid;
 }
 .resultFamilyNameL2{
     flex: 1;
@@ -216,8 +210,8 @@ label {
 .assessmentResultTextBlock{
     flex: 1;
     justify-self: start;
-    padding-left: 25%;
-    padding-right: 20%;
+    padding-left: 5%;
+    padding-right: 10%;
     padding-bottom: 3px;
     padding-top: 3px;
     text-align: left;
@@ -227,12 +221,13 @@ label {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: var(--md-sys-color-on-primary-container);
     
+    
 }
 .controlAssessmentTextBlock{
     flex: 1;
     justify-self: start;
-    padding-left: 30%;
-    padding-right: 20%;
+    padding-left: 10%;
+    padding-right: 15%;
     padding-bottom: 3px;
     padding-top: 3px;
     text-align: left;
