@@ -212,8 +212,8 @@ label {
     justify-self: start;
     padding-left: 5%;
     padding-right: 10%;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     text-align: left;
     place-items: left;
     text-align: justify;
