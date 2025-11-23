@@ -426,7 +426,7 @@
     function L2AC(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<details open><summary><div class='resultFamilyNameL2'>Access Control (AC)▾</div></summary>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Access Control (AC)▾</div></summary>";
         
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AC' ORDER BY right(Control_ID, 2)";
         $result = $conn->query($Query_CMMC_Controls );
@@ -594,8 +594,8 @@
                         echo "<div class='assessmentResultTextBlockL2'>Identify mobile devices that may process, store, transmit CUI, authorize these connections and monitor them. 
                         Here are some Mobile Device Management (MDM) soultions
                         </div>"; 
-                        echo "<a href='https://learn.microsoft.com/en-us/windows/client-management/mdm-overview' target='_blank' >Microsoft MDM overviwew</a>";
-                        echo "<a href='https://www.ibm.com/products/maas360/government' target='_blank' >Microsoft MDM overviwew</a>";
+                        echo "<a href='https://learn.microsoft.com/en-us/windows/client-management/mdm-overview' target='_blank' >Microsoft MDM overviwew</a></br>";
+                        echo "<a href='https://www.ibm.com/products/maas360/government' target='_blank' >Microsoft MDM overviwew</a></br>";
                     }
                 }
                 else if(($ControlID == 'L2-3.1.19')){
@@ -607,19 +607,19 @@
                         echo "<div class='assessmentResultTextBlockL2'>Identify mobile devices that may process, store, transmit CUI, authorize these connections and monitor them. 
                         Here are some Mobile Device Management (MDM) soultions
                         </div>"; 
-                        echo "<a href='https://learn.microsoft.com/en-us/windows/client-management/mdm-overview' target='_blank' >Microsoft MDM overviwew</a>";
-                        echo "<a href='https://www.ibm.com/products/maas360/government' target='_blank' >Microsoft MDM overviwew</a>";
+                        echo "<a href='https://learn.microsoft.com/en-us/windows/client-management/mdm-overview' target='_blank' >Microsoft MDM overviwew</a></br>";
+                        echo "<a href='https://www.ibm.com/products/maas360/government' target='_blank' >IBM MDM overviwew</a></br>";
 
                     }
                 }
                 else if(($ControlID == 'L2-3.1.20') && ($_SESSION['BoundaryDiagram'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>To start with this control, create a boundary Diagram. FedRAMP has some great documentation on this that would apply to CMMC as well</div>";  
-                    echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";
+                    echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a></br>";
                 }
                 else if(($ControlID == 'L2-3.1.21')){
                     assessmentObj($ControlID);
-                    if($_SESSION['IAASUsage'] == 'solely'){ //FIXME
+                    if($_SESSION['IAASUsage'] == 'solely'){
                         echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider, this control is not applicable
                         </div>";  
                     }else if ($_SESSION['IAASUsage'] != 'special'){
@@ -651,23 +651,44 @@
     function L2AT(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<details open><summary><div class='resultFamilyNameL2'>Awareness and Training (AT)▾</div></summary>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Awareness and Training (AT)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AT' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.2.1') && ($_SESSION['TrainingGeneral'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>It may be best to look toward external training solutions for general training. KnowBe4 is popular option</div>";
+                    echo "<a href='https://training.knowbe4.com/app/modstore/public?lang=&od=Desc&op=tran&sui=34&toi=135&wasl=true' target='_blank' >KnowBe4 Modules</a>";
+                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies it may be wise to create your own training that follows the objectives above. 
+                    Try to incorporate free resources posted by the DoD or NIST where possible</div>";
+                    echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD CUI Training Module</a></br>";
+                    echo "<a href='https://www.defensesbirsttr.mil/Portals/122/Documents/CUI%20Training/CUI_Training_Template_Presentation_012722.pdf?ver=eRufxQuzNvFyUquMcWW6JQ%3D%3D' target='_blank' >DoD CUI Training Guide</a></br>";
+                    echo "<a href='https://www.archives.gov/cui/training.html' target='_blank' >NIST CUI Training Archive</a></br>";
                 }
+                else if(($ControlID == 'L2-3.2.2') && ($_SESSION['TrainingRole'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Ensure that additional training is done at the Role level. This makes sure that each role is aware of what they are responsible for.</div></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies it may be wise to create your own training that follows the objectives above. 
+                    Try to incorporate free resources posted by the DoD or NIST where possible</div>";
+                    echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD CUI Training Module</a></br>";
+                    echo "<a href='https://www.defensesbirsttr.mil/Portals/122/Documents/CUI%20Training/CUI_Training_Template_Presentation_012722.pdf?ver=eRufxQuzNvFyUquMcWW6JQ%3D%3D' target='_blank' >DoD CUI Training Guide</a></br>";
+                    echo "<a href='https://www.archives.gov/cui/training.html' target='_blank' >NIST CUI Training Archive</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>To verify that each role can adequately carry out their tasks perform training exercises such as 
+                    tabletops, walk-throughs, or other simulations</div>";
+                }
+                else if(($ControlID == 'L2-3.2.3') && ($_SESSION['TrainingInsider'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that your training package includes information on insider threat. 
+                    Here is a training module that may be useful to incorporate into your training</div></br>";
+                    echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD Insider Threat Training Module</a></br>";
+
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
             }
         }
         echo "</div></details>";
@@ -676,26 +697,27 @@
     function L2AU(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Audit and Accountability (AU)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Audit and Accountability (AU)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AU' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.3.1') && ($_SESSION['TrainingGeneral'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>It may be best to look toward external training solutions for general training. KnowBe4 is popular option</div>";
+                    echo "<a href='https://training.knowbe4.com/app/modstore/public?lang=&od=Desc&op=tran&sui=34&toi=135&wasl=true' target='_blank' >KnowBe4 Modules</a>";
+                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies it may be wise to create your own training that follows the objectives above. 
+                    Try to incorporate free resources posted by the DoD or NIST where possible</div>";
+                    echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD CUI Training Module</a></br>";
+                    echo "<a href='https://www.defensesbirsttr.mil/Portals/122/Documents/CUI%20Training/CUI_Training_Template_Presentation_012722.pdf?ver=eRufxQuzNvFyUquMcWW6JQ%3D%3D' target='_blank' >DoD CUI Training Guide</a></br>";
+                    echo "<a href='https://www.archives.gov/cui/training.html' target='_blank' >NIST CUI Training Archive</a></br>";
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2CM(){
