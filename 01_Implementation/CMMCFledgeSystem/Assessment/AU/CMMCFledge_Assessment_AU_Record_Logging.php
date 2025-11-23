@@ -43,7 +43,7 @@
                 <div class = "questionRadioContainer">
                     <form method="post">
                         <label> <input type="radio" name="RecordLogging" value="Yes">Yes, system events are logged as defined by the organization</label>
-                        <label> <input type="radio" name="RecordLogging" value="YesExecptDef">No, system events are NOT defined</label>
+                        <label> <input type="radio" name="RecordLogging" value="special">No, system events are NOT defined</label>
                         <label> <input type="radio" name="RecordLogging" value="No">No, system events are NOT logged</label>
                         <label> <input type="radio" name="RecordLogging" value="No">No, system events are NOT logged or defined</label>
                         <br>

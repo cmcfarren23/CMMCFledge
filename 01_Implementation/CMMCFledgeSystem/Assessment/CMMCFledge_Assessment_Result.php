@@ -1,9 +1,9 @@
 <?php 
     include '../Include/DBConnect.php';
     session_start(); 
-    foreach ($_SESSION as $key => $value) { //test
-        echo "$key : $value<br>";
-    }
+    // foreach ($_SESSION as $key => $value) { //test
+    //     echo "$key : $value<br>";
+    // }
 
     function PickOutput(){
         if($_SESSION['CMMCCertType'] == 'CMMC l1')
@@ -705,16 +705,59 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.3.1') && ($_SESSION['TrainingGeneral'] != 'Yes')){
+                if(($ControlID == 'L2-3.3.1') && ($_SESSION['RecordLogging'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>It may be best to look toward external training solutions for general training. KnowBe4 is popular option</div>";
-                    echo "<a href='https://training.knowbe4.com/app/modstore/public?lang=&od=Desc&op=tran&sui=34&toi=135&wasl=true' target='_blank' >KnowBe4 Modules</a>";
-                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies it may be wise to create your own training that follows the objectives above. 
-                    Try to incorporate free resources posted by the DoD or NIST where possible</div>";
-                    echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD CUI Training Module</a></br>";
-                    echo "<a href='https://www.defensesbirsttr.mil/Portals/122/Documents/CUI%20Training/CUI_Training_Template_Presentation_012722.pdf?ver=eRufxQuzNvFyUquMcWW6JQ%3D%3D' target='_blank' >DoD CUI Training Guide</a></br>";
-                    echo "<a href='https://www.archives.gov/cui/training.html' target='_blank' >NIST CUI Training Archive</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>It is recommend to have a SIEM tool that conducts logging within your system. 
+                    Once that is configured make sure you keep track of what events are being logged and what is within each record: See the Following for SIEM recommendations</div>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/platform/next-gen-siem/ target='_blank' >CrowdStrike</a></br>";
+                    echo "<a href='https://www.datadoghq.com/product/cloud-siem/' target='_blank' >DataDog</a></br>";
+                    echo "<a href='https://www.splunk.com/en_us/products/enterprise-security-essentials.html' target='_blank' >Splunk</a></br>";
+                    echo "<a href='https://wazuh.com/blog/wazuh-for-cmmc-compliance/' target='_blank' >Wazuh</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Note: When considering purchasing these products verify that you are receiving the FedRAMP Moderate or CMMC certified version</div>";
                 }
+                else if(($ControlID == 'L2-3.3.2') && ($_SESSION['RecordInfoID'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that within audit records your organization records who performed the action</div>";
+                }
+                else if(($ControlID == 'L2-3.3.3') && ($_SESSION['RecordReview'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Create a policy surrounding when to review logged events. 
+                    Recommend: Do this weekly if possible. If your organization has less resources Monthly can be recommended as well. Assign roles to this task and update your logging metrics accordingly</div>";
+                }
+                else if(($ControlID == 'L2-3.3.4') && ($_SESSION['RecordReviewChanges'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Within your SIEM or logging system set up alerts for logging failures. This is standard across SIEM tools, refer to guides for your SIEM to set this up. 
+                    Many have integrations to alert via Email, Microsoft Teams, Slack, or other team communication applications. Verify that these alerts are set up to alert the specified roles to review audit logging failures.</div>";
+                }
+                else if(($ControlID == 'L2-3.3.5') && ($_SESSION['RecordReview'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define process for reviewing audit logs and correlating with other mechanisms within your system. If suspicious activity is detected have a plan of action. 
+                    Break it down into who it needs to be reported to (internal and external) and what process follow. Start with an initial investigation and then if needed move on to IRP procedures.</div>";
+                }
+                else if(($ControlID == 'L2-3.3.6') && ($_SESSION['RecordLogging'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Most modern SIEMs are able to produce on-demand analysis view 3.3.1 recommendation for SIEMs</div>";
+                }
+                else if(($ControlID == 'L2-3.3.7')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'solely'){
+                        echo "<div class='assessmentResultTextBlockL2'>Your IAAS provider likely points to Stratum 1 time servers</div>";
+                    }else
+                        echo "<div class='assessmentResultTextBlockL2'>Verify that your devices within your Authorizaiton Boundary align with NIST Stratum 1 Time Servers (Liekly already the case)</div>";
+                    echo "<a href='https://www.cbtnuggets.com/blog/technology/networking/what-is-ntp-stratum' target='_blank' >What are Time Server Stratums</a></br>";
+                }
+                else if(($ControlID == 'L2-3.3.8') && ($_SESSION['LoggingTools'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Make logging tools and mechanisms only available to those who need to access them. 
+                    Make this a subset of privileged users and define them in you Roles & Responsibilities documentation.</div>";
+                }
+                else if(($ControlID == 'L2-3.3.9') && ($_SESSION['LoggingTools'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Make logging tools and mechanisms only available to those who need to access them. 
+                    Make this a subset of privileged users and define them in you Roles & Responsibilities documentation.</div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";  
             }
         }
         echo "</div></details>";
@@ -723,32 +766,28 @@
     function L2CM(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Configuratiuon Management (CM)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Configuratiuon Management (CM)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'CM' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.4.1') && ($_SESSION['TrainingGeneral'] != 'Yes')){
+                    assessmentObj($ControlID);
                 }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2IA(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Identification and Authentication (IA)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Identification and Authentication (IA)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'IA' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -767,13 +806,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2IR(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Incident Response (IR)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Incident Response (IR)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'IR' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -792,13 +831,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2MA(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Maintenance (MA)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Maintenance (MA)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'MA' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -817,13 +856,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2MP(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Media Protection (MP)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Media Protection (MP)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AT' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -842,13 +881,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2PS(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Personnel Security (PS)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Personnel Security (PS)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'PS' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -867,13 +906,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2PE(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Physical Protection (PE)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Physical Protection (PE)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'PE' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -892,13 +931,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2RA(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Risk Assessment (RA)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Risk Assessment (RA)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'RA' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -917,13 +956,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2CA(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>Security Assessment (CA)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Security Assessment (CA)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'CA' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -942,13 +981,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2SC(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>System and Communications Protection (SC)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>System and Communications Protection (SC)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'SC' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -967,13 +1006,13 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 
     function L2SI(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<div class='resultFamilyNameL2'>System and Information Integrity (SI)</div>";
+        echo "<details><summary><div class='resultFamilyNameL2'>System and Information Integrity (SI)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'SI' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -992,7 +1031,7 @@
                 }
             }
         }
-        echo "</div>";
+        echo "</div></details>";
     }
 ?>
 
