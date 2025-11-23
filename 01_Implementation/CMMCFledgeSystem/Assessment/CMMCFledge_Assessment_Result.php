@@ -226,7 +226,7 @@
             }
             if($_SESSION['IAASSelect'] == 'Google'){
                 echo "<div class='assessmentResultTextBlock'>Check out the Google language on their shared responsibility</div>";
-                echo "<a href='https://cloud.google.com/security/compliance/cmmc  ' target='_blank' >Google Shared Responsibility Model!</a>";
+                echo "<a href='https://cloud.google.com/security/compliance/cmmc' target='_blank' >Google Shared Responsibility Model!</a>";
             }
         }
     }
@@ -411,17 +411,18 @@
     }
     function assessmentObj($ControlID){
         include '../Include/DBConnect.php';
-                        echo "<div class='assessmentResultTextBlockL2'>You may not be passing this control, this control's assessment objectives are:</div></br>";
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
-                }
-                echo "</br><div class='assessmentResultTextBlockL2'>Potential Next Steps:</div></br>";
+        echo "<div class='assessmentResultTextBlockL2'>You may not be passing this control, this control's assessment objectives are:</div></br>";
+        $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
+        $resultInner = $conn->query($Query_Controls_Assessments);
+        if ($resultInner->num_rows > 0) {
+            while($getCMMCAssessment = $resultInner->fetch_assoc()) {
+                $assessmentText = $getCMMCAssessment['Assessment_Text'];
+                echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
+            }
+        }
+        echo "</br><div class='assessmentResultTextBlockL2'>Potential Next Steps:</div></br>";
     }
+
     function L2AC(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
@@ -564,17 +565,85 @@
                     echo "<div class='assessmentResultTextBlockL2'>FIXME
                     </div>";  
                 }
-                else if(($ControlID == 'L2-3.1.16') && ($_SESSION['Remote'] != 'Yes')){
+                else if(($ControlID == 'L2-3.1.16')){//FIXME
                     assessmentObj($ControlID);
                     if($_SESSION['IAASUsage'] == 'solely'){
                         echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider this control is not applicable
-                    </div>";  
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Identify wireless access points and enforce WPA2/WPA3 standards for connection
+                        </div>";  
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.17')){//FIXME
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'solely'){
+                        echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider, this control is not applicable
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Identify wireless access points and enforce WPA2/WPA3 standards for connection
+                        </div>";  
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.18')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'solely'){
+                        echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider this control is not applicable
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Identify mobile devices that may process, store, transmit CUI, authorize these connections and monitor them. 
+                        Here are some Mobile Device Management (MDM) soultions
+                        </div>"; 
+                        echo "<a href='https://learn.microsoft.com/en-us/windows/client-management/mdm-overview' target='_blank' >Microsoft MDM overviwew</a>";
+                        echo "<a href='https://www.ibm.com/products/maas360/government' target='_blank' >Microsoft MDM overviwew</a>";
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.19')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'solely'){
+                        echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider, this control is not applicable
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Identify mobile devices that may process, store, transmit CUI, authorize these connections and monitor them. 
+                        Here are some Mobile Device Management (MDM) soultions
+                        </div>"; 
+                        echo "<a href='https://learn.microsoft.com/en-us/windows/client-management/mdm-overview' target='_blank' >Microsoft MDM overviwew</a>";
+                        echo "<a href='https://www.ibm.com/products/maas360/government' target='_blank' >Microsoft MDM overviwew</a>";
+
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.20') && ($_SESSION['BoundaryDiagram'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>To start with this control, create a boundary Diagram. FedRAMP has some great documentation on this that would apply to CMMC as well</div>";  
+                    echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";
+                }
+                else if(($ControlID == 'L2-3.1.21')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'solely'){ //FIXME
+                        echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider, this control is not applicable
+                        </div>";  
+                    }else if ($_SESSION['IAASUsage'] != 'special'){
+                        echo "<div class='assessmentResultTextBlockL2'>You do not utilize removable devices,this control is not applicable
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Create policies surrounding the use of removable devices that contain CUI. Recommended: Heavily restrict external use of removable devices, 
+                        this can create risk for your organization. Stick to least functionality principles and only mandate what is required for the system to function.
+                        </div>"; 
+                    }
+                }
+                else if(($ControlID == 'L2-3.1.22')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['RemovableDevices'] == 'No'){
+                        echo "<div class='assessmentResultTextBlockL2'>Your system does not contain Public components this control is not applicable</div>";    
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Define who oversees posting public content (This can be defined in your Roles & Responsibilities documentation). 
+                        Update and review posted content regularly to verify that no CUI is posted. This control mostly falls under policy implementation. 
+                        </div>"; 
                     }
                 }
                 else
                     echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
             }
-            $_SESSION['IAASUsage'] = 'solely';
         }
         echo "</div></details>";
     }

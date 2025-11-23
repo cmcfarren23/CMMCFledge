@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['RolesMatrix'])){
-        $_SESSION['RolesMatrix'] = $_POST['RolesMatrix'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_SoD.php");
+    if(isset($_POST['RemovableDevices'])){
+        $_SESSION['RemovableDevices'] = $_POST['RemovableDevices'];
+            header("Location: ../AT/CMMCFledge_Assessment_AT_Intro.php");
         exit;
     }
 ?>
@@ -34,14 +34,14 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization maintain a list of current Roles & Responsiblities with access to the system?</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
+                <div class = "assessmentTitle">Are there removable devices (USBs, hard drives, CDs, Memory Cards, etc.) within your system's authorization boundary?</div>
+                <div class = "assessmentSubTitle">If so, do these devices have polices surronding use on external systems?</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="RolesMatrix" value="Yes">We have a fully updated list, this list is updated on a regular basis</label>
-                        <label> <input type="radio" name="RolesMatrix" value="Partial">We have a list, but it may be out of date</label>
-                        <label> <input type="radio" name="RolesMatrix" value="N/A">We do not have a list</label>
+                        <label> <input type="radio" name="RemovableDevices" value="Yes">Yes, the system uses removable devices and use is defined</label>
+                        <label> <input type="radio" name="RemovableDevices" value="special">Yes, the system uses removable devices, but the use is NOT defined</label>
+                        <label> <input type="radio" name="RemovableDevices" value="No">There are NO removable devices</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

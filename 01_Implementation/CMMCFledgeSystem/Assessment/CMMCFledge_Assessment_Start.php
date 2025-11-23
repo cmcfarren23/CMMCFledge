@@ -10,6 +10,7 @@
      $_SESSION['Remote'] = "N/A";
      $_SESSION['RemoteSecure'] = "N/A";
      $_SESSION['PublicComponents'] = "N/A";
+     $_SESSION['RemovableDevices'] = "N/A";
      $_SESSION['TrainingGeneral'] = "N/A";
      $_SESSION['TrainingRole'] = "N/A";
      $_SESSION['TrainingInsider'] = "N/A";

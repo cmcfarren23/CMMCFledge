@@ -2,7 +2,10 @@
     session_start(); 
     if(isset($_POST['PublicComponents'])){
         $_SESSION['PublicComponents'] = $_POST['PublicComponents'];
-        header("Location: ../AT/CMMCFledge_Assessment_AT_Intro.php");
+        if($_SESSION['IAASUsage'] != 'solely')
+            header("Location: ../AT/CMMCFledge_Assessment_AT_Intro.php");
+        else
+            header("Location: ../AC/CMMCFledge_Assessment_AC_Removable_Devices.php");
         exit;
     }
 ?>
