@@ -1,9 +1,9 @@
 <?php 
     include '../Include/DBConnect.php';
     session_start(); 
-    // foreach ($_SESSION as $key => $value) { //test
-    //     echo "$key : $value<br>";
-    // }
+    foreach ($_SESSION as $key => $value) { //test
+        echo "$key : $value<br>";
+    }
 
     function PickOutput(){
         if($_SESSION['CMMCCertType'] == 'CMMC l1')
@@ -442,11 +442,11 @@
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
                 if(($ControlID == 'L2-3.1.1') && ($_SESSION['IDP'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through a major ID provider such as EntraID, Okta, or Auth0</div>";  
                     echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
                     echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
                     echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
-                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additional technical knowledge)</div>";  
                     echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
                 }
                 else if(($ControlID == 'L2-3.1.2') && ($_SESSION['IDP'] != 'Yes')){
@@ -771,7 +771,7 @@
     function L2CM(){
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
-        echo "<details><summary><div class='resultFamilyNameL2'>Configuratiuon Management (CM)▾</div></summary>";
+        echo "<details><summary><div class='resultFamilyNameL2'>Configuration Management (CM)▾</div></summary>";
         $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'CM' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
@@ -860,16 +860,77 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.5.1') && ($_SESSION['IDP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through a major ID provider such as EntraID, Okta, or Auth0</div>";  
+                    echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
+                    echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
+                    echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additional technical knowledge)</div>";  
+                    echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
                 }
+                else if(($ControlID == 'L2-3.5.2') && ($_SESSION['IDP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through a major ID provider such as EntraID, Okta, or Auth0</div>";  
+                    echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
+                    echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
+                    echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additional technical knowledge)</div>";  
+                    echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
+                }
+                else if(($ControlID == 'L2-3.5.3') && ($_SESSION['MultiFactor'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Implement multifactor authentications for all types of accounts. Recommended MFA providers listed below:</div>";  
+                    echo "<a href='http://microsoft.com/en-us/security/mobile-authenticator-app' target='_blank'>Microsoft Authenticator</a></br>";
+                    echo "<a href='https://www.okta.com/products/adaptive-multi-factor-authentication/' target='_blank'>Okta MFA</a></br>";
+                    echo "<a href='https://duo.com/product/multi-factor-authentication-mfa' target='_blank'>Cisco DUO</a></br>";
+                }
+                else if(($ControlID == 'L2-3.5.4') && ($_SESSION['MultiFactor'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Implement multifactor authentications for all types of accounts. Recommended MFA providers listed below:</div>";  
+                    echo "<a href='http://microsoft.com/en-us/security/mobile-authenticator-app' target='_blank'>Microsoft Authenticator</a></br>";
+                    echo "<a href='https://www.okta.com/products/adaptive-multi-factor-authentication/' target='_blank'>Okta MFA</a></br>";
+                    echo "<a href='https://duo.com/product/multi-factor-authentication-mfa' target='_blank'>Cisco DUO</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>All these MFA offerings can provide replay-resistant authentication mechanisms. 
+                    Please refer to section B.4.2 for additional guidance on what counts as replay-resistance methods.</div>";
+                    echo "<a href='https://pages.nist.gov/800-63-3-Implementation-Resources/63B/Authenticators/' target='_blank'>NIST Authenticators</a></br>";
+                }
+                else if(($ControlID == 'L2-3.5.5') && ($_SESSION['IDReuse'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Identifiers should never be reused or deleted. Move inactive users into an “disabled” status. 
+                    Users should be moved into the “disabled” upon request (due to termination or transfer) or after an inactivity period of ninety (90) days. This should be written into your organizational policies surrounding accounts and access.</div>";  
+                }
+                else if(($ControlID == 'L2-3.5.6') && ($_SESSION['IDReuse'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Identifiers should never be reused or deleted. Move inactive users into an “disabled” status. 
+                    Users should be moved into the “disabled” upon request (due to termination or transfer) or after an inactivity period of ninety (90) days. This should be written into your organizational policies surrounding accounts and access.</div>";  
+                }
+                else if(($ControlID == 'L2-3.5.7') && ($_SESSION['PasswordPolicy'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define password policies to fit your system needs and implement them upon account creation. An example can be seen below:</div>";  
+                    echo "<div class='controlAssessmentTextBlockL2'>Password Length: 8+ Characters</br>
+                    Must Include: At least one (1) special character; At least one (1) uppercase alphanumeric character; At least one (1) lowercase alphanumeric character</br>
+                    Character Change: At least one (1) character</br>
+                    Password History: Cannot be one (1) of the last fifteen (15) passwords</br>
+                    </div>";
+                }
+                else if(($ControlID == 'L2-3.5.8') && ($_SESSION['PasswordPolicy'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define password policies to fit your system needs and implement them upon account creation. An example can be seen below:</div>";  
+                    echo "<div class='controlAssessmentTextBlockL2'>Password Length: 8+ Characters</br>
+                    Must Include: At least one (1) special character; At least one (1) uppercase alphanumeric character; At least one (1) lowercase alphanumeric character</br>
+                    Character Change: At least one (1) character</br>
+                    Password History: Cannot be one (1) of the last fifteen (15) passwords</br>
+                    </div>";
+                }
+                else if(($ControlID == 'L2-3.5.9')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that upon the use of an temporary password a user is prompted to change to a permanent 
+                    password that follows your organizational password requirements.</div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";

@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Guest'])){
-        $_SESSION['Guest'] = $_POST['Guest'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_ID_Reuse.php");
+    if(isset($_POST['IDReuse'])){
+        $_SESSION['IDReuse'] = $_POST['IDReuse'];
+        header("Location: ../IA/CMMCFledge_Assessment_IA_Password_Policy.php");
         exit;
     }
 ?>
@@ -35,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does the system utilze guest accounts?</div>
+                <div class = "assessmentTitle">Does the system have mechanisms/policies in place to prevent the reuse of system identifiers?</div>
                 <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Guest" value="Yes">Yes, the system uses guest accounts</label>
-                        <label> <input type="radio" name="Guest" value="No">No, the system does NOT use guest accounts</label>
+                        <label> <input type="radio" name="IDReuse" value="Yes">Yes, the system prevents the reuse of identifiers</label>
+                        <label> <input type="radio" name="IDReuse" value="No">No, the system does NOT prevent the reuse of identifiers</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

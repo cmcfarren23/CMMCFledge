@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Guest'])){
-        $_SESSION['Guest'] = $_POST['Guest'];
-        header("Location: ../IA/CMMCFledge_Assessment_IA_ID_Reuse.php");
+    if(isset($_POST['PasswordPolicy'])){
+        $_SESSION['PasswordPolicy'] = $_POST['PasswordPolicy'];
+        header("Location: ../MP/CMMCFledge_Assessment_MP_Intro.php");
         exit;
     }
 ?>
@@ -35,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does the system utilze guest accounts?</div>
-                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
+                <div class = "assessmentTitle">Do accounts within the system have appropriate password requirements?</div>
+                <div class = "assessmentSubTitle">These requirements should include complexity, change of character requirements, and password history policies.</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Guest" value="Yes">Yes, the system uses guest accounts</label>
-                        <label> <input type="radio" name="Guest" value="No">No, the system does NOT use guest accounts</label>
+                        <label> <input type="radio" name="PasswordPolicy" value="Yes">Yes, the accounts have appropriate password requirements</label>
+                        <label> <input type="radio" name="PasswordPolicy" value="No">No, the accounts do NOT have appropriate password requirements</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

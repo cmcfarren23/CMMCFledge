@@ -27,6 +27,8 @@
      $_SESSION['LeastFunc'] = "N/A";
      $_SESSION['IDP'] = "N/A";
      $_SESSION['MultiFactor'] = "N/A";
+     $_SESSION['PasswordPolicy'] = "N/A";
+     $_SESSION['IDReuse'] = "N/A";
      $_SESSION['Guest'] = "N/A";
      $_SESSION['Sanitize'] = "N/A";
      $_SESSION['BoundaryDiagram'] = "N/A";
