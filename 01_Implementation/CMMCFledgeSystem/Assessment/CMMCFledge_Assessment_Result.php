@@ -714,7 +714,7 @@
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>It is recommend to have a SIEM tool that conducts logging within your system. 
                     Once that is configured make sure you keep track of what events are being logged and what is within each record: See the Following for SIEM recommendations</div>";
-                    echo "<a href='https://www.crowdstrike.com/en-us/platform/next-gen-siem/ target='_blank' >CrowdStrike</a></br>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/platform/next-gen-siem/' target='_blank' >CrowdStrike</a></br>";
                     echo "<a href='https://www.datadoghq.com/product/cloud-siem/' target='_blank' >DataDog</a></br>";
                     echo "<a href='https://www.splunk.com/en_us/products/enterprise-security-essentials.html' target='_blank' >Splunk</a></br>";
                     echo "<a href='https://wazuh.com/blog/wazuh-for-cmmc-compliance/' target='_blank' >Wazuh</a></br>";
@@ -779,8 +779,69 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.4.1') && ($_SESSION['TrainingGeneral'] != 'Yes')){
+                if(($ControlID == 'L2-3.4.1') && ($_SESSION['ConfigBaseline'] != 'Yes' || $_SESSION['Inventory'] != 'Yes')){
                     assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Please verify that your system includes a system baseline and a system inventory. 
+                    System baselines can be managed through Infrastructure as Code (IaC) files and software. The most notable example is Terraform:</div>";
+                    echo "<a href='https://developer.hashicorp.com/terraform' target='_blank' >Terraform</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>System inventories must be a comprehensive list of all devices, software, 
+                    and technologies within your environment. Please keep these up to date.</div>";
+                }
+                else if(($ControlID == 'L2-3.4.2') && ($_SESSION['ConfigBaseline'] != 'Yes' ||  $_SESSION['IDP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Please verify that all access to configuration settings and processes are only accessible by those with authorization.
+                    Utilize the principle of least privilege as necessary.</div>";
+                }
+                else if(($ControlID == 'L2-3.4.3') && ($_SESSION['Ticketing'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>This control is most done through change management tickets. 
+                    Tickets allow your organization to track, review, approve, and keep a log of and changes to the system.</div>";
+                    echo "<a href='https://www.atlassian.com/software/jira' target='_blank' >Jira</a></br>";
+                    echo "<a href='https://www.servicenow.com/' target='_blank' >ServiceNow</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Note: When considering purchasing these products verify that you are receiving the FedRAMP Moderate or CMMC certified version</div>";
+                }
+                else if(($ControlID == 'L2-3.4.4')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that your organization takes account of the security impact of any and all changes to the system.</div>";
+                }
+                else if(($ControlID == 'L2-3.4.5') && ($_SESSION['ConfigBaseline'] != 'Yes' ||  $_SESSION['IDP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] == 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>Physical access restrictions to your system is covered by your IAAS provider.</div>";
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Please verify that physical access to your systems re restricted to only those with authorization 
+                        (Badge readers, key cards, Security, Etc.)</div>";
+                    }
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that only those with authorization have access to logical systems involving change management. 
+                    Enforce this using Role-Based Access Control mechanisms and verify that authorizations are documented with your Roles & Responsibilities matrix.</div>";
+                }
+                else if(($ControlID == 'L2-3.4.6') && ($_SESSION['LeastFunc'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>The system must be designed in a way to follow the principle of Least Functionality. 
+                    The system should not include components that are not necessary to its performance or security posture.</div>";
+                }
+                else if(($ControlID == 'L2-3.4.7') && ($_SESSION['LeastFunc'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Define functionalities for all parts of the system. Identify use of essential and non-essential items as described above. 
+                    Document these uses and keep the document up to date during configuration management reviews. This should be apart of your organization's configuration management policy.</div>";
+                }
+                else if(($ControlID == 'L2-3.4.8') && ($_SESSION['Whitelist'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Specify whether your system utilizes a blacklist (Allow all; Deny by exception) or whitelist (Deny all; Allow by exception) 
+                    for software. Employ this using Device management technique for your operating systems.</div>";
+                    echo "<a href='https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/applocker/applocker-overview' target='_blank' >Windows Applocker</a></br>";
+                    echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html-single/selinux_users_and_administrators_guide/index' target='_blank' >SELinux</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Additional NIST guidance can be found below:</div>";
+                    echo "<a href='https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-167.pdf' target='_blank' >NIST Whitelisting Guide</a></br>";
+                }
+                else if(($ControlID == 'L2-3.4.9') && ($_SESSION['Whitelist'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Specify whether your system utilizes a blacklist (Allow all; Deny by exception) or whitelist (Deny all; Allow by exception) 
+                    for software. Employ this using Device management technique for your operating systems. Verify that any software is monitored and is defined within your AU policies.</div>";
+                    echo "<a href='https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/applocker/applocker-overview' target='_blank' >Windows Applocker</a></br>";
+                    echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html-single/selinux_users_and_administrators_guide/index' target='_blank' >SELinux</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Additional NIST guidance can be found below:</div>";
+                    echo "<a href='https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-167.pdf' target='_blank' >NIST Whitelisting Guide</a></br>";
                 }
                 else
                     echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      

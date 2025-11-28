@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Whitelist'])){
-        $_SESSION['Whitelist'] = $_POST['Whitelist'];
-        header("Location: ../CM/CMMCFledge_Assessment_CM_Least_Func.php");
+    if(isset($_POST['LeastFunc'])){
+        $_SESSION['LeastFunc'] = $_POST['LeastFunc'];
+        header("Location: ../IA/CMMCFledge_Assessment_IA_Intro.php");
         exit;
     }
 ?>
@@ -35,14 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize a whitelist or blacklist to define the execution of authorized software?</div>
+                <div class = "assessmentTitle">Is your organization's system built to the principle of least functionality?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Whitelist" value="Whitelist">A Whitelist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="Blacklist">A Blacklist is used</label>
-                        <label> <input type="radio" name="Whitelist" value="N/A">No list is established to define approved software</label>
+                        <label> <input type="radio" name="LeastFunc" value="Yes">Yes, it is built with the principle of least funcatility in mind</label>
+                        <label> <input type="radio" name="LeastFunc" value="No">No, it is NOT built with the principle of least functionality in mind</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

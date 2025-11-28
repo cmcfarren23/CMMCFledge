@@ -23,6 +23,8 @@
      $_SESSION['ConfigBaseline'] = "N/A";
      $_SESSION['Inventory'] = "N/A";
      $_SESSION['Ticketing'] = "N/A";
+     $_SESSION['Whitelist'] = "N/A";
+     $_SESSION['LeastFunc'] = "N/A";
      $_SESSION['IDP'] = "N/A";
      $_SESSION['MultiFactor'] = "N/A";
      $_SESSION['Guest'] = "N/A";
@@ -69,7 +71,7 @@
             <div class="bodyColumnWide">
                 <div class = "assessmentTitle">Are you ready to begin the assessment?</div>
                 <div class = "assessmentStartText"><br>This assessment may take up to 20 minutes to complete</div>
-                <div class = "assessmentStartText"><br>The progress bar may provide an rought estimate for how long until completion</div><br>
+                <div class = "assessmentStartText"><br>The progress bar may provide an rough estimate for completion</div><br>
                 <div class = "singleSubmit"><?php include '../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='25'></progress>";?></div>
                 <div class = "assessmentStartText"><br>If you see any unfamiliar terminology, please refer to the Fledge Dictionary</div><br>
                 <div class = "assessmentStartText"><br><br>Please answer all questions to the best of your ability to get accurate results!<br><br></div>
