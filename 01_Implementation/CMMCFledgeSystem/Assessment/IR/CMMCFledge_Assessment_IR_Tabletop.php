@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['ConfigBaselineReview'])){
-        $_SESSION['ConfigBaselineReview'] = $_POST['ConfigBaselineReview'];
-        header("Location: ../CM/CMMCFledge_Assessment_CM_Inventory.php");
+    if(isset($_POST['Tabletop'])){
+        $_SESSION['Tabletop'] = $_POST['Tabletop'];
+        header("Location: ../MA/CMMCFledge_Assessment_MA_Intro.php");
         exit;
     }
 ?>
@@ -35,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization review your system's baseline?</div>
+                <div class = "assessmentTitle">Does your organization test your incident response procedures (Tabletops, Walkthroughs, etc.)?</div>
                 <div class = "assessmentSubTitle"></div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="ConfigBaselineReview" value="Yes">Yes, the system baseline is reviewed</label>
-                        <label> <input type="radio" name="ConfigBaselineReview" value="No">No, the system baseline is NOT reviewed</label>
+                        <label> <input type="radio" name="Tabletop" value="Yes">Yes, incident response procedures are tested</label>
+                        <label> <input type="radio" name="Tabletop" value="No">No, incident response procedures are NOT tested</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

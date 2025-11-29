@@ -946,16 +946,29 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.6.1') && ($_SESSION['IRP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Try to build an Incident Response Plan (IRP) that is tailored to your system and meets the above controls.
+                    Due to complexity of this task, it is recommended to utilize guides and resources, or even a 3rd-party to build out a full IRP. Here are some resources to get started</div>";
+                    echo "<a href='https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf' target='_blank' >CISA IRP Basics</a></br>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/cybersecurity-101/incident-response/incident-response-steps/' target='_blank' >CrowdStrke IRP Frameworks and Steps</a></br>";
+                    echo "<a href='https://www.paloaltonetworks.com/cyberpedia/incident-response-plan' target='_blank' >Palo Alto: What is an IRP?</a></br>";
                 }
+                else if(($ControlID == 'L2-3.6.2') && ($_SESSION['IRReporting'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that within your system's Incident Response plan that roles, individuals, and authority contact as established.
+                    Keep track of all incidents (Ticketing system).</div>";
+                }
+                else if(($ControlID == 'L2-3.6.3') && ($_SESSION['Tabletop'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Test your systems incident response procedures at least annually. 
+                    This is mostly done through tabletop, walkthrough, or simulation exercises. Here are few resources to get you started:</div>";
+                    echo "<a href='https://www.cisa.gov/sites/default/files/publications/Cybersecurity-Tabletop-Exercise-Tips_508c.pdf' target='_blank' >CISA: Tabletop Exercises Tips</a></br>";
+                    echo "<a href='https://www.cisa.gov/resources-tools/services/cisa-tabletop-exercise-packages' target='_blank' >CISA: Tabletop Exercises</a></br>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -990,7 +1003,7 @@
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
         echo "<details><summary><div class='resultFamilyNameL2'>Media Protection (MP)▾</div></summary>";
-        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'AT' ORDER BY Control_ID";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'MP' ORDER BY Control_ID";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
             while($getCMMCControl = $result->fetch_assoc()) {

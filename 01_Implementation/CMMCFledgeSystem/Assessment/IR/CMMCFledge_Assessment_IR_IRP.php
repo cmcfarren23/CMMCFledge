@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['ConfigBaselineReview'])){
-        $_SESSION['ConfigBaselineReview'] = $_POST['ConfigBaselineReview'];
-        header("Location: ../CM/CMMCFledge_Assessment_CM_Inventory.php");
+    if(isset($_POST['IRP'])){
+        $_SESSION['IRP'] = $_POST['IRP'];
+        header("Location: ../IR/CMMCFledge_Assessment_IR_Reporting.php");
         exit;
     }
 ?>
@@ -35,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization review your system's baseline?</div>
+                <div class = "assessmentTitle">Does your organization maintain an Incident Response Plan for this system?</div>
                 <div class = "assessmentSubTitle"></div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="ConfigBaselineReview" value="Yes">Yes, the system baseline is reviewed</label>
-                        <label> <input type="radio" name="ConfigBaselineReview" value="No">No, the system baseline is NOT reviewed</label>
+                        <label> <input type="radio" name="IRP" value="Yes">Yes, our organization maintains an IRP for this system</label>
+                        <label> <input type="radio" name="IRP" value="No">No, our organization Does NOT maintain an IRP for this system</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

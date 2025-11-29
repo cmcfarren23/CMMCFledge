@@ -2,7 +2,7 @@
     session_start(); 
     if(isset($_POST['PasswordPolicy'])){
         $_SESSION['PasswordPolicy'] = $_POST['PasswordPolicy'];
-        header("Location: ../MP/CMMCFledge_Assessment_MP_Intro.php");
+        header("Location: ../IR/CMMCFledge_Assessment_IR_Intro.php");
         exit;
     }
 ?>

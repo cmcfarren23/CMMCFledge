@@ -38,6 +38,9 @@
      $_SESSION['MalCodeScanAuto'] = "N/A";
      $_SESSION['Flaw'] = "N/A";
      $_SESSION['MalCodeUpdate'] = "N/A";
+     $_SESSION['IRP'] = "N/A";
+     $_SESSION['IRReporting'] = "N/A";
+     $_SESSION['Tabletop'] = "N/A";
 
 
 
