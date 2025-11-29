@@ -1,5 +1,13 @@
 <?php 
     session_start(); 
+    if(isset($_POST['Maintenance'])){
+        $_SESSION['Maintenance'] = $_POST['Maintenance'];
+        if($_SESSION['Maintenance'] != 'No')
+            header("Location: ../MA/CMMCFledge_Assessment_MA_Offsite.php");
+        else
+            header("Location: ../MP/CMMCFledge_Assessment_MP_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +38,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Maintenance (MA)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Is system maintenance being performed on your system?</div>
+                <div class = "assessmentSubTitle">This includes hardware, firmware, and software</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="Maintenance" value="Yes">Yes, system maintenance is performed</label>
+                        <label> <input type="radio" name="Maintenance" value="No">No, system maintenance is NOT performed</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_MA_Maintenance.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

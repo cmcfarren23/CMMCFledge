@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['Offsite'])){
+        $_SESSION['Offsite'] = $_POST['Offsite'];
+        header("Location: ../MP/CMMCFledge_Assessment_MP_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Maintenance (MA)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Is offsite or external maintenance performed on your system?</div>
+                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="Offsite" value="Yes">Yes, there is external or offsite maintenance</label>
+                        <label> <input type="radio" name="Offsite" value="No">No, there is NOT external or offsite maintenance</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_MA_Maintenance.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

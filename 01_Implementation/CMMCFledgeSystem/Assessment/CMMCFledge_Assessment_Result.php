@@ -984,16 +984,61 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.7.1')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['Maintenance'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>Maintenance should be performed regularly. 
+                        Please keep track of any firmware, hardware of software updates, patches, or fixes</div>";
+                    }
 
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
+                }
+                else if(($ControlID == 'L2-3.7.2')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'>Utilize the principle of least privilege. 
+                            All tools, techniques, mechanisms, and personnel are controlled (logically and physically). 
+                            Utilize access permission and card readers to restrict access.</div>";
+                        }
                     }
                 }
+                else if(($ControlID == 'L2-3.7.3')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['Offsite'] == 'Yes' && $_SESSION['IAASUsage'] != 'Solely'){
+                        echo "<div class='assessmentResultTextBlockL2'>Before leaving your facility, verify that all CUI is removed. Utilize drive wiper such as:</div>";
+                        echo "<a href='https://dban.org/' target='_blank' >DBaN</a></br>";  
+                    }
+                }
+                else if(($ControlID == 'L2-3.7.4')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['MalCodeScan'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>All unknown diagnostic and test programs should be checked for malicious code. 
+                        See scanning for more information.</div>";
+                    }
+                }
+                else if(($ControlID == 'L2-3.7.5')){
+                    assessmentObj($ControlID);
+                    
+                    if($_SESSION['MultiFactor'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>Verify all remote sessions utilize MFA. See IA for more information</div>";
+                    }
+                    if($_SESSION['RemoteSecure'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>All remote sessions should terminate after inactivity. See AC for more information</div>";
+                    }
+                }
+                else if(($ControlID == 'L2-3.7.6')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Soley'){
+                        echo "<div class='assessmentResultTextBlockL2'>Escort all visitors including those contracted to perform maintenance activities</div>";
+                    }
+                    if($_SESSION['RecordLogging'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>Every action should be monitored during remote sessions. 
+                        This includes guest maintenance personnel. See AU for more information on logging.</div>";
+                    }
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -1009,16 +1054,81 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.8.1')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['Maintenance'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>Maintenance should be performed regularly. 
+                        Please keep track of any firmware, hardware of software updates, patches, or fixes</div>";
                     }
                 }
+                else if(($ControlID == 'L2-3.8.2')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'>Utilize the principle of least privilege. 
+                            Only those with need to access CUI on system media should use it. Document this in your roles and responsibilities matrix</div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.3')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.4')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.5')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.6')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.7')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.8')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else if(($ControlID == 'L2-3.8.9')){
+                    assessmentObj($ControlID);
+                    if($_SESSION['IAASUsage'] != 'Solely'){
+                        if($_SESSION['RolesMatrix'] != 'Yes'){
+                            echo "<div class='assessmentResultTextBlockL2'></div>";
+                        }
+                    }
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";

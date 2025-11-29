@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['Paper'])){
+        $_SESSION['Paper'] = $_POST['Paper'];
+        header("Location: ../MP/CMMCFledge_Assessment_MP_Sanitize.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Maintenance (MA)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your system utilize printed materials that contain CUI?</div>
+                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="Sanitize" value="Yes">Yes, there is printed CUI</label>
+                        <label> <input type="radio" name="Sanitize" value="No">No, there is NOT printed CUI</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_MA_Maintenance.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
