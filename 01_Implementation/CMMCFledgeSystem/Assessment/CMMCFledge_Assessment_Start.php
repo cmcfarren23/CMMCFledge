@@ -32,6 +32,7 @@
      $_SESSION['Guest'] = "N/A";
      $_SESSION['Sanitize'] = "N/A";
      $_SESSION['Maintenance'] = "N/A";
+     $_SESSION['Paper'] = "N/A";
      $_SESSION['Offsite'] = "N/A";
      $_SESSION['BoundaryDiagram'] = "N/A";
      $_SESSION['PubSep'] = "N/A";

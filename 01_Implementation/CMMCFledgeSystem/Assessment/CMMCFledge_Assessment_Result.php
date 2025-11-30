@@ -627,7 +627,7 @@
                     if($_SESSION['IAASUsage'] == 'solely'){
                         echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider, this control is not applicable
                         </div>";  
-                    }else if ($_SESSION['IAASUsage'] != 'special'){
+                    }else if ($_SESSION['RemovableDevices'] != 'special'){
                         echo "<div class='assessmentResultTextBlockL2'>You do not utilize removable devices,this control is not applicable
                         </div>";  
                     }else{
@@ -1055,76 +1055,83 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.8.1')){
+                if(($ControlID == 'L2-3.8.1') && ($_SESSION['IAASUsage'] != 'Solely')){
                     assessmentObj($ControlID);
-                    if($_SESSION['Maintenance'] != 'Yes'){
-                        echo "<div class='assessmentResultTextBlockL2'>Maintenance should be performed regularly. 
-                        Please keep track of any firmware, hardware of software updates, patches, or fixes</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>It is recommended to physically lock up devices within your systems authorization boundary. 
+                    Additionally, only allow access to authorized individuals.</div>";
+                    if($_SESSION['Paper'] != 'No'){
+                        echo "<div class='assessmentResultTextBlockL2'>Verify that all printed media is kept in secure areas.</div>";
                     }
                 }
                 else if(($ControlID == 'L2-3.8.2')){
                     assessmentObj($ControlID);
-                    if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'>Utilize the principle of least privilege. 
-                            Only those with need to access CUI on system media should use it. Document this in your roles and responsibilities matrix</div>";
-                        }
+                    if($_SESSION['IAASUsage'] != 'Solely' && $_SESSION['RolesMatrix'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlockL2'>Utilize the principle of least privilege. 
+                        Only those with need to access CUI on system media should use it. Document this in your roles and responsibilities matrix</div>";
                     }
                 }
                 else if(($ControlID == 'L2-3.8.3')){
                     assessmentObj($ControlID);
-                    if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                    if($_SESSION['IAASUsage'] != 'Solely' && $_SESSION['Sanitize'] != 'Yes'){
+                        echo "<div class='assessmentResultTextBlock'>Verify that all devices are wiped before reuse or disposal. 
+                        This control is easily met through popular drive wipers such as Darik's Boot and Nuke (DBaN).</div>";  
+                        echo "<a href='https://dban.org/' target='_blank' >DBaN</a></br>";  
                     }
                 }
                 else if(($ControlID == 'L2-3.8.4')){
                     assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Any and all CUI must be marked. Follow these guides for proper marking of CUI:</div>";
+                    echo "<a href='https://www.archives.gov/files/cui/20161206-cui-marking-handbook-v1-1.pdf' target='_blank' >National archives CUI Handbook</a></br>";  
+                    echo "<a href='https://www.archives.gov/cui/additional-tools' target='_blank' >CUI archives</a></br>";  
                     if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                        echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                     }
                 }
                 else if(($ControlID == 'L2-3.8.5')){
                     assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>FIXME</div>";
                     if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                        echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                     }
                 }
                 else if(($ControlID == 'L2-3.8.6')){
                     assessmentObj($ControlID);
-                    if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                    echo "<div class='assessmentResultTextBlockL2'>FIXME</div>";
+                    if($_SESSION['IAASUsage'] != 'Solely'){ //FIXME need to add crypto mechanisms
+                        echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                     }
                 }
                 else if(($ControlID == 'L2-3.8.7')){
                     assessmentObj($ControlID);
-                    if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                    if ($_SESSION['RemovableDevices'] != 'special'){
+                        echo "<div class='assessmentResultTextBlockL2'>You do not utilize removable devices,this control is not applicable
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Create policies surrounding the use of removable devices that contain CUI. Recommended: Heavily restrict external use of removable devices, 
+                        this can create risk for your organization. Stick to least functionality principles and only mandate what is required for the system to function.
+                        </div>"; 
                     }
                 }
                 else if(($ControlID == 'L2-3.8.8')){
                     assessmentObj($ControlID);
-                    if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                    if ($_SESSION['RemovableDevices'] != 'special'){
+                        echo "<div class='assessmentResultTextBlockL2'>You do not utilize removable devices,this control is not applicable
+                        </div>";  
+                    }else{
+                        echo "<div class='assessmentResultTextBlockL2'>Create policies surrounding the use of removable devices that contain CUI. Recommended: Heavily restrict external use of removable devices, 
+                        this can create risk for your organization. Stick to least functionality principles and only mandate what is required for the system to function.
+                        </div>"; 
                     }
                 }
                 else if(($ControlID == 'L2-3.8.9')){
                     assessmentObj($ControlID);
                     if($_SESSION['IAASUsage'] != 'Solely'){
-                        if($_SESSION['RolesMatrix'] != 'Yes'){
-                            echo "<div class='assessmentResultTextBlockL2'></div>";
-                        }
+                        echo "<div class='assessmentResultTextBlockL2'>Backup CUI must be protected physically and logically. 
+                        This includes securing access to the physical data storage device and utilizing NIST 140 cryptographic methods. 
+                        Access should only be given to roles that need access, always follow principles of least privilege.</div>";  
+                        echo "<a href='https://www.cisa.gov/sites/default/files/publications/data_backup_options.pdf' target='_blank' >CISA 3-2-1 Recommendation</a></br>";  
+                        echo "<div class='assessmentResultTextBlockL2'>Note: If your backup is hosted within a cloud service, this control should be inherited, 
+                        verify this by viewing your service agreement(s) with your data backup cloud provider</div>";  
                     }
                 }
                 else
