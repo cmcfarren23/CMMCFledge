@@ -1,5 +1,5 @@
 <?php
     function getTotalQuestions(){
-        return 30;
+        return 60;
     }
 ?>

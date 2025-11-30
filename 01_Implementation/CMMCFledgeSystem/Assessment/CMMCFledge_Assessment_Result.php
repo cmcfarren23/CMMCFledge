@@ -668,7 +668,7 @@
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>It may be best to look toward external training solutions for general training. KnowBe4 is popular option</div>";
                     echo "<a href='https://training.knowbe4.com/app/modstore/public?lang=&od=Desc&op=tran&sui=34&toi=135&wasl=true' target='_blank' >KnowBe4 Modules</a>";
-                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies it may be wise to create your own training that follows the objectives above. 
+                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies, it may be wise to create your own training that follows the objectives above. 
                     Try to incorporate free resources posted by the DoD or NIST where possible</div>";
                     echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD CUI Training Module</a></br>";
                     echo "<a href='https://www.defensesbirsttr.mil/Portals/122/Documents/CUI%20Training/CUI_Training_Template_Presentation_012722.pdf?ver=eRufxQuzNvFyUquMcWW6JQ%3D%3D' target='_blank' >DoD CUI Training Guide</a></br>";
@@ -677,17 +677,17 @@
                 else if(($ControlID == 'L2-3.2.2') && ($_SESSION['TrainingRole'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Ensure that additional training is done at the Role level. This makes sure that each role is aware of what they are responsible for.</div></br>";
-                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies it may be wise to create your own training that follows the objectives above. 
+                    echo "<div class='assessmentResultTextBlockL2'>Due to training that is needed to accommodate your specific CUI policies, it may be wise to create your own training that follows the objectives above. 
                     Try to incorporate free resources posted by the DoD or NIST where possible</div>";
                     echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD CUI Training Module</a></br>";
                     echo "<a href='https://www.defensesbirsttr.mil/Portals/122/Documents/CUI%20Training/CUI_Training_Template_Presentation_012722.pdf?ver=eRufxQuzNvFyUquMcWW6JQ%3D%3D' target='_blank' >DoD CUI Training Guide</a></br>";
                     echo "<a href='https://www.archives.gov/cui/training.html' target='_blank' >NIST CUI Training Archive</a></br>";
-                    echo "<div class='assessmentResultTextBlockL2'>To verify that each role can adequately carry out their tasks perform training exercises such as 
+                    echo "<div class='assessmentResultTextBlockL2'>To verify that each role can adequately carry out their tasks, perform training exercises such as 
                     tabletops, walk-throughs, or other simulations</div>";
                 }
                 else if(($ControlID == 'L2-3.2.3') && ($_SESSION['TrainingInsider'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Verify that your training package includes information on insider threat. 
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that your training package includes information on insider threats. 
                     Here is a training module that may be useful to incorporate into your training</div></br>";
                     echo "<a href='https://securityawareness.dcsa.mil/cui/index.html' target='_blank' >DoD Insider Threat Training Module</a></br>";
 
