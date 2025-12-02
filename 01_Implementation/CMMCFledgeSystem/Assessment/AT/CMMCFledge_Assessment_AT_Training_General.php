@@ -43,8 +43,8 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="TrainingGeneral" value="Yes">Yes, all individuals recieve generalized training</label>
-                        <label> <input type="radio" name="TrainingGeneral" value="No">No, all individuals DO NOT recieve generalized training</label>
+                        <label> <input type="radio" name="TrainingGeneral" value="Yes">Yes, all individuals receive generalized training</label>
+                        <label> <input type="radio" name="TrainingGeneral" value="No">No, all individuals do NOT receive generalized training</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

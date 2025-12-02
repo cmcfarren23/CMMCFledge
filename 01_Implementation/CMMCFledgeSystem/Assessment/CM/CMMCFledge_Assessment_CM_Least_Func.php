@@ -40,7 +40,7 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="LeastFunc" value="Yes">Yes, it is built with the principle of least funcatility in mind</label>
+                        <label> <input type="radio" name="LeastFunc" value="Yes">Yes, it is built with the principle of least functionality in mind</label>
                         <label> <input type="radio" name="LeastFunc" value="No">No, it is NOT built with the principle of least functionality in mind</label>
                         <br>
                         <div class = "singleSubmit">

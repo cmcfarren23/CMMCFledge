@@ -43,8 +43,8 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Remote" value="Yes">Yes, the system define and utilize remote sessions</label>
-                        <label> <input type="radio" name="Remote" value="No">No, the system does NOT define and utilize remote sessions</label>
+                        <label> <input type="radio" name="Remote" value="Yes">Yes, the system defines and utilizes remote sessions</label>
+                        <label> <input type="radio" name="Remote" value="No">No, the system does NOT defines and utilizes remote sessions</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
