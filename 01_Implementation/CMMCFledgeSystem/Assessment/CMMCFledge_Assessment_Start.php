@@ -46,6 +46,11 @@
      $_SESSION['Tabletop'] = "N/A";
      $_SESSION['Screening'] = "N/A";
      $_SESSION['Termination'] = "N/A";
+     $_SESSION['AltSite'] = "N/A";
+     $_SESSION['PhysicalGuest'] = "N/A";
+     $_SESSION['PhysicalAccess'] = "N/A";
+     $_SESSION['PhysicalLogs'] = "N/A";
+     $_SESSION['PhysicalMonitor'] = "N/A";
 
 
 

@@ -1134,18 +1134,18 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.9.1') && ($_SESSION['Screening'] != 'Solely')){
+                if(($ControlID == 'L2-3.9.1') && ($_SESSION['Screening'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>It is important to screen personnel according to your organization’s policies. 
                     Additionally, some authoring parties have specific requirements (i.e. U.S residents only)</div></br>";
                     echo "<div class='assessmentResultTextBlockL2'>Your organization’s HR department likely already uses employee screening mechanisms, 
                     verify that employees are being screened for everything that is outlined</div>";
                 }
-                else if(($ControlID == 'L2-3.9.2') && ($_SESSION['Termination'] != 'Solely')){
+                else if(($ControlID == 'L2-3.9.2') && ($_SESSION['Termination'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>In the case of employee termination all account associate with that user need to be disabled.
-                    This process should be documented along with timelines of when the accounts are deactivated. </br> </br>Recommended: Accounts should be disabled by the end of the employees last day,
-                    Any equipment given to that employee should be remotely locked at the end of the employees last day and returned or shipped for return within the week.</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>In the case of employee termination all accounts associated with that user need to be disabled.
+                    This process should be documented along with timelines of when the accounts are deactivated. </br> </br>Recommended: Accounts should be disabled by the end of the employee's last day,
+                    Any equipment given to that employee should be remotely locked at the end of the employee's last day and returned or shipped for return within the week.</div>";
 
                     echo "</br><div class='assessmentResultTextBlockL2'>Write this into a policy and enact it when this occurs. 
                     (It may be best to create a ticket template for this, if possible)</div>";
@@ -1167,16 +1167,42 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.10.1') && ($_SESSION['PhysicalAccess'] != 'Yes')){ // no PE related var can be set if IAASusage == 'solely'
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
+                    should be locked and only accessible to those with access</div>";
                 }
+                else if(($ControlID == 'L2-3.10.2') && ($_SESSION['PhysicalAccess'] != 'Yes') && ($_SESSION['PhysicalMonitor'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
+                    should be locked and only accessible to those with access</div></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>These areas should be monitored 24/7 by surveillance cameras. 
+                    Camera records should be kept for an organizationally defined period. Recommended three (3) months.</div>";
+                }
+                else if(($ControlID == 'L2-3.10.3') && ($_SESSION['PhysicalGuest'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Visitors should be escorted at all times by an authorized staff member.</div>";
+                }
+                else if(($ControlID == 'L2-3.10.4') && ($_SESSION['PhysicalLogs'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Sign-in logs and access card logs should be kept for the same time as your logical authorization logs.
+                    Verify that these logs are included in your logging retention policies</div>";
+                }
+                else if(($ControlID == 'L2-3.10.5') && ($_SESSION['PhysicalAccess'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
+                    should be locked and only accessible to those with access. All of these must be accounted for and reviewed at least annually</div>";
+                }
+                else if(($ControlID == 'L2-3.10.6') && ($_SESSION['AltSite'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>An alternate site must be configured in case of emergenices. 
+                    It must meet the same controls as the main site.</div></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>For small businesses it is highly recommended to use IAAS for this reason. IAAS services have automatic backup sites,
+                    making this control entirely inherited</div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";

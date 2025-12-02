@@ -1,11 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Termination'])){
-        $_SESSION['Termination'] = $_POST['Termination'];
-        if($_SESSION['IAASUsage'] != 'solely')
-            header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
-        else
-            header("Location: ../PE/CMMCFledge_Assessment_PE_Intro.php");
+    if(isset($_POST['PhysicalAccess'])){
+        $_SESSION['PhysicalAccess'] = $_POST['PhysicalAccess'];
+        header("Location: ../PE/CMMCFledge_Assessment_PE_Physical_Monitor.php");
         exit;
     }
 ?>
@@ -38,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization have policies in place for employee termination and transfer?</div>
-                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "assessmentTitle">Is physical access to systems, spaces, and information limited to those with access?</div>
+                <div class = "assessmentSubTitle">Is everything behind locked doors?</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Termination" value="Yes">Yes, policies for personnel termiantion and transfer are in place</label>
-                        <label> <input type="radio" name="Termination" value="No">No, policies for personnel termination or transfer are NOT in place</label>
+                        <label> <input type="radio" name="PhysicalAccess" value="Yes">Yes, physical access is limited</label>
+                        <label> <input type="radio" name="PhysicalAccess" value="No">No, physical access is NOT limited</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

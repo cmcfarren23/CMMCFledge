@@ -1,11 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Termination'])){
-        $_SESSION['Termination'] = $_POST['Termination'];
-        if($_SESSION['IAASUsage'] != 'solely')
-            header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
-        else
-            header("Location: ../PE/CMMCFledge_Assessment_PE_Intro.php");
+    if(isset($_POST['PhysicalLogs'])){
+        $_SESSION['PhysicalLogs'] = $_POST['PhysicalLogs'];
+        header("Location: ../PE/CMMCFledge_Assessment_PE_Alt_Site.php");
         exit;
     }
 ?>
@@ -38,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization have policies in place for employee termination and transfer?</div>
-                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "assessmentTitle">Are physical access logs kept?</div>
+                <div class = "assessmentSubTitle">This includes guest access logs</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Termination" value="Yes">Yes, policies for personnel termiantion and transfer are in place</label>
-                        <label> <input type="radio" name="Termination" value="No">No, policies for personnel termination or transfer are NOT in place</label>
+                        <label> <input type="radio" name="PhysicalLogs" value="Yes">Yes, access logs are kept</label>
+                        <label> <input type="radio" name="PhysicalLogs" value="No">No, access logs are NOT kept</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
