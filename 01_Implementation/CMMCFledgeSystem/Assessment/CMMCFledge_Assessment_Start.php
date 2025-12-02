@@ -44,6 +44,8 @@
      $_SESSION['IRP'] = "N/A";
      $_SESSION['IRReporting'] = "N/A";
      $_SESSION['Tabletop'] = "N/A";
+     $_SESSION['Screening'] = "N/A";
+     $_SESSION['Termination'] = "N/A";
 
 
 

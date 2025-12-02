@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Sanitize'])){
-        $_SESSION['Sanitize'] = $_POST['Sanitize'];
-        header("Location: ../PS/CMMCFledge_Assessment_PS_Intro.php");
+    if(isset($_POST['Screening'])){
+        $_SESSION['Screening'] = $_POST['Screening'];
+        header("Location: ../PS/CMMCFledge_Assessment_PS_Termination.php");
         exit;
     }
 ?>
@@ -35,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization sanitize all storage devices within the system before reuse or disposal?</div>
-                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
+                <div class = "assessmentTitle">Does your organization screen all persons before accessing the system?</div>
+                <div class = "assessmentSubTitle">This is likely done within HR before the onboarding process</div>
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Sanitize" value="Yes">Yes, storage is sanitized</label>
-                        <label> <input type="radio" name="Sanitize" value="No">No, storage is NOT sanitized</label>
+                        <label> <input type="radio" name="Screening" value="Yes">Yes, personnel are screened</label>
+                        <label> <input type="radio" name="Screening" value="No">No, personnel are NOT screened</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

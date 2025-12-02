@@ -1133,16 +1133,25 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.9.1') && ($_SESSION['Screening'] != 'Solely')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>It is important to screen personnel according to your organization’s policies. 
+                    Additionally, some authoring parties have specific requirements (i.e. U.S residents only)</div></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Your organization’s HR department likely already uses employee screening mechanisms, 
+                    verify that employees are being screened for everything that is outlined</div>";
                 }
+                else if(($ControlID == 'L2-3.9.2') && ($_SESSION['Termination'] != 'Solely')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>In the case of employee termination all account associate with that user need to be disabled.
+                    This process should be documented along with timelines of when the accounts are deactivated. </br> </br>Recommended: Accounts should be disabled by the end of the employees last day,
+                    Any equipment given to that employee should be remotely locked at the end of the employees last day and returned or shipped for return within the week.</div>";
+
+                    echo "</br><div class='assessmentResultTextBlockL2'>Write this into a policy and enact it when this occurs. 
+                    (It may be best to create a ticket template for this, if possible)</div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";

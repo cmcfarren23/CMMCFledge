@@ -1,8 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['Sanitize'])){
-        $_SESSION['Sanitize'] = $_POST['Sanitize'];
-        header("Location: ../PS/CMMCFledge_Assessment_PS_Intro.php");
+    if(isset($_POST['Termination'])){
+        $_SESSION['Termination'] = $_POST['Termination'];
+        header("Location: ../Pe/CMMCFledge_Assessment_PE_Intro.php");
         exit;
     }
 ?>
@@ -35,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization sanitize all storage devices within the system before reuse or disposal?</div>
-                <!-- <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div> -->
+                <div class = "assessmentTitle">Does your organization have policies in place for employee termination and transfer?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Sanitize" value="Yes">Yes, storage is sanitized</label>
-                        <label> <input type="radio" name="Sanitize" value="No">No, storage is NOT sanitized</label>
+                        <label> <input type="radio" name="Termination" value="Yes">Yes, policies for personnel termiantion and transfer are in place</label>
+                        <label> <input type="radio" name="Termination" value="No">No, policies for personnel termination or transfer are NOT in place</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
