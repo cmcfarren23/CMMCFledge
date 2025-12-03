@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['VulnScan'])){
+        $_SESSION['VulnScan'] = $_POST['VulnScan'];
+        header("Location: ../RA/CMMCFledge_Assessment_RA_Vuln_Remedy.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,17 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Risk Assessment (RA)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Is a frequency defined and being carried out for vulnerability scans?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="VulnScan" value="Yes">Yes, vulnerability scans are being carried out according to the policy</label>
+                        <label> <input type="radio" name="VulnScan" value="No">Yes, vulnerability scans are NOT being conducted</label>
+                        <label> <input type="radio" name="VulnScan" value="No">No, vulnerability scan do NOT happen on regular intervals</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_RA_Risk_Assessment.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['RiskAssessment'])){
+        $_SESSION['RiskAssessment'] = $_POST['RiskAssessment'];
+        header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Risk Assessment (RA)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Do risk assessments for your system happen regularly?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="RiskAssessment" value="Yes">Yes, risk asessments happen regularly</label>
+                        <label> <input type="radio" name="RiskAssessment" value="No">No, risk asessments do NOT happen regularly</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_RA_Risk_Assessment.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

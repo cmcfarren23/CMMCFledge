@@ -51,6 +51,9 @@
      $_SESSION['PhysicalAccess'] = "N/A";
      $_SESSION['PhysicalLogs'] = "N/A";
      $_SESSION['PhysicalMonitor'] = "N/A";
+     $_SESSION['VulnRemedy'] = "N/A";
+     $_SESSION['VulnScan'] = "N/A";
+     $_SESSION['RiskAssessment'] = "N/A";
 
 
 

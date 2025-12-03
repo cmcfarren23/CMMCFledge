@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['VulnRemedy'])){
+        $_SESSION['VulnRemedy'] = $_POST['VulnRemedy'];
+        header("Location: ../CA/CMMCFledge_Assessment_CA_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Risk Assessment (RA)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Are identified vulnerabilities being mitigated/remediated within the identified timelines established within risk assessments?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="VulnRemedy" value="Yes">Yes, vulnerabilities are being mitigated/remediated within the timeline</label>
+                        <label> <input type="radio" name="VulnRemedy" value="No">No, vulnerabilities are NOT being mitigated/remediated within the timeline</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_RA_Risk_Assessment.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

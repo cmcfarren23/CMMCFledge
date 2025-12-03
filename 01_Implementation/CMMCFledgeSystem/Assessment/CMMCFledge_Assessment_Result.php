@@ -1171,12 +1171,12 @@
                 if(($ControlID == 'L2-3.10.1') && ($_SESSION['PhysicalAccess'] != 'Yes')){ // no PE related var can be set if IAASusage == 'solely'
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
-                    should be locked and only accessible to those with access</div>";
+                    should be locked and only accessible to those with access.</div>";
                 }
                 else if(($ControlID == 'L2-3.10.2') && ($_SESSION['PhysicalAccess'] != 'Yes') && ($_SESSION['PhysicalMonitor'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
-                    should be locked and only accessible to those with access</div></br>";
+                    should be locked and only accessible to those with access.</div></br>";
                     echo "<div class='assessmentResultTextBlockL2'>These areas should be monitored 24/7 by surveillance cameras. 
                     Camera records should be kept for an organizationally defined period. Recommended three (3) months.</div>";
                 }
@@ -1187,22 +1187,22 @@
                 else if(($ControlID == 'L2-3.10.4') && ($_SESSION['PhysicalLogs'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Sign-in logs and access card logs should be kept for the same time as your logical authorization logs.
-                    Verify that these logs are included in your logging retention policies</div>";
+                    Verify that these logs are included in your logging retention policies.</div>";
                 }
                 else if(($ControlID == 'L2-3.10.5') && ($_SESSION['PhysicalAccess'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
-                    should be locked and only accessible to those with access. All of these must be accounted for and reviewed at least annually</div>";
+                    should be locked and only accessible to those with access. All of these must be accounted for and reviewed at least annually.</div>";
                 }
                 else if(($ControlID == 'L2-3.10.6') && ($_SESSION['AltSite'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>An alternate site must be configured in case of emergenices. 
                     It must meet the same controls as the main site.</div></br>";
                     echo "<div class='assessmentResultTextBlockL2'>For small businesses it is highly recommended to use IAAS for this reason. IAAS services have automatic backup sites,
-                    making this control entirely inherited</div>";
+                    making this control entirely inherited.</div>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";
@@ -1218,16 +1218,29 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.11.1') && ($_SESSION['RiskAssessment'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Risk management can look very different from organization to organization to is 
+                    best to create your own policy for risk assessments. Reviews addressing risk management should happen at least monthly. Here are some resources to get you started:</div>";
+                    echo "<a href='https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf' target='_blank' >NIST Risk Assessments</a></br>";  
+                    echo "<a href='https://www.cisa.gov/sites/default/files/c3vp/crr_resources_guides/CRR_Resource_Guide-RM.pdf' target='_blank' >CISA Risk Management Guide</a></br>";  
                 }
+                else if(($ControlID == 'L2-3.11.2') && ($_SESSION['VulnScan'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Vulnerability scans should be performed on all applications and organizational systems, at a defined frequency. 
+                    Recommended: at least weekly</div>";
+                    echo "<a href='https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf' target='_blank' >Qualys Vulnerability Management</a></br>"; 
+                    echo "<a href='https://www.tenable.com/products/vulnerability-management' target='_blank' >Tenable Vulnerability Management</a></br>"; 
+                    echo "<a href='https://www.lansweeper.com/lp/vulnerability-assessment/' target='_blank' >Lansweeper (local host)</a></br>"; 
+                }
+                else if(($ControlID == 'L2-3.11.3') && ($_SESSION['VulnRemedy'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Every vulnerability should be tracked within the vulnerability scanning platform or in a ticket.
+                    Verify that all vulnerabilities are addressed at risk assessment sessions, and are completed in that timeframe established</div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";

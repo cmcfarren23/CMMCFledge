@@ -2,10 +2,7 @@
     session_start(); 
     if(isset($_POST['Termination'])){
         $_SESSION['Termination'] = $_POST['Termination'];
-        if($_SESSION['IAASUsage'] != 'solely')
-            header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
-        else
-            header("Location: ../PE/CMMCFledge_Assessment_PE_Intro.php");
+        header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
         exit;
     }
 ?>
