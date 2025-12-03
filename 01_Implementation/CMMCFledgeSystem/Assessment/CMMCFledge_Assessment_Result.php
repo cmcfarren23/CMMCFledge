@@ -1289,22 +1289,80 @@
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
         echo "<details><summary><div class='resultFamilyNameL2'>System and Communications Protection (SC)▾</div></summary>";
-        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'SC' ORDER BY Control_ID";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'SC' ORDER BY right(Control_ID, 2)";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.13.1') && ($_SESSION['BoundaryDiagram'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlock'>FedRAMP, though not CMMC, has great guidance on what to add within a boundary diagram! (FedRAMP is far more strict than CMMC)</div>";  
+                    echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
                 }
+                else if(($ControlID == 'L2-3.13.2') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.3') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.4') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.5') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.6') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.7') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.8') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.9') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.10') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.11') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.12') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.13') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.14') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.15') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.13.16') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";
@@ -1320,15 +1378,40 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                if(($ControlID == 'L2-3.14.1') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.14.2') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.14.3') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.14.4') && ($_SESSION['MalCodeUpdate'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
+                    echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
+                    echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
+                }
+                else if(($ControlID == 'L2-3.14.5') && ($_SESSION['MalCodeScanAuto'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
+                    echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
+                    echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
+                }
+                else if(($ControlID == 'L2-3.14.6') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                }
+                else if(($ControlID == 'L2-3.14.7') && ($_SESSION['default'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'></div>";
                 }
             }
         }
