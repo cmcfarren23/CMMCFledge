@@ -54,6 +54,9 @@
      $_SESSION['VulnRemedy'] = "N/A";
      $_SESSION['VulnScan'] = "N/A";
      $_SESSION['RiskAssessment'] = "N/A";
+     $_SESSION['POAM'] = "N/A";
+     $_SESSION['SSP'] = "N/A";
+     $_SESSION['ControlAssessment'] = "N/A";
 
 
 

@@ -2,7 +2,7 @@
     session_start(); 
     if(isset($_POST['RiskAssessment'])){
         $_SESSION['RiskAssessment'] = $_POST['RiskAssessment'];
-        header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
+        header("Location: ../RA/CMMCFledge_Assessment_RA_Vuln_Scan.php");
         exit;
     }
 ?>

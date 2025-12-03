@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['SSP'])){
+        $_SESSION['SSP'] = $_POST['SSP'];
+        header("Location: ../SC/CMMCFledge_Assessment_SC_Intro.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,17 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Configuration Management (CM)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your organization keep an updated System Security Plan (SSP) for the system?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="SSP" value="Yes">Yes, an exists and is updated regularly</label>
+                        <label> <input type="radio" name="SSP" value="No">No, an SSP exist but it is NOT updated</label>
+                        <label> <input type="radio" name="SSP" value="No">No, an SSP does NOT exist</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_CA_Control_Assessment.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

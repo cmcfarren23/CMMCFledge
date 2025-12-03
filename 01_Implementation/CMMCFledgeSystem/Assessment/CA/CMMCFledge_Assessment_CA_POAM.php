@@ -1,5 +1,10 @@
 <?php 
     session_start(); 
+    if(isset($_POST['POAM'])){
+        $_SESSION['POAM'] = $_POST['POAM'];
+        header("Location: ../CA/CMMCFledge_Assessment_CA_SSP.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +35,16 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">This section will cover general questions about Configuration Management (CM)</div>
-                <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
-                <div class = "questionInstruction"><br><br>Answer the following questions to the best of your ability</div>
+                <div class = "assessmentTitle">Does your orgnzation keep a Plan Of Action & Milestones (POA&M)</div>
+                <div class = "assessmentSubTitle">View the Fledge Dictonary if you are unsure of any terms</div>
+                <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
-                    <form method="post" >
+                    <form method="post">
+                        <label> <input type="radio" name="POAM" value="Yes">Yes, a POA&M is kept for this system</label>
+                        <label> <input type="radio" name="POAM" value="No">No, a POA&M is NOT kept for this system</label>
+                        <br>
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_CA_Control_Assessment.php"><button type="button">Continue</button></a>
+                            <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

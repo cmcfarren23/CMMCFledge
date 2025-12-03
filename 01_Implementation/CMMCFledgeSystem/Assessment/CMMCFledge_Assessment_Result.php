@@ -647,7 +647,7 @@
                     }
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";      
             }
         }
         echo "</div></details>";
@@ -693,7 +693,7 @@
 
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";      
             }
         }
         echo "</div></details>";
@@ -762,7 +762,7 @@
                     Make this a subset of privileged users and define them in you Roles & Responsibilities documentation.</div>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";  
             }
         }
         echo "</div></details>";
@@ -844,7 +844,7 @@
                     echo "<a href='https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-167.pdf' target='_blank' >NIST Whitelisting Guide</a></br>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";      
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";      
             }
         }
         echo "</div></details>";
@@ -854,7 +854,7 @@
         include '../Include/DBConnect.php';
         echo "<div class='resultFamilyBox'>";
         echo "<details><summary><div class='resultFamilyNameL2'>Identification and Authentication (IA)▾</div></summary>";
-        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'IA' ORDER BY Control_ID";
+        $Query_CMMC_Controls = "SELECT * FROM cmmc_controls WHERE LEFT(Control_ID, 1) != 'B' && Control_Family = 'IA' ORDER BY right(Control_ID, 2)";
         $result = $conn->query($Query_CMMC_Controls );
         if ($result->num_rows > 0) {
             while($getCMMCControl = $result->fetch_assoc()) {
@@ -930,7 +930,7 @@
                     password that follows your organizational password requirements.</div>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -968,7 +968,7 @@
                     echo "<a href='https://www.cisa.gov/resources-tools/services/cisa-tabletop-exercise-packages' target='_blank' >CISA: Tabletop Exercises</a></br>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -1026,7 +1026,7 @@
                     }
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -1117,7 +1117,7 @@
                     verify this by viewing your service agreement(s) with your data backup cloud provider</div>";  
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -1151,7 +1151,7 @@
                     (It may be best to create a ticket template for this, if possible)</div>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";
             }
         }
         echo "</div></details>";
@@ -1202,7 +1202,7 @@
                     making this control entirely inherited.</div>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed.</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";
@@ -1240,7 +1240,7 @@
                     Verify that all vulnerabilities are addressed at risk assessment sessions, and are completed in that timeframe established</div>";
                 }
                 else
-                    echo "<div class='assessmentResultTextBlockL2'>You likely have this controlled covered. No Action Needed.</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";
@@ -1256,16 +1256,30 @@
             while($getCMMCControl = $result->fetch_assoc()) {
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
-                echo "<div class='resultControlNameL2'>$ControlName</div>";
-
-                $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = '$ControlID'";
-                $resultInner = $conn->query($Query_Controls_Assessments);
-                if ($resultInner->num_rows > 0) {
-                    while($getCMMCAssessment = $resultInner->fetch_assoc()) {
-                        $assessmentText = $getCMMCAssessment['Assessment_Text'];
-                        echo "<div class='controlAssessmentTextBlockL2'>• $assessmentText</div>";
-                    }
+                echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
+                // if(($ControlID == 'L2-3.12.1')){ //CMMC l2 reassess controls every three years, they will always pass this control, this just needs to be written up in their SSP
+                //     assessmentObj($ControlID);
+                // }
+                if(($ControlID == 'L2-3.12.2') && ($_SESSION['POAM'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>To track vulnerabilities a POA&M must be kept. It is recommended to follow FedRAMP’s guidance on this</div>";
+                    echo "<a href='https://www.fedramp.gov/resources/documents/rev4/REV_4_FedRAMP-POAM-Template.xlsm' target='_blank' >FedRAMP POA&M Template (Will Download)</a></br>"; 
                 }
+                else if(($ControlID == 'L2-3.12.3') && ($_SESSION['ControlAssessment'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>All security controls must be monitored on a regular basis. 
+                    This usually occurs during POA&M reviews or during preparation for reassessment. 
+                    Controls must match what your organization is currently doing, and some may require fine tuning. 
+                    This control and its severity varies from organization to organization</div>";
+                }
+                else if(($ControlID == 'L2-3.12.4') && ($_SESSION['SSP'] != 'Yes')){
+                    assessmentObj($ControlID);
+                    echo "<div class='assessmentResultTextBlockL2'>Your SSP must be updated and approved by the applicable authorities. 
+                    Creation of an SSP is outside the scope of CMMC Fledge. 
+                    It is recommended that you reach out to a 3rd party if you are not sure about the implementation of an SSP.</div>";
+                }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";
