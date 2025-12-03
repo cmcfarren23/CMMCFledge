@@ -335,7 +335,7 @@
             echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
             echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
         }else
-        echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate malicious code scanning mechanisms</div>";    
+        echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate Malicious code scanning mechanisms</div>";    
     }
     function B1XIV(){
         include '../Include/DBConnect.php';
@@ -349,12 +349,12 @@
                     echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
                 }
             }
-            echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
+            echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malicious Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
             echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
             echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
             echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
         }else
-        echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate malicious code scanning mechanisms along with identify point within your boundary diagrams</div>";          
+        echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have adequate Malicious code scanning mechanisms along with identify point within your boundary diagrams</div>";          
     }
     function B1XV(){
         include '../Include/DBConnect.php';
@@ -1379,39 +1379,60 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.14.1') && ($_SESSION['default'] != 'Yes')){
+                if(($ControlID == 'L2-3.14.1') && ($_SESSION['Flaw'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlock'>This control is easily met through flaw monitoring tools</div>";  
+                    echo "<a href='https://www.datadoghq.com/' target='_blank' >DataDog</a></br>";
+                    echo "<a href='https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel' target='_blank' >Microsoft Sentinel</a></br>";
+                    echo "<a href='https://www.splunk.com/' target='_blank' >Splunk</a></br>";
+                    echo "<div class='assessmentResultTextBlock'>This can be paired with XDR tools or your response teams to meet this control. Start by defining time frames! (This is best done by criticality of the flaw)</div>";
                 }
-                else if(($ControlID == 'L2-3.14.2') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.14.2') && ($_SESSION['MalCodeProt'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malicious Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
+                    echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
+                    echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
                 }
-                else if(($ControlID == 'L2-3.14.3') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.14.3') && ($_SESSION['SecurityAdvisory'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Security alerts are extremely important to stay informed within the world of security. 
+                    It is important to be notified when security alerts are disseminated. Most of these security alerts can be integrated within your flaw remediation tools. 
+                    Some of these advisories are:</div>";
+                    echo "<a href='https://nvd.nist.gov/' target='_blank' >NIST</a></br>";
+                    echo "<a href='https://msrc.microsoft.com/update-guide' target='_blank' >Microsoft</a></br>";
+                    echo "<a href='https://access.redhat.com/security/security-updates/' target='_blank' >Redhat</a></br>";
+                    echo "<a href='https://www.debian.org/security/' target='_blank' >Debian</a></br>";
+                    echo "<a href='https://www.cisa.gov/news-events/cybersecurity-advisories' target='_blank' >CISA</a></br>";
                 }
                 else if(($ControlID == 'L2-3.14.4') && ($_SESSION['MalCodeUpdate'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
+                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malicious Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
                     echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
                     echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
                     echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
                 }
                 else if(($ControlID == 'L2-3.14.5') && ($_SESSION['MalCodeScanAuto'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malcoius Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
+                    echo "<div class='assessmentResultTextBlock'>This control is easily met through an major Malicious Code Scanner Platform such as Qualys, PaloAlto, or CrowdStrike</div>";  
                     echo "<a href='https://www.qualys.com/enterprise-trurisk-platform/' target='_blank' >Qualys</a></br>";
                     echo "<a href='https://www.paloaltonetworks.com/' target='_blank' >PaloAlto</a></br>";
                     echo "<a href='https://www.crowdstrike.com/en-us/' target='_blank' >CrowdStrike</a></br>";
                 }
-                else if(($ControlID == 'L2-3.14.6') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.14.6') && ($_SESSION['RecordLogging'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>It is recommend to have a SIEM tool that conducts logging within your system. 
+                    Once that is configured make sure you keep track of what events are being logged and what is within each record: See the Following for SIEM recommendations</div>";
+                    echo "<a href='https://www.crowdstrike.com/en-us/platform/next-gen-siem/' target='_blank' >CrowdStrike</a></br>";
+                    echo "<a href='https://www.datadoghq.com/product/cloud-siem/' target='_blank' >DataDog</a></br>";
+                    echo "<a href='https://www.splunk.com/en_us/products/enterprise-security-essentials.html' target='_blank' >Splunk</a></br>";
+                    echo "<a href='https://wazuh.com/blog/wazuh-for-cmmc-compliance/' target='_blank' >Wazuh</a></br>";
+                    echo "<div class='assessmentResultTextBlockL2'>Note: When considering purchasing these products verify that you are receiving the FedRAMP Moderate or CMMC certified version</div>";
                 }
-                else if(($ControlID == 'L2-3.14.7') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.14.7')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>This control is primarily policy. Create an Acceptable Use policy, or Rules of Behavior policy
+                    and define the difference between authorized and unauthorized use of the system</div>";
                 }
             }
         }

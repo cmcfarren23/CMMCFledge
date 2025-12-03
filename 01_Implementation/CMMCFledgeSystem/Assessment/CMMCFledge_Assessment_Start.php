@@ -57,6 +57,7 @@
      $_SESSION['POAM'] = "N/A";
      $_SESSION['SSP'] = "N/A";
      $_SESSION['ControlAssessment'] = "N/A";
+     $_SESSION['SecurityAdvisory'] = "N/A";
 
 
 
