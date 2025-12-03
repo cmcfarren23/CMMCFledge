@@ -2,7 +2,10 @@
     session_start(); 
     if(isset($_POST['Sanitize'])){
         $_SESSION['Sanitize'] = $_POST['Sanitize'];
-        header("Location: ../PS/CMMCFledge_Assessment_PS_Intro.php");
+        if($_SESSION['CMMCCertType'] == 'CMMC l1'){
+            header("Location: ../SC/CMMCFledge_Assessment_SC_Boundary_Diagram.php");
+        }else
+            header("Location: ../PS/CMMCFledge_Assessment_PS_Intro.php");
         exit;
     }
 ?>

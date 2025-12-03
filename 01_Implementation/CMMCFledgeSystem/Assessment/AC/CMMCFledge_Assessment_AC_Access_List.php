@@ -2,7 +2,10 @@
     session_start(); 
     if(isset($_POST['RolesMatrix'])){
         $_SESSION['RolesMatrix'] = $_POST['RolesMatrix'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_SoD.php");
+        if($_SESSION['CMMCCertType'] == 'CMMC l1'){
+            header("Location: ../AC/CMMCFledge_Assessment_AC_Public_Components.php");
+        }else
+            header("Location: ../AC/CMMCFledge_Assessment_AC_SoD.php");
         exit;
     }
 ?>

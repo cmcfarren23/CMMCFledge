@@ -2,6 +2,9 @@
     session_start(); 
     if(isset($_POST['Flaw'])){
         $_SESSION['Flaw'] = $_POST['Flaw'];
+        if($_SESSION['CMMCCertType'] == 'CMMC l1'){
+            header("Location: ../CMMCFledge_Assessment_Result.php");
+        }else
         header("Location: ../SI/CMMCFledge_Assessment_SI_Security_Advisory.php");
         exit;
     }

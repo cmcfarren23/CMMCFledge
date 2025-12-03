@@ -3,7 +3,10 @@
     // echo $_SESSION['CMMCCertType']; // test
     if(isset($_POST['IAASSelect'])){
         $_SESSION['IAASSelect'] = $_POST['IAASSelect'];
-        header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
+        if($_SESSION['CMMCCertType'] == 'CMMC l1'){
+            header("Location: ../AC/CMMCFledge_Assessment_AC_Access_List.php");
+        }else
+            header("Location: ../AC/CMMCFledge_Assessment_AC_Intro.php");
         exit;
     }
 ?>

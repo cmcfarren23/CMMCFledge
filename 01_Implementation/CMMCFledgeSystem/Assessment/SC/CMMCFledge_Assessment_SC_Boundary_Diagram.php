@@ -5,7 +5,7 @@
         if($_SESSION['PublicComponents'] == "Yes"){
             header("Location: ../SC/CMMCFledge_Assessment_SC_Public_Sep.php");
         }else{
-            header("Location: ../SI/CMMCFledge_Assessment_SI_Intro.php");
+            header("Location: ../SC/CMMCFledge_Assessment_SC_Secure_Transit.php");
         }
         exit;
     }

@@ -58,6 +58,8 @@
      $_SESSION['SSP'] = "N/A";
      $_SESSION['ControlAssessment'] = "N/A";
      $_SESSION['SecurityAdvisory'] = "N/A";
+     $_SESSION['SecureTransit'] = "N/A";
+     $_SESSION['SecureRest'] = "N/A";
 
 
 

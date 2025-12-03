@@ -1,11 +1,8 @@
 <?php 
     session_start(); 
-    if(isset($_POST['IDP'])){
-        $_SESSION['IDP'] = $_POST['IDP'];
-        if($_SESSION['CMMCCertType'] == 'CMMC l1'){
-            header("Location: ../MP/CMMCFledge_Assessment_MP_Sanitize.php");
-        }else
-        header("Location: ../IA/CMMCFledge_Assessment_IA_Multi_Factor.php");
+    if(isset($_POST['SecureRest'])){
+        $_SESSION['SecureRest'] = $_POST['SecureRest'];
+        header("Location: ../SI/CMMCFledge_Assessment_SI_Intro.php");
         exit;
     }
 ?>
@@ -38,13 +35,13 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your organization utilize a major Identity Provider such as EntraID, Okta, or Auth0?</div>
-                <div class = "assessmentSubTitle">Does not have to be one of the examples provided</div>
+                <div class = "assessmentTitle">Does your organization utilize FIPS-140 cryptographic modules to protect data at rest?</div>
+                <!-- <div class = "assessmentSubTitle"></div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="IDP" value="Yes">Yes, the system uses a major IDP</label>
-                        <label> <input type="radio" name="IDP" value="No">No, the system does NOT use a major IDP</label>
+                        <label> <input type="radio" name="SecureRest" value="Yes">Yes, FIPS-140 modules are used for data at rest</label>
+                        <label> <input type="radio" name="SecureRest" value="No">No, FIPS-140 modules are NOT used for data at rest</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>

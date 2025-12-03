@@ -2,7 +2,10 @@
     session_start(); 
     if(isset($_POST['PubSep'])){
         $_SESSION['PubSep'] = $_POST['PubSep'];
-        header("Location: ../SI/CMMCFledge_Assessment_SI_Intro.php");
+        if($_SESSION['CMMCCertType'] == 'CMMC l1'){
+            header("Location: ../SI/CMMCFledge_Assessment_SI_Mal_Code_Protection.php");
+        }else
+            header("Location: ../SC/CMMCFledge_Assessment_SC_Secure_Transit.php");
         exit;
     }
 ?>

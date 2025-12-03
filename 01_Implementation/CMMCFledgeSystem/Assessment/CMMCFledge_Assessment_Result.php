@@ -283,7 +283,7 @@
     }
     function B1XI(){
         include '../Include/DBConnect.php';
-        if($_SESSION['PubSep'] != 'Yes' && $_SESSION['PubSep'] == 'Yes'){
+        if($_SESSION['PubSep'] == 'Yes'){
             echo "<div class='assessmentResultTextBlock'>It seems you don't have a public component separation. This control is looking for:</div>";    
             $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XI'";
             $result = $conn->query($Query_Controls_Assessments );
@@ -358,7 +358,7 @@
     }
     function B1XV(){
         include '../Include/DBConnect.php';
-        if(($_SESSION['MalCodeProt'] != 'Yes' && ($_SESSION['MalCodeScan'] != 'Yes') || $_SESSION['MalCodeScanAuto'] != 'Yes')){
+        if(($_SESSION['MalCodeProt'] != 'Yes' && (($_SESSION['MalCodeScan'] != 'Yes') || $_SESSION['MalCodeScanAuto'] != 'Yes'))){
             echo "<div class='assessmentResultTextBlock'>Based on your answers regarding Malicious Code Scanning you may not meet this control. This control is looking for:</div>";    
             $Query_Controls_Assessments = "SELECT * FROM control_assessments WHERE CMMC_Controls_Control_ID = 'B.1.XV'";
             $result = $conn->query($Query_Controls_Assessments );
@@ -395,25 +395,7 @@
         echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/ScopingGuideL2v2.pdf' target='_blank'>L2 Scoping Guidance (Unsure whats in your Authorization Boundary?)</a></br>";
         echo "<a href='https://dodcio.defense.gov/Portals/0/Documents/CMMC/AssessmentGuideL2v2.pdf' target='_blank'>CMMC L2 Assessment Objectives</a></br></br>";
     }
-    function copyPasteTempDontCall(){
-                if(($ControlID == '') && ($_SESSION[''] != 'Yes')){
-                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through </div>";  
-                    echo "<a href='' target='_blank'>TechName</a></br>";
-                    echo "<div class='assessmentResultTextBlockL2'>or</div>";  
-                    echo "<a href='' target='_blank'>TechName</a></br>";
-                }
-                if($_SESSION['IAASUsage'] == 'Yes'){
-                        if($_SESSION['IAASSelect'] == 'AWS'){
-                            
-                        }
-                        if($_SESSION['IAASSelect'] == 'Azure'){
 
-                        }
-                        if($_SESSION['IAASSelect'] == 'Google'){
-
-                        }
-                    }
-    }
     function assessmentObj($ControlID){
         include '../Include/DBConnect.php';
         echo "<div class='assessmentResultTextBlockL2'>You may not be passing this control, this control's assessment objectives are:</div></br>";
@@ -458,9 +440,11 @@
                     echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
                     echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
                 }
-                else if(($ControlID == 'L2-3.1.3') && ($_SESSION['IDP'] != 'Yes')){ //FIXME
+                else if(($ControlID == 'L2-3.1.3') && ($_SESSION['BoundaryDiagram'] != 'Yes')){ //FIXME
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>FIXME
+                    echo "<div class='assessmentResultTextBlockL2'>Define how CUI can be transmitted and to where. 
+                    It may be recommended to label CUI zones and flow within your Boundary diagram. 
+                    Only Roles listed in your roles & responsibilities matrix that should access and transmit CUI, should be allowed to do so. Write these zones into policy.
                     </div>"; 
                 }
                 else if(($ControlID == 'L2-3.1.4') && ($_SESSION['RolesSoD'] != 'Yes')){
@@ -562,15 +546,16 @@
                 }
                 else if(($ControlID == 'L2-3.1.14') && ($_SESSION['Remote'] != 'Yes' && $_SESSION['BoundaryDiagram'] != 'Yes')  ){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Identify gateways that transmit data, verify that all network is routed through those managed control points
+                    echo "<div class='assessmentResultTextBlockL2'>Identify gateways that transmit data, verify that all network is routed through those managed control points.
                     </div>";  
                 }
-                else if(($ControlID == 'L2-3.1.15') && ($_SESSION['Remote'] != 'null')  ){ //FIXME
+                else if(($ControlID == 'L2-3.1.15') && ($_SESSION['RolesSoD'] != 'Yes')  ){ //FIXME
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>FIXME
+                    echo "<div class='assessmentResultTextBlockL2'>Remote privileged commands should be defined for use. 
+                    Individuals with access to these commands should be labeled within your roles & responsibilities matrix.
                     </div>";  
                 }
-                else if(($ControlID == 'L2-3.1.16')){//FIXME
+                else if(($ControlID == 'L2-3.1.16')){
                     assessmentObj($ControlID);
                     if($_SESSION['IAASUsage'] == 'solely'){
                         echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider this control is not applicable
@@ -580,7 +565,7 @@
                         </div>";  
                     }
                 }
-                else if(($ControlID == 'L2-3.1.17')){//FIXME
+                else if(($ControlID == 'L2-3.1.17')){
                     assessmentObj($ControlID);
                     if($_SESSION['IAASUsage'] == 'solely'){
                         echo "<div class='assessmentResultTextBlockL2'>Your Authorization boundary exists solely within your IAAS Provider, this control is not applicable
@@ -1071,19 +1056,13 @@
                         echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                     }
                 }
-                else if(($ControlID == 'L2-3.8.5')){
+                else if(($ControlID == 'L2-3.8.5') && ($_SESSION['SecureRest'] != 'Solely')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>FIXME</div>";
-                    if($_SESSION['IAASUsage'] != 'Solely'){
-                        echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
-                    }
+                    echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                 }
-                else if(($ControlID == 'L2-3.8.6')){
+                else if(($ControlID == 'L2-3.8.6') && ($_SESSION['SecureRest'] != 'Solely')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>FIXME</div>";
-                    if($_SESSION['IAASUsage'] != 'Solely'){ //FIXME need to add crypto mechanisms
-                        echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
-                    }
+                    echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                 }
                 else if(($ControlID == 'L2-3.8.7')){
                     assessmentObj($ControlID);
@@ -1301,65 +1280,78 @@
                     echo "<div class='assessmentResultTextBlock'>FedRAMP, though not CMMC, has great guidance on what to add within a boundary diagram! (FedRAMP is far more strict than CMMC)</div>";  
                     echo "<a href='https://www.fedramp.gov/resources/documents/CSP_A_FedRAMP_Authorization_Boundary_Guidance_Draft_For_Public_Comment%20_V3.0.docx' target='_blank' >FedRAMP Boundary Diagram Guidelines (Will download .Docx)</a>";  
                 }
-                else if(($ControlID == 'L2-3.13.2') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.2') && ($_SESSION['LeastFunc'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Architectural designs and software development should be done in a way that promotes security. This mostly pertains to the principle of least functionality. 
+                    These less your system can do, generally, the smaller the attack surface.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.3') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.3') && ($_SESSION['RolesSoD'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Create and define Roles & Responsibilities. Verify that these responsibilities enforce Separation of Duties best practice. 
+                    Upon defining these roles, enforce it within your system and restrict access to resources accordingly.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.4') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.4') && ($_SESSION['IAASUsage'] == 'Solely')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>All components should be logically separated from the rest of the system (VLANs)</div>";
                 }
-                else if(($ControlID == 'L2-3.13.5') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.5') && ($_SESSION['PubSep'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>All publicly access accessible components should be logically separated from the rest of the system (VLANs)</div>";
                 }
-                else if(($ControlID == 'L2-3.13.6') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.6') && ($_SESSION['LeastFunc'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>As a part of the least functionality principle only communications in use should be allowed. 
+                    Create a whitelist and write a Deny all accept by exception policy.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.7') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.7')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Split tunneling should not be allowed. This can be fixed with VPNs</div>";
                 }
-                else if(($ControlID == 'L2-3.13.8') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.8') && ($_SESSION['SecureTransit'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>All data in transit should be secure by FIPS-140 cryptographic modules. 
+                    View the Fledge dictionary for more information on FIPS-140</div>";
                 }
-                else if(($ControlID == 'L2-3.13.9') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.9') && ($_SESSION['RemoteSecure'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that all network connections can be timed out after a certain period or other defined cutoffs. 
+                    Recommended: After fifteen (15) minutes of inactivity require reauthentication; after one (1) hour of inactivity terminate the session; or when prompted by the user.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.10') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.10')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that all cryptographic keys are securely stored within your environment, here are some resources:</div>";
+                    echo "<a href='https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-175Br1.pdf' target='_blank' >NIST Crypto Standards</a></br>"; 
+                    echo "<a href='https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf' target='_blank' >NIST Key Management</a></br>"; 
                 }
-                else if(($ControlID == 'L2-3.13.11') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.11') && ($_SESSION['SecureTransit'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>All data in transit should be secure by FIPS-140 cryptographic modules. 
+                    View the Fledge dictionary for more information on FIPS-140</div>";
                 }
-                else if(($ControlID == 'L2-3.13.12') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.12')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>To avoid extensive questioning on the use of collaborative computing devices, the CMMC Fledge assessment did not cover this control. 
+                    It is recommended that you determine if your system contains collaborative computing devices. These include, cameras, microphones, keyboards, mice, etc.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.13') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.13') && ($_SESSION['LoggingTools'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Mobile devices and mobile codes should be controlled and monitored, 
+                    implement system logging functionality for mobile code and control its access. This should be written into your access control, and logging policies.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.14') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.14') && ($_SESSION['LoggingTools'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>VoIP should be controlled and monitored, 
+                    implement system logging functionality for VoIP and control its access. This should be written into your access control, and logging policies</div>";
                 }
-                else if(($ControlID == 'L2-3.13.15') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.15') && ($_SESSION['SecureTransit'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>All data in transit should be secure by FIPS-140 cryptographic modules. 
+                    View the Fledge dictionary for more information on FIPS-140</div>";
                 }
-                else if(($ControlID == 'L2-3.13.16') && ($_SESSION['default'] != 'Yes')){
+                else if(($ControlID == 'L2-3.13.16') && ($_SESSION['SecureRest'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'></div>";
+                    echo "<div class='assessmentResultTextBlockL2'>All data at rest should be secure by FIPS-140 cryptographic modules. 
+                    View the Fledge dictionary for more information on FIPS-140</div>";
                 }
                 else
                     echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed.</div>";
