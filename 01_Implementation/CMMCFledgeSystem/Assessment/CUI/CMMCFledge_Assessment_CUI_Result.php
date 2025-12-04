@@ -5,6 +5,7 @@
             if(in_array('None',$_SESSION['CUICat'])){
                 echo "It seems you may not contain any CUI within your system. You can go with a CMMC l1 certification";
                 $_SESSION['CMMCCertType'] = 'CMMC l1';
+                break;
             }else{
             foreach ($_SESSION['CUIType'] as $key => $value) { 
                 if($value == 0){
