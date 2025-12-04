@@ -90,11 +90,11 @@
                     echo "<div class='controlAssessmentTextBlock'>$assessmentText</div>";
                 }
             }
-            echo "<div class='assessmentResultTextBlock'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
+            echo "<div class='assessmentResultTextBlock'>This control is easily met through a major ID provider such as EntraID, Okta, or Auth0</div>";  
             echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
             echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
             echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
-            echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
+            echo "<div class='assessmentResultTextBlock'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additional technical knowledge)</div>";  
             echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
         }else
             echo "<div class='assessmentResultTextBlock'>You likely have this control covered because you have a major IDP provider!</div>";   
@@ -433,14 +433,14 @@
                 }
                 else if(($ControlID == 'L2-3.1.2') && ($_SESSION['IDP'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through an major ID provider such as EntraID, Okta, or Auth0</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>This control is easily met through a major ID provider such as EntraID, Okta, or Auth0.</div>";  
                     echo "<a href='https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id' target='_blank'>EntraID</a></br>";
                     echo "<a href='https://www.okta.com/' target='_blank'>Okta</a></br>";
                     echo "<a href='https://auth0.com/' target='_blank'>Auth0</a></br>";
-                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additonal technical knowledge)</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>or this control can be met within proper management of Active Directory (Windows) or Kerberos (Linux; may require additional technical knowledge).</div>";  
                     echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_a_kerberos_5_server' target='_blank'>Kerberos Set-up</a></br>";
                 }
-                else if(($ControlID == 'L2-3.1.3') && ($_SESSION['BoundaryDiagram'] != 'Yes')){ //FIXME
+                else if(($ControlID == 'L2-3.1.3') && ($_SESSION['BoundaryDiagram'] != 'Yes')){ 
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Define how CUI can be transmitted and to where. 
                     It may be recommended to label CUI zones and flow within your Boundary diagram. 
@@ -454,23 +454,23 @@
                 }
                 else if(($ControlID == 'L2-3.1.5') && ($_SESSION['RolesSoD'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privilged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
-                    Upon defining these roles, enforce that matrix within your system and restrict access to resources accordingly.</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privileged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
+                    Upon defining these roles, enforce them within your system and restrict access to resources accordingly.</div>";  
                 }
                 else if(($ControlID == 'L2-3.1.6') && ($_SESSION['RolesSoD'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privilged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
-                    Upon defining these roles, enforce that matrix within your system and restrict access to resources accordingly.</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privileged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
+                    Upon defining these roles, enforce them within your system and restrict access to resources accordingly.</div>";  
                 }
                 else if(($ControlID == 'L2-3.1.7') && ($_SESSION['RolesSoD'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privilged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
-                    Upon defining these roles, enforce that matrix within your system and restrict access to resources accordingly. Verify that these actions are logged</div>";  
+                    echo "<div class='assessmentResultTextBlockL2'>Define privileged accounts, non-privileged accounts, and security functions. Verify that these responsibilities enforce Least Privilege. 
+                    Upon defining these roles, enforce them within your system and restrict access to resources accordingly. Verify that these actions are logged.</div>";  
                 }
                 else if(($ControlID == 'L2-3.1.8') && ($_SESSION['Lockout'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Define and implement max logon attempts for your system. 
-                    Recommended: A max of three (3) consecutive logon attempts within a fifteen (15) minute Timeframe</div>";  
+                    Recommended: A max of three (3) consecutive logon attempts within a fifteen (15) minute timeframe.</div>";  
                 }
                 else if(($ControlID == 'L2-3.1.9') && ($_SESSION['SystemWarning'] != 'Yes')){
                     assessmentObj($ControlID);
@@ -492,13 +492,13 @@
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Define and implement Session locks after a defined period of inactivity. Additionally, when locking the session use a screen save to 
                     block information (This is standard within windows devices). Recommended: Session lockout should be initiated after fifteen (15) minutes
-                    Or upon user request.
+                    or upon user request.
                     </div>";  
                 }
                 else if(($ControlID == 'L2-3.1.11') && ($_SESSION['Lockout'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Define and implement Session termination after a defined action. 
-                    These actions typically involve time of day restrictions or inactivity thresholds. Set up a policy surrounding this item an implement it.
+                    These actions typically involve time of day restrictions or inactivity thresholds. Set up a policy surrounding this item and implement it.
                     </div>";  
                 }
                 else if(($ControlID == 'L2-3.1.12') && ($_SESSION['RemoteSecure'] != 'Yes')){
@@ -531,7 +531,7 @@
                         echo "<div class='assessmentResultTextBlockL2'>Define cryptographic modules in use with remote sessions (RDP, VPNs, etc.).</div></br>";  
                         if($_SESSION['IAASUsage'] == 'solely' || $_SESSION['IAASUsage'] == 'includes'){
                             echo "<div class='assessmentResultTextBlockL2'>Utilization of major IAAS services usually allow the use of their cryptographic modules 
-                            verify that they met FIPS 140 standards. View your IAAS offerings:</div>"; 
+                            verify that they meet FIPS 140 standards. View your IAAS offerings:</div>"; 
                             if($_SESSION['IAASSelect'] == 'AWS'){
                                 echo "<a href='https://aws.amazon.com/cloudhsm/' target='_blank'>AWS HSM</a></br>";
                             }
@@ -546,7 +546,7 @@
                 }
                 else if(($ControlID == 'L2-3.1.14') && ($_SESSION['Remote'] != 'Yes' && $_SESSION['BoundaryDiagram'] != 'Yes')  ){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Identify gateways that transmit data, verify that all network is routed through those managed control points.
+                    echo "<div class='assessmentResultTextBlockL2'>Identify gateways that transmit data. Verify that all network is routed through those managed control points.
                     </div>";  
                 }
                 else if(($ControlID == 'L2-3.1.15') && ($_SESSION['RolesSoD'] != 'Yes')  ){ //FIXME
@@ -697,7 +697,7 @@
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
                 if(($ControlID == 'L2-3.3.1') && ($_SESSION['RecordLogging'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>It is recommend to have a SIEM tool that conducts logging within your system. 
+                    echo "<div class='assessmentResultTextBlockL2'>It is recommended to have a SIEM tool that conducts logging within your system. 
                     Once that is configured make sure you keep track of what events are being logged and what is within each record: See the Following for SIEM recommendations</div>";
                     echo "<a href='https://www.crowdstrike.com/en-us/platform/next-gen-siem/' target='_blank' >CrowdStrike</a></br>";
                     echo "<a href='https://www.datadoghq.com/product/cloud-siem/' target='_blank' >DataDog</a></br>";
@@ -712,17 +712,17 @@
                 else if(($ControlID == 'L2-3.3.3') && ($_SESSION['RecordReview'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Create a policy surrounding when to review logged events. 
-                    Recommend: Do this weekly if possible. If your organization has less resources Monthly can be recommended as well. Assign roles to this task and update your logging metrics accordingly</div>";
+                    Recommend: Do this weekly if possible. If your organization has fewer resources, monthly reviews may be acceptable. Assign roles to this task and update your logging metrics accordingly</div>";
                 }
                 else if(($ControlID == 'L2-3.3.4') && ($_SESSION['RecordReviewChanges'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Within your SIEM or logging system set up alerts for logging failures. This is standard across SIEM tools, refer to guides for your SIEM to set this up. 
+                    echo "<div class='assessmentResultTextBlockL2'>Within your SIEM or logging system set up alerts for logging failures. This is standard across SIEM tools. Refer to guides for your SIEM to set this up. 
                     Many have integrations to alert via Email, Microsoft Teams, Slack, or other team communication applications. Verify that these alerts are set up to alert the specified roles to review audit logging failures.</div>";
                 }
                 else if(($ControlID == 'L2-3.3.5') && ($_SESSION['RecordReview'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Define process for reviewing audit logs and correlating with other mechanisms within your system. If suspicious activity is detected have a plan of action. 
-                    Break it down into who it needs to be reported to (internal and external) and what process follow. Start with an initial investigation and then if needed move on to IRP procedures.</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Define a process for reviewing audit logs and correlating with other mechanisms within your system. Develop a plan of action to follow If suspicious activity is detected. 
+                    Break it down into who it needs to be notified (internal and external) and what process to follow. Start with an initial investigation and then, if needed, move on to IRP procedures.</div>";
                 }
                 else if(($ControlID == 'L2-3.3.6') && ($_SESSION['RecordLogging'] != 'Yes')){
                     assessmentObj($ControlID);
@@ -739,12 +739,12 @@
                 else if(($ControlID == 'L2-3.3.8') && ($_SESSION['LoggingTools'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Make logging tools and mechanisms only available to those who need to access them. 
-                    Make this a subset of privileged users and define them in you Roles & Responsibilities documentation.</div>";
+                    Make this a subset of privileged users and define them in your Roles & Responsibilities documentation.</div>";
                 }
                 else if(($ControlID == 'L2-3.3.9') && ($_SESSION['LoggingTools'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Make logging tools and mechanisms only available to those who need to access them. 
-                    Make this a subset of privileged users and define them in you Roles & Responsibilities documentation.</div>";
+                    Make this a subset of privileged users and define them in your Roles & Responsibilities documentation.</div>";
                 }
                 else
                     echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed</div>";  
@@ -794,7 +794,7 @@
                     if($_SESSION['IAASUsage'] == 'Yes'){
                         echo "<div class='assessmentResultTextBlockL2'>Physical access restrictions to your system is covered by your IAAS provider.</div>";
                     }else{
-                        echo "<div class='assessmentResultTextBlockL2'>Please verify that physical access to your systems re restricted to only those with authorization 
+                        echo "<div class='assessmentResultTextBlockL2'>Please verify that physical access to your systems are restricted to only those with authorization 
                         (Badge readers, key cards, Security, Etc.)</div>";
                     }
                     echo "<div class='assessmentResultTextBlockL2'>Verify that only those with authorization have access to logical systems involving change management. 
@@ -808,12 +808,12 @@
                 else if(($ControlID == 'L2-3.4.7') && ($_SESSION['LeastFunc'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Define functionalities for all parts of the system. Identify use of essential and non-essential items as described above. 
-                    Document these uses and keep the document up to date during configuration management reviews. This should be apart of your organization's configuration management policy.</div>";
+                    Document these uses and keep the document up to date during configuration management reviews. This should be a part of your organization's configuration management policy.</div>";
                 }
                 else if(($ControlID == 'L2-3.4.8') && ($_SESSION['Whitelist'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Specify whether your system utilizes a blacklist (Allow all; Deny by exception) or whitelist (Deny all; Allow by exception) 
-                    for software. Employ this using Device management technique for your operating systems.</div>";
+                    for software. Employ this using device management techniques for your operating systems.</div>";
                     echo "<a href='https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/applocker/applocker-overview' target='_blank' >Windows Applocker</a></br>";
                     echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html-single/selinux_users_and_administrators_guide/index' target='_blank' >SELinux</a></br>";
                     echo "<div class='assessmentResultTextBlockL2'>Additional NIST guidance can be found below:</div>";
@@ -822,7 +822,7 @@
                 else if(($ControlID == 'L2-3.4.9') && ($_SESSION['Whitelist'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Specify whether your system utilizes a blacklist (Allow all; Deny by exception) or whitelist (Deny all; Allow by exception) 
-                    for software. Employ this using Device management technique for your operating systems. Verify that any software is monitored and is defined within your AU policies.</div>";
+                    for software. Employ this using device management techniques for your operating systems. Verify that any software is monitored and is defined within your AU policies.</div>";
                     echo "<a href='https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/applocker/applocker-overview' target='_blank' >Windows Applocker</a></br>";
                     echo "<a href='https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html-single/selinux_users_and_administrators_guide/index' target='_blank' >SELinux</a></br>";
                     echo "<div class='assessmentResultTextBlockL2'>Additional NIST guidance can be found below:</div>";
@@ -883,12 +883,12 @@
                 }
                 else if(($ControlID == 'L2-3.5.5') && ($_SESSION['IDReuse'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Identifiers should never be reused or deleted. Move inactive users into an “disabled” status. 
+                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Identifiers should never be reused or deleted. Move inactive users into a “disabled” status. 
                     Users should be moved into the “disabled” upon request (due to termination or transfer) or after an inactivity period of ninety (90) days. This should be written into your organizational policies surrounding accounts and access.</div>";  
                 }
                 else if(($ControlID == 'L2-3.5.6') && ($_SESSION['IDReuse'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Identifiers should never be reused or deleted. Move inactive users into an “disabled” status. 
+                    echo "<div class='assessmentResultTextBlockL2'>Recommended: Identifiers should never be reused or deleted. Move inactive users into a “disabled” status. 
                     Users should be moved into the “disabled” upon request (due to termination or transfer) or after an inactivity period of ninety (90) days. This should be written into your organizational policies surrounding accounts and access.</div>";  
                 }
                 else if(($ControlID == 'L2-3.5.7') && ($_SESSION['PasswordPolicy'] != 'Yes')){
@@ -911,7 +911,7 @@
                 }
                 else if(($ControlID == 'L2-3.5.9')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Verify that upon the use of an temporary password a user is prompted to change to a permanent 
+                    echo "<div class='assessmentResultTextBlockL2'>Verify that upon the use of a temporary password a user is prompted to change to a permanent 
                     password that follows your organizational password requirements.</div>";
                 }
                 else
@@ -934,8 +934,7 @@
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
                 if(($ControlID == 'L2-3.6.1') && ($_SESSION['IRP'] != 'Yes')){
                     assessmentObj($ControlID);
-                    echo "<div class='assessmentResultTextBlockL2'>Try to build an Incident Response Plan (IRP) that is tailored to your system and meets the above controls.
-                    Due to complexity of this task, it is recommended to utilize guides and resources, or even a 3rd-party to build out a full IRP. Here are some resources to get started</div>";
+                    echo "<div class='assessmentResultTextBlockL2'>Try to build an Incident Response Plan (IRP) that is tailored to your system and meets the above controls. Due to the complexity of this task, it is recommended to utilize guides and resources, or even a 3rd-party to build out a full IRP. Here are some resources to get started</div>";
                     echo "<a href='https://www.cisa.gov/sites/default/files/publications/Incident-Response-Plan-Basics_508c.pdf' target='_blank' >CISA IRP Basics</a></br>";
                     echo "<a href='https://www.crowdstrike.com/en-us/cybersecurity-101/incident-response/incident-response-steps/' target='_blank' >CrowdStrke IRP Frameworks and Steps</a></br>";
                     echo "<a href='https://www.paloaltonetworks.com/cyberpedia/incident-response-plan' target='_blank' >Palo Alto: What is an IRP?</a></br>";
@@ -1078,7 +1077,7 @@
                 else if(($ControlID == 'L2-3.8.8')){
                     assessmentObj($ControlID);
                     if ($_SESSION['RemovableDevices'] != 'special'){
-                        echo "<div class='assessmentResultTextBlockL2'>You do not utilize removable devices,this control is not applicable
+                        echo "<div class='assessmentResultTextBlockL2'>You do not utilize shared media,this control is not applicable
                         </div>";  
                     }else{
                         echo "<div class='assessmentResultTextBlockL2'>Create policies surrounding the use of removable devices that contain CUI. Recommended: Heavily restrict external use of removable devices, 
