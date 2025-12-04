@@ -40,13 +40,14 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="Sanitize" value="Yes">Yes, there is printed CUI</label>
-                        <label> <input type="radio" name="Sanitize" value="No">No, there is NOT printed CUI</label>
+                        <label> <input type="radio" name="Paper" value="Yes">Yes, there is printed CUI</label>
+                        <label> <input type="radio" name="Paper" value="No">No, there is NOT printed CUI</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
                         </div>
                     </form>
+                    <div class = "singleSubmit"><?php include '../../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='46'></progress>";?></div>
                 </div>
             </div>
         </div>

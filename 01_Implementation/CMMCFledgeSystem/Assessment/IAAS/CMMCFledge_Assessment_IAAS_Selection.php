@@ -52,6 +52,7 @@
                             <button type="submit">Submit</button>
                         </div>
                     </form>
+                    <div class = "singleSubmit"><?php include '../../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='3'></progress>";?></div>
                 </div>
             </div>
         </div>

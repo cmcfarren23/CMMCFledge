@@ -39,6 +39,7 @@
                             <a href ="CMMCFledge_Assessment_AC_Access_List.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
+                    <div class = "singleSubmit"><?php include '../../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='4'></progress>";?></div>
                 </div>
             </div>
         </div>

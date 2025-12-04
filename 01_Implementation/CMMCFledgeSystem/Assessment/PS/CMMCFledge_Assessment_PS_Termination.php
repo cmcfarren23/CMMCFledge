@@ -2,7 +2,7 @@
     session_start(); 
     if(isset($_POST['Termination'])){
         $_SESSION['Termination'] = $_POST['Termination'];
-        header("Location: ../RA/CMMCFledge_Assessment_RA_Intro.php");
+        header("Location: ../PE/CMMCFledge_Assessment_PE_Intro.php");
         exit;
     }
 ?>
@@ -47,6 +47,7 @@
                             <button type="submit">Submit</button>
                         </div>
                     </form>
+                    <div class = "singleSubmit"><?php include '../../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='50'></progress>";?></div>
                 </div>
             </div>
         </div>

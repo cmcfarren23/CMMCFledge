@@ -36,9 +36,10 @@
                 <div class = "questionRadioContainer">
                     <form method="post" >
                         <div class = "singleSubmit">
-                            <a href ="CMMCFledge_Assessment_MP_Sanitize.php"><button type="button">Continue</button></a>
+                            <a href ="CMMCFledge_Assessment_MP_Paper.php"><button type="button">Continue</button></a>
                         </div>
                     </form>
+                    <div class = "singleSubmit"><?php include '../../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='45'></progress>";?></div>
                 </div>
             </div>
         </div>
