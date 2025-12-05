@@ -35,7 +35,7 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system include a logon banner or notifcation upon initial logon?</div>
+                <div class = "assessmentTitle">Does your system include a logon banner or notification upon initial logon?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">

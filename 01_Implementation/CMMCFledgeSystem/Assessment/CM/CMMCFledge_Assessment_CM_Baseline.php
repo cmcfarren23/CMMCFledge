@@ -38,7 +38,7 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Do you manage a configuaration baseline for the system?</div>
+                <div class = "assessmentTitle">Do you manage a configuration baseline for the system?</div>
                 <!-- <div class = "assessmentSubTitle">Select One of the Following</div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">

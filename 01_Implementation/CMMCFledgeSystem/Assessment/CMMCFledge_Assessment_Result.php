@@ -810,7 +810,7 @@
                     echo "<div class='assessmentResultTextBlockL2'>Define functionalities for all parts of the system. Identify use of essential and non-essential items as described above. 
                     Document these uses and keep the document up to date during configuration management reviews. This should be a part of your organization's configuration management policy.</div>";
                 }
-                else if(($ControlID == 'L2-3.4.8') && ($_SESSION['Whitelist'] != 'Yes')){
+                else if(($ControlID == 'L2-3.4.8') && ($_SESSION['Whitelist'] == 'N/A')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Specify whether your system utilizes a blacklist (Allow all; Deny by exception) or whitelist (Deny all; Allow by exception) 
                     for software. Employ this using device management techniques for your operating systems.</div>";
@@ -819,7 +819,7 @@
                     echo "<div class='assessmentResultTextBlockL2'>Additional NIST guidance can be found below:</div>";
                     echo "<a href='https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-167.pdf' target='_blank' >NIST Whitelisting Guide</a></br>";
                 }
-                else if(($ControlID == 'L2-3.4.9') && ($_SESSION['Whitelist'] != 'Yes')){
+                else if(($ControlID == 'L2-3.4.9') && ($_SESSION['Whitelist'] == 'N/A')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Specify whether your system utilizes a blacklist (Allow all; Deny by exception) or whitelist (Deny all; Allow by exception) 
                     for software. Employ this using device management techniques for your operating systems. Verify that any software is monitored and is defined within your AU policies.</div>";
@@ -1027,7 +1027,7 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.8.1') && ($_SESSION['IAASUsage'] != 'Solely')){
+                if(($ControlID == 'L2-3.8.1') && ($_SESSION['IAASUsage'] != 'solely')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>It is recommended to physically lock up devices within your systems authorization boundary. 
                     Additionally, only allow access to authorized individuals.</div>";
@@ -1035,12 +1035,12 @@
                         echo "<div class='assessmentResultTextBlockL2'>Verify that all printed media is kept in secure areas.</div>";
                     }
                 }
-                else if(($ControlID == 'L2-3.8.2') && (($_SESSION['IAASUsage'] != 'Solely' && $_SESSION['RolesMatrix'] != 'Yes'))){
+                else if(($ControlID == 'L2-3.8.2') && (($_SESSION['IAASUsage'] != 'solely' && $_SESSION['RolesMatrix'] != 'Yes'))){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Utilize the principle of least privilege. 
                     Only those with need to access CUI on system media should use it. Document this in your roles and responsibilities matrix</div>";
                 }
-                else if(($ControlID == 'L2-3.8.3') && ($_SESSION['IAASUsage'] != 'Solely' && $_SESSION['Sanitize'] != 'Yes')){
+                else if(($ControlID == 'L2-3.8.3') && ($_SESSION['IAASUsage'] != 'solely' && $_SESSION['Sanitize'] != 'Yes')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlock'>Verify that all devices are wiped before reuse or disposal. 
                     This control is easily met through popular drive wipers such as Darik's Boot and Nuke (DBaN).</div>";  
@@ -1051,15 +1051,15 @@
                     echo "<div class='assessmentResultTextBlockL2'>Any and all CUI must be marked. Follow these guides for proper marking of CUI:</div>";
                     echo "<a href='https://www.archives.gov/files/cui/20161206-cui-marking-handbook-v1-1.pdf' target='_blank' >National archives CUI Handbook</a></br>";  
                     echo "<a href='https://www.archives.gov/cui/additional-tools' target='_blank' >CUI archives</a></br>";  
-                    if($_SESSION['IAASUsage'] != 'Solely'){
+                    if($_SESSION['IAASUsage'] != 'solely'){
                         echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                     }
                 }
-                else if(($ControlID == 'L2-3.8.5') && ($_SESSION['SecureRest'] != 'Solely')){
+                else if(($ControlID == 'L2-3.8.5') && ($_SESSION['SecureRest'] != 'solely')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                 }
-                else if(($ControlID == 'L2-3.8.6') && ($_SESSION['SecureRest'] != 'Solely')){
+                else if(($ControlID == 'L2-3.8.6') && ($_SESSION['SecureRest'] != 'solely')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>If media containing CUI leaves the system authorization boundary keep a custody record of all transportation</div>";
                 }
@@ -1085,7 +1085,7 @@
                         </div>"; 
                     }
                 }
-                else if(($ControlID == 'L2-3.8.9') && ($_SESSION['IAASUsage'] != 'Solely')){
+                else if(($ControlID == 'L2-3.8.9') && ($_SESSION['IAASUsage'] != 'solely')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Backup CUI must be protected physically and logically. 
                     This includes securing access to the physical data storage device and utilizing NIST 140 cryptographic methods. 
@@ -1146,33 +1146,33 @@
                 $ControlName = $getCMMCControl['Control_Name'];
                 $ControlID = $getCMMCControl['Control_ID'];
                 echo "<div class='resultControlNameL2'>" . ltrim($ControlID,'L2-') . " - $ControlName</div>";
-                if(($ControlID == 'L2-3.10.1') && ($_SESSION['PhysicalAccess'] != 'Yes')){ // no PE related var can be set if IAASusage == 'solely'
+                if(($ControlID == 'L2-3.10.1') && ($_SESSION['PhysicalAccess'] == 'No')){ // no PE related var can be set if IAASusage == 'solely'
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
                     should be locked and only accessible to those with access.</div>";
                 }
-                else if(($ControlID == 'L2-3.10.2') && ($_SESSION['PhysicalAccess'] != 'Yes') && ($_SESSION['PhysicalMonitor'] != 'Yes')){
+                else if(($ControlID == 'L2-3.10.2') && ($_SESSION['PhysicalAccess'] == 'No') && ($_SESSION['PhysicalMonitor'] == 'No')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
                     should be locked and only accessible to those with access.</div></br>";
                     echo "<div class='assessmentResultTextBlockL2'>These areas should be monitored 24/7 by surveillance cameras. 
                     Camera records should be kept for an organizationally defined period. Recommended three (3) months.</div>";
                 }
-                else if(($ControlID == 'L2-3.10.3') && ($_SESSION['PhysicalGuest'] != 'Yes')){
+                else if(($ControlID == 'L2-3.10.3') && ($_SESSION['PhysicalGuest'] == 'No')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Visitors should be escorted at all times by an authorized staff member.</div>";
                 }
-                else if(($ControlID == 'L2-3.10.4') && ($_SESSION['PhysicalLogs'] != 'Yes')){
+                else if(($ControlID == 'L2-3.10.4') && ($_SESSION['PhysicalLogs'] == 'No')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>Sign-in logs and access card logs should be kept for the same time as your logical authorization logs.
                     Verify that these logs are included in your logging retention policies.</div>";
                 }
-                else if(($ControlID == 'L2-3.10.5') && ($_SESSION['PhysicalAccess'] != 'Yes')){
+                else if(($ControlID == 'L2-3.10.5') && ($_SESSION['PhysicalAccess'] == 'No')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All doors, cabinets, lockboxes, server racks, etc. 
                     should be locked and only accessible to those with access. All of these must be accounted for and reviewed at least annually.</div>";
                 }
-                else if(($ControlID == 'L2-3.10.6') && ($_SESSION['AltSite'] != 'Yes')){
+                else if(($ControlID == 'L2-3.10.6') && ($_SESSION['AltSite'] == 'No')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>An alternate site must be configured in case of emergenices. 
                     It must meet the same controls as the main site.</div></br>";
@@ -1289,7 +1289,7 @@
                     echo "<div class='assessmentResultTextBlockL2'>Create and define Roles & Responsibilities. Verify that these responsibilities enforce Separation of Duties best practice. 
                     Upon defining these roles, enforce it within your system and restrict access to resources accordingly.</div>";
                 }
-                else if(($ControlID == 'L2-3.13.4') && ($_SESSION['IAASUsage'] == 'Solely')){
+                else if(($ControlID == 'L2-3.13.4') && ($_SESSION['IAASUsage'] == 'solely')){
                     assessmentObj($ControlID);
                     echo "<div class='assessmentResultTextBlockL2'>All components should be logically separated from the rest of the system (VLANs)</div>";
                 }
@@ -1425,6 +1425,8 @@
                     echo "<div class='assessmentResultTextBlockL2'>This control is primarily policy. Create an Acceptable Use policy, or Rules of Behavior policy
                     and define the difference between authorized and unauthorized use of the system</div>";
                 }
+                else
+                    echo "<div class='assessmentResultTextBlockL2'>You likely have this control covered. No Action Needed.</div>";
             }
         }
         echo "</div></details>";

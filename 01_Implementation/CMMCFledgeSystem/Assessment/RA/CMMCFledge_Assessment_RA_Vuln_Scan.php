@@ -41,7 +41,7 @@
                 <div class = "questionRadioContainer">
                     <form method="post">
                         <label> <input type="radio" name="VulnScan" value="Yes">Yes, vulnerability scans are being carried out according to the policy</label>
-                        <label> <input type="radio" name="VulnScan" value="No">Yes, vulnerability scans are NOT being conducted</label>
+                        <label> <input type="radio" name="VulnScan" value="No">No, vulnerability scans are NOT being conducted</label>
                         <label> <input type="radio" name="VulnScan" value="No">No, vulnerability scan do NOT happen on regular intervals</label>
                         <br>
                         <div class = "singleSubmit">

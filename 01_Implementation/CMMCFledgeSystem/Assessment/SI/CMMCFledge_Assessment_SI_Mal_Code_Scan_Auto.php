@@ -35,7 +35,7 @@
 
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
-                <div class = "assessmentTitle">Does your system scan for malcious code as files are downloaded, opened, or executed?</div>
+                <div class = "assessmentTitle">Does your system scan for malicious code as files are downloaded, opened, or executed?</div>
                 <!-- <div class = "assessmentSubTitle"></div> -->
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">

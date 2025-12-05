@@ -40,9 +40,9 @@
                 <div class = "questionInstruction"><br><br>Select One of The Following</div>
                 <div class = "questionRadioContainer">
                     <form method="post">
-                        <label> <input type="radio" name="SSP" value="Yes">Yes, an exists and is updated regularly</label>
-                        <label> <input type="radio" name="SSP" value="No">No, an SSP exist but it is NOT updated</label>
-                        <label> <input type="radio" name="SSP" value="No">No, an SSP does NOT exist</label>
+                        <label> <input type="radio" name="SSP" value="Yes">Yes, a SSP exists and is updated regularly</label>
+                        <label> <input type="radio" name="SSP" value="No">No, a SSP exist but it is NOT updated</label>
+                        <label> <input type="radio" name="SSP" value="No">No, a SSP does NOT exist</label>
                         <br>
                         <div class = "singleSubmit">
                             <button type="submit">Submit</button>
