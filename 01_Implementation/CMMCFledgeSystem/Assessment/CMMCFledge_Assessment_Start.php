@@ -94,7 +94,7 @@
         <div class="bodyColumnContainer">
             <div class="bodyColumnWide">
                 <div class = "assessmentTitle">Are you ready to begin the assessment?</div>
-                <div class = "assessmentStartText"><br>This assessment may take up to 20 minutes to complete</div>
+                <div class = "assessmentStartText"><br>This assessment may take up to 30 minutes to complete</div>
                 <div class = "assessmentStartText"><br>The progress bar may provide a rough estimate for completion</div><br>
                 <div class = "singleSubmit"><?php include '../Include/CMMCFledge_Public_Var.php'; echo "<progress id='progress-bar' max='" . getTotalQuestions() ."'value='25'></progress>";?></div>
                 <div class = "assessmentStartText"><br>If you see any unfamiliar terminology, please refer to the Fledge Dictionary</div><br>
